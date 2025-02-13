@@ -94,7 +94,7 @@ export default function ResetPassword() {
 
           {/* Footer */}
           <footer className="text-center absolute bottom-3 left-[35vw] sm:left-[38vw] md:left-[10vw]">
-            <p className="text-xs text-gray-400">© 2025 Enira Lean Automation.</p>
+            <p className="text-xs text-gray-5">© 2025 Enira Lean Automation.</p>
           </footer>
         </div>
       </div>
