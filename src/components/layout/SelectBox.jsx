@@ -4,7 +4,7 @@ const SelectBox = ({ label, name, options, placeholder, register, errors }) => {
   return (
     <div>
       {label && (
-        <label className="block text-[11px] sm:text-[13px] md:text-[14px] lg:text-[15px] font-[600] text-gray-1 font-inter mb-[6px]">
+        <label className="block text-[11px] sm:text-[13px] md:text-[14px] lg:text-[15px] font-[600] text-gray-1 font-inter mb-[3px]">
           {label}
         </label>
       )}

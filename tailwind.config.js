@@ -29,6 +29,7 @@ export default {
           3: "#C7CED9",
           4:"#F2F2F7",
           5: "#98A2B2"
+          
         },
       },
     },
