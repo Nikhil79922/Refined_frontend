@@ -24,7 +24,7 @@ export default function ForgotPassword() {
     <div className="min-h-screen flex items-center justify-start bg-gray-100 font-inter overflow-hidden">
       <div className="ToastContainer" /> {/* Ensure this is included for toast notifications */}
 
-      <div className="flex flex-col md:flex-row lg:gap-[4vw] w-[100vw] h-[100vh] md:w-auto">
+      <div className="flex flex-col md:flex-row lg:gap-[2vw] w-[100vw] h-[100vh] md:w-auto">
         {/* Side Image */}
         <div className="relative hidden md:flex w-full md:w-[60vw] lg:w-[50vw] items-center justify-center p-5">
           <img src={sideImage} alt="Side Image" className="w-full h-[97vh] object-cover rounded-lg" />

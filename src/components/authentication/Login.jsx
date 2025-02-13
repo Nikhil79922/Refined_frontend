@@ -33,7 +33,7 @@ export default function LoginPage() {
     </div>
 
     {/* Login Form Section */}
-    <div className="w-full md:w-[40vw] lg:w-[30vw] flex flex-col justify-center px-6 sm:px-8 py-10 h-full relative">
+    <div className="w-full md:w-[40vw] lg:w-[30vw] flex flex-col gap-[-10px] justify-center px-6 sm:px-8 py-10 h-full relative">
       {/* Logo */}
       <img src={logo} alt="Company Logo" className="w-24 mb-6" />
 
@@ -78,7 +78,6 @@ export default function LoginPage() {
     },
   })}
 />
-
           {errors.password && <p className="text-red-500 text-xs mt-1">{errors.password.message}</p>}
         </div>
 
