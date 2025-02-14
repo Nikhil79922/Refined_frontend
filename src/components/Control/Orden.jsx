@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import SelectBox from "../layout/SelectBox";
+import unfold from '../../assets/svg/unfold.svg'
 import Bottom_window from "./Bottom_window";
 const machines = [
   { value: "Máquina1", label: "Máquina 1" },
@@ -49,8 +50,10 @@ export default function Orden() {
     setFinalizedRows((prev) => [...prev, index]);
   };
 
+
+
   return (
-    <div className="px-4 mb-7 bg-gray-4 ">
+    <div className="px-4  bg-gray-4 ">
       {/* Top Form */}
       <div className="flex flex-wrap items-center gap-4 mb-6 bg-gray-4 rounded">
         {/* Machine Dropdown */}
@@ -83,10 +86,10 @@ export default function Orden() {
           />
         </div>
         {/* Button */}
-        <div className="flex flex-col w-full sm:w-auto">
+        <div className="flex flex-col w-full sm:w-auto self-start">
           <label className="invisible mb-1">Button</label>
           <button
-            className="w-full sm:w-[170px] h-[35px] bg-blue-570 text-white text-sm font-medium rounded  hover:bg-blue-590"
+            className="w-full sm:w-[170px] h-[35px] bg-[#179FDB] text-white text-sm font-semibold rounded-[6px]  hover:bg-[#2A6AB2]"
             onClick={handleSubmit(handleStartOrder)}
 
           >
@@ -96,15 +99,15 @@ export default function Orden() {
       </div>
 
       {/* Timeline Tabs */}
-      <div className="bg-white p-4 rounded border-0">
+      <div className="bg-white p-4 rounded-[12px] border-0">
         <div className="flex justify-between items-center mb-4">
-          <h2 className="text-xl font-semibold">Timeline</h2>
+          <h2 className="text-[20px] leading-[22px] font-semibold font-inter">Timeline</h2>
           <div className="flex gap-1">
             {["Day", "Week", "Month"].map((label, index) => (
               <button
                 key={index}
                 onClick={() => handleTabChange(index)}
-                className={`text-[9px] font-normal px-2 py-2 rounded ${tabValue === index ? "bg-blue-580 text-white" : "text-gray-600"
+                className={`text-[10px] leading-[10px] font-inter font-normal px-2 py-2 rounded ${tabValue === index ? "bg-blue-580 text-white" : "text-gray-600"
                   }`}
               >
                 {label}
@@ -114,10 +117,10 @@ export default function Orden() {
         </div>
 
         {/* Data Table */}
-        <div className="overflow-x-auto rounded border border-gray-100">
-          <table className="min-w-full table-auto">
+        <div className="overflow-x-auto rounded-[12px]  font-inter">
+          <table className="min-w-full   table-auto">
             <thead>
-              <tr className="bg-blue-580">
+              <tr className="bg-[#2A6AB2] ">
                 {[
                   "Máquina",
                   "Orden",
@@ -129,29 +132,30 @@ export default function Orden() {
                 ].map((header, index) => (
                   <th
                     key={index}
-                    className="text-white font-medium text-sm px-4 py-2 text-left"
+                    className="text-white h-auto font-semibold text-[14px] leading-[18px] px-4 py-4 text-left"
                   >
-                    <div className="flex items-center gap-2">
+                    <div className="flex items-center ">
                       {header}
-                      <span className="material-symbols-outlined font-thin">unfold_more</span>
+                      <img src={unfold} className={`h-[16px] ml-[9px] cursor-pointer`} />
                     </div>
                   </th>
                 ))}
               </tr>
             </thead>
-            <tbody className="text-xs">
+            <tbody className="text-[12px]  leading-[14px]  font-[350] py-[15px] font-inter">
               {tableData.map((row, index) => (
                 <tr key={index} className={`${row.bgClass}`}>
                   {finalizedRows.includes(index) ? (
                     <>
-                      <td className="px-4 py-2">{row.machine}</td>
-                      <td colSpan={6} className="px-4 py-2 text-center">
+                      <td className="px-4 h-[46px] py-2">{row.machine}</td>
+                      <td colSpan={6} className="px-4 py-2   text-center">
+                        
 
                       </td>
                     </>
                   ) : (
                     <>
-                      <td className="px-4 py-2">{row.machine}</td>
+                      <td className="px-4 py-2  ">{row.machine}</td>
                       <td className="px-4 py-2">{row.order}</td>
                       <td className="px-4 py-2">{row.product}</td>
                       <td className="px-4 py-2">{row.status}</td>
@@ -159,7 +163,7 @@ export default function Orden() {
                       <td className="px-4 py-2">{row.fabricated}</td>
                       <td className="px-4 py-2 text-left">
                         <button
-                          className="bg-red-500 text-gray-100 text-[11px] py-1 px-4 rounded"
+                          className="bg-[#C52031] leading-[14px] text-[#ffffff] text-[11px] py-2 px-3 rounded-[5px]"
                           onClick={() => handleFinalize(index)}
                         >
                           Finalizar
@@ -173,8 +177,7 @@ export default function Orden() {
           </table>
         </div>
       </div>
-
-     <div className="fixed bottom-[25px]">
+<div className="fixed bottom-[25px]">
         <Bottom_window/>
       </div>
 

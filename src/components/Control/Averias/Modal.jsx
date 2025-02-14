@@ -1,6 +1,9 @@
 import React from "react";
 import { useForm } from "react-hook-form";
 import SelectBox from "../../layout/SelectBox.jsx";
+import cross from "../../../assets/svg/cross.svg"
+
+
 
 const machineOptions = [
   { value: "Máquina1", label: "Máquina 1" },
@@ -35,13 +38,13 @@ export default function Modal({ isOpen, closeModal, modalType, selectedRow, hand
   return (
     <div className="fixed inset-0 bg-gray-500 bg-opacity-50 flex items-center justify-center z-50"
       style={{ zIndex: 60 }}>
-      <div className="bg-white rounded-lg shadow-md sm:w-[500px]">
-        <div className="flex justify-between items-center bg-gray-100 rounded-t-lg p-4">
-          <h3 className="text-[18px] font-bold">
+      <div className="bg-white rounded-[12px] shadow-md sm:w-[500px] ">
+        <div className="flex justify-between items-center text-[#141415] bg-[#F2F2F7] rounded-t-[12px]  py-4 px-4">
+          <h3 className="text-[24px] leading-[25px] font-bold font-inter ">
             {modalType === "edit" ? "Editar Pop-up Window" : modalType === "agrupar" ? "Agrupar Pop-up Window" : "Dividir Pop-up Window"}
           </h3>
-          <button className="text-gray-500 hover:text-gray-700 px-[10px]" onClick={closeModal}>
-            <span className="material-symbols-outlined">close</span>
+          <button  onClick={closeModal}>
+            <img src={cross} className="text-[#141415] h-[15px] px-[10px] cursor-pointer text-[26px] md:text-[22px]"  />
           </button>
         </div>
 
@@ -120,18 +123,18 @@ export default function Modal({ isOpen, closeModal, modalType, selectedRow, hand
         </div>
 
         <div className="px-4">
-          <label className="block text-[11px] sm:text-[13px] md:text-[14px] lg:text-[15px] font-medium text-black mb-[2px]">Comentarios</label>
+          <label className="block text-[11px] sm:text-[13px] md:text-[14px] lg:text-[15px] font-medium text-black mb-[2px] ">Comentarios</label>
           <textarea
-            className="w-full h-[36px] pl-[8px] pr-[8px] bg-white text-xs outline-none font-normal text-gray-700 border border-gray-300 rounded"
+            className="w-full h-[36px] p-2  bg-white text-xs outline-none font-normal  text-gray-700 border border-gray-300 rounded"
             placeholder="Type here..."
           />
         </div>
 
-        <div className="flex flex-col sm:flex-row justify-start gap-4 p-4">
-          <button className="bg-gray-400 text-white px-4 py-2 rounded-lg w-full sm:w-auto" onClick={closeModal}>
+        <div className="flex flex-col sm:flex-row justify-start gap-[14px] p-4 leading-[16px]">
+          <button className="bg-[#7A8699] font-inter font-medium text-[14px]  text-[#F2F2F7] px-4 py-3 rounded-lg w-full sm:w-auto" onClick={closeModal}>
             Cancelar
           </button>
-          <button className="bg-blue-570 text-white px-4 py-2 rounded-lg w-full sm:w-auto" onClick={handleSubmit(handleSave)}>
+          <button className="bg-[#179FDB] font-inter font-medium text-[14px]  text-[#F2F2F7] px-4 py-3 rounded-lg w-full sm:w-auto" onClick={handleSubmit(handleSave)}>
             Guardar
           </button>
         </div>

@@ -66,7 +66,7 @@ const Averias = () => {
   };
 
   return (
-    <div className="bg-gray-4 mb-7 px-4 sm:px-4">
+    <div className="bg-gray-4 mb-20  px-4 sm:px-4">
       {/* Filter Controls */}
       <FilterControls />
       <div className="bg-white p-4 sm:p-6 rounded-lg shadow-md">
@@ -77,14 +77,15 @@ const Averias = () => {
         {/* Table */}
         <AveriasTable data={data} selectedRows={selectedRows} toggleSelectAll={toggleSelectAll} />
         {/* Pagination */}
-        <div className="pt-4 pb-1 border-b flex justify-between">
-          <p className="text-left text-gray-400 text-[10px]">Showing 1 to 10 of 50 Entries</p>
-          <div className="flex gap-[2px]">
+
+        <div className="py-2  mt-3 flex justify-between border-t border-b font-inter border-gray-200  ">
+          <p className="py-[6px] text-left text-[#98A2B2] text-[10px] font-light leading-[12px] ">Showing 1 to 10 of 50 Entries</p>
+          <div className="flex gap-[1px] leading-[8px]">
             {["prev", "1", "2", "3", "next"].map((label, index) => (
               <button
                 key={index}
                 onClick={() => handleTabChange(index)}
-                className={`text-[10px] text-gray-400  px-2 py-2 rounded ${tabValue === index ? "bg-blue-570 text-white" : "text-gray-400"
+                className={`text-[10px] text-gray-400  px-2 py-2 rounded ${tabValue === index ? "bg-[#179FDB] text-white" : "text-[#98A2B2"
                   }`}
               >
                 {label}
@@ -97,8 +98,7 @@ const Averias = () => {
         <Modal isOpen={isModalOpen} closeModal={closeModal} modalType={modalType} handleSave={handleSave} selectedRow={selectedRow} />
       </div>
 
-
-           <div className="fixed bottom-[25px]">
+      <div className="fixed bottom-[25px]">
               <Bottom_window/>
             </div>
     </div>

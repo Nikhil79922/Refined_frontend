@@ -69,7 +69,7 @@ function C_Etiquetas() {
 
         {/* Cantidad Input */}
         <div>
-            <label className="block text-sm font-[600] font-inter text-gray-1 mb-1">Cantidad</label>
+            <label className="block text-[11px] sm:text-[13px] md:text-[14px] lg:text-[15px] font-[600] text-[#141415] font-inter mb-[6px]">Cantidad</label>
             <input
               type="number"
               placeholder="Cantidad"
@@ -77,7 +77,7 @@ function C_Etiquetas() {
                 required: "Cantidad es requerida", 
                 min: { value: 1, message: "Debe ser al menos 1" }, 
               })}
-              className="w-full h-[36px] pl-[8px] pr-[8px] bg-white text-xs outline-none font-normal text-gray-700 border border-gray-300 rounded"
+              className="w-full h-[36px] px-[8px] bg-white text-xs outline-none font-normal text-[#98A2B2] border border-[#E7E7E7] rounded-[6px]"
             />
             {errors.quantity && <p className="text-red-500 text-xs">{errors.quantity.message}</p>}
           </div>
@@ -86,14 +86,13 @@ function C_Etiquetas() {
       {/* Button Section */}
       <div className="flex justify-start lg:justify-start ml-[12px]">
         <button
-          className="w-[176px] h-[45px] bg-blue-2 text-white text-sm font-[700] rounded font-inter  hover:bg-blue-1"
+          className="w-[176px] h-[45px] bg-blue-2 text-white text-sm font-[700] rounded font-inter  hover:bg-blue-500"
           onClick={handleSubmit(handlePrintLabels)}
         >
           Imprimir etiquetas
         </button>
       </div>
-
-      <div className="fixed bottom-[25px]">
+<div className="fixed bottom-[25px]">
         <Bottom_window/>
       </div>
 

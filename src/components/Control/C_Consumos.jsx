@@ -76,31 +76,31 @@ function C_Consumos() {
 
         {/* Unidad Input */}
         <div className="flex flex-col w-full">
-          <label className="block text-sm font-[600] text-gray-1 mb-[6px]  ">Unidad</label>
+          <label className="block text-[11px] sm:text-[13px] md:text-[14px] lg:text-[15px] font-[600] text-[#141415] font-inter mb-[6px]">Unidad</label>
           <input
             type="text"
             placeholder="Unidad"
             {...register("unidad", { required: "Unidad es requerida" })}
-            className="w-full h-[36px] pl-[8px] pr-[8px] bg-white text-xs outline-none font-normal text-gray-700 border border-gray-300 rounded"
+            className="w-full h-[36px] px-[8px] bg-white text-xs outline-none font-normal text-[#98A2B2] border border-[#E7E7E7] rounded-[6px]"
           />
           {errors.unidad && <p className="text-red-500 text-xs mt-1">{errors.unidad.message}</p>}
         </div>
 
         {/* Referencia Input */}
         <div className="flex flex-col w-full">
-          <label className="block text-sm font-[600] text-gray-1 mb-[6px] ">Referencia</label>
+          <label className="block text-[11px] sm:text-[13px] md:text-[14px] lg:text-[15px] font-[600] text-[#141415] font-inter mb-[6px]">Referencia</label>
           <input
             type="text"
             placeholder="Referencia"
             {...register("referencia", { required: "Referencia es requerida" })}
-            className="w-full h-[36px] pl-[8px] pr-[8px] bg-white text-xs outline-none font-normal text-gray-700 border border-gray-300 rounded"
+            className="w-full h-[36px] px-[8px] bg-white text-xs outline-none font-normal text-[#98A2B2] border border-[#E7E7E7] rounded-[6px]"
           />
           {errors.referencia && <p className="text-red-500 text-xs mt-1">{errors.referencia.message}</p>}
         </div>
 
         {/* Cantidad Input */}
         <div>
-          <label className="block text-sm font-[600] text-gray-1 mb-[6px] ">Cantidad</label>
+          <label className="block text-[11px] sm:text-[13px] md:text-[14px] lg:text-[15px] font-[600] text-[#141415] font-inter mb-[6px]">Cantidad</label>
           <input
             type="number"
             placeholder="Cantidad"
@@ -108,7 +108,7 @@ function C_Consumos() {
               required: "Cantidad es requerida",
               min: { value: 1, message: "Debe ser al menos 1" },
             })}
-            className="w-full h-[36px] pl-[8px] pr-[8px] bg-white text-xs outline-none font-normal text-gray-700 border border-gray-300 rounded"
+            className="w-full h-[36px] px-[8px] bg-white text-xs outline-none font-normal text-[#98A2B2] border border-[#E7E7E7] rounded-[6px]"
           />
           {errors.quantity && <p className="text-red-500 text-xs">{errors.quantity.message}</p>}
         </div>
@@ -117,14 +117,13 @@ function C_Consumos() {
       {/* Button Section */}
       <div className="ml-3 mt-4 text-left">
         <button
-          className="w-[176px] h-[45px] bg-blue-2 text-white text-sm font-[700] rounded font-inter  hover:bg-blue-1"
+          className="w-[176px] h-[45px] bg-blue-2 text-white text-sm font-[700] rounded font-inter  hover:bg-blue-500"
           onClick={handleSubmit(handleEnterConsumption)}
         >
           Introducir consumo
         </button>
       </div>
-
-      <div className="fixed bottom-[25px]">
+<div className="fixed bottom-[25px]">
         <Bottom_window/>
       </div>
 

@@ -56,25 +56,25 @@ export default function FilterControls() {
 
       {/* Fecha Inicio Input */}
       <div>
-        <label className="block text-[11px] sm:text-[13px] md:text-[14px] lg:text-[15px] font-medium text-black mb-[2px]">Fecha Inicio</label>
+        <label className="block text-[11px] sm:text-[13px] md:text-[14px] lg:text-[15px] font-[600] text-[#141415] font-inter mb-[6px]">Fecha Inicio</label>
         <input
           type="date"
           value={startDate}
           defaultValue={currentDate}
           onChange={(e) => setStartDate(e.target.value)}
-          className="w-full h-[36px] pl-[8px] pr-[8px] bg-white text-xs outline-none font-normal text-gray-400 border border-gray-300 rounded"
+          className="w-full h-[36px] px-[8px] bg-white text-xs outline-none font-normal text-[#98A2B2] border border-[#E7E7E7] rounded-[6px]"
         />
       </div>
 
       {/* Fecha Fin Input */}
       <div>
-        <label className="block text-[11px] sm:text-[13px] md:text-[14px] lg:text-[15px] font-medium text-black mb-[2px]">Fecha Fin</label>
+        <label className="block text-[11px] sm:text-[13px] md:text-[14px] lg:text-[15px] font-[600] text-[#141415] font-inter mb-[6px]">Fecha Fin</label>
         <input
           type="date"
           value={endDate}
           defaultValue={currentDate}
           onChange={(e) => setEndDate(e.target.value)}
-          className="w-full h-[36px] pl-[8px] pr-[8px] bg-white text-xs outline-none font-normal text-gray-400 border border-gray-300 rounded"
+          className="w-full h-[36px] px-[8px] bg-white text-xs outline-none font-normal text-[#98A2B2] border border-[#E7E7E7] rounded-[6px]"
         />
       </div>
     </div>
