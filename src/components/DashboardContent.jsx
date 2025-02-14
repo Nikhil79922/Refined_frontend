@@ -83,18 +83,18 @@ export default function DashboardContent() {
               onClick={() => sortData('timestamp')}
             >
               Timestamp
-              <img src={unfold} className={`h-[18px] ml-[11px] ${getArrowClass('timestamp')}`} />
+              <img src={unfold} className={`h-[14px] sm:h-[18px] ml-[5px] sm:ml-[11px] ${getArrowClass('timestamp')}`} />
             </div>
             <div className="pl-4 sm:pl-16 cursor-pointer flex items-center" onClick={() => sortData('tipo')}>
               Tipo Alerta
-              <img src={unfold} className={`h-[18px] ml-[11px] ${getArrowClass('tipo')}`} />
+              <img src={unfold} className={`h-[14px] sm:h-[18px] ml-[5px] sm:ml-[11px] ${getArrowClass('tipo')}`} />
             </div>
             <div
               className="pl-6 sm:pl-11 cursor-pointer flex items-center rounded-tr-[10px]"
               onClick={() => sortData('descripcion')}
             >
               Descripción
-              <img src={unfold} className={`h-[18px] ml-[11px] ${getArrowClass('descripcion')}`} />
+              <img src={unfold} className={`h-[14px] sm:h-[18px] ml-[5px] sm:ml-[11px] ${getArrowClass('descripcion')}`} />
             </div>
           </div>
 
