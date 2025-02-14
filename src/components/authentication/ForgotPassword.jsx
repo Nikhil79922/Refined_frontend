@@ -69,7 +69,7 @@ export default function ForgotPassword() {
           {message && <p className="text-green-500 text-sm mt-2">{message}</p>}
 
           {/* Footer */}
-          <footer className="text-center absolute bottom-3 left-[35vw] sm:left-[38vw] md:left-[10vw]">
+          <footer className="text-center absolute bottom-3 left-[30vw] sm:left-[38vw] md:left-[10vw]">
             <p className="text-xs text-gray-5">© 2025 Enira Lean Automation.</p>
           </footer>
         </div>

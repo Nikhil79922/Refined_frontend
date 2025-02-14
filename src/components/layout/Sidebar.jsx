@@ -34,15 +34,16 @@ export default function Sidebar() {
       </button>
 
       <aside
-        className={`lg:min-w-[200px] lg:w-[15.5vw] z-60 overflow-y-auto bg-white text-blue-1 h-full shadow-lg fixed left-0 top-0 scrollbar-hide transition-transform duration-500 ${
-          isSlideOpen ? "translate-x-0" : "-translate-x-full lg:translate-x-0"
-        }`}
-      >
+      style={{ zIndex: 60 }}
+  className={`lg:min-w-[200px] lg:w-[15.5vw]  overflow-y-auto bg-white text-blue-1 h-full shadow-lg fixed left-0 top-0 scrollbar-hide transition-transform duration-500 ${
+    isSlideOpen ? "translate-x-0" : "-translate-x-full lg:translate-x-0"
+  }`}
+>
         <div className="flex items-center justify-between px-4 h-[73px] border-b border-gray-200 bg-white">
           <img src={logo} className="h-[50px] ml-[9.2px] w-[100px] object-contain" alt="Logo" />
           <img src={humburger} className="hidden lg:block h-[12px] cursor-pointer" alt="" />
           {isSlideOpen && (
-            <img src={cross} className="lg:hidden h-[15px] cursor-pointer" onClick={() => setSlideOpen(false)} alt="Close" />
+            <img src={cross} className="lg:hidden h-[14px] cursor-pointer relative top-[3px] left-[5px]" onClick={() => setSlideOpen(false)} alt="Close" />
           )}
         </div>
 
