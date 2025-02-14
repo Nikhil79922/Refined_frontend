@@ -1,12 +1,10 @@
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { toast } from "react-toastify";
-import unfold from './../assets/svg/unfold.svg';
-import pencil from './../assets/svg/pencil.svg';
+import unfold from '../../assets/svg/unfold.svg';
 
-
-export default function DashboardContent() {
-  const [isdbo, setdbo] = useState(false);
+export default function Bottom_window() {
+  const [isdbo, setdbo] = useState(true);
   const [alerts, setAlerts] = useState([
     { timestamp: '2024-10-30 06:21:45', tipo: 'Tipo1', descripcion: 'Descripción de alerta 1' },
     { timestamp: '2024-10-30 06:48:35', tipo: 'Tipo2', descripcion: 'Descripción de alerta 2' },
@@ -51,12 +49,6 @@ export default function DashboardContent() {
   };
 
   return (
-    <div className="ml-[5px] sm:ml-[10px] lg:ml-[20px] mt-[73px] flex flex-col w-[99vw] mb-[50px] lg:w-[84vw] bg-gray-4">
-    <div className="flex gap-[12px] items-center mt-4 mb-6">
-      <h2 className="text-[30px] font-inter md:text-2xl font-bold">Dashboard</h2>
-      <img src={pencil} className="bg-gray-4 h-[18px] ml-[15px] cursor-pointer"/>
-    </div>
-  
     <div className="bg-white rounded-lg shadow p-4 md:p-3 w-[97.8vw] lg:w-[82.5vw] overflow-x-auto">
       <div className="flex gap-[16px] items-center p-1 pb-4 border-b">
         <p className="text-[18px] md:text-lg font-[600] text-gray-1">dbo.Alertas</p>
@@ -117,8 +109,5 @@ export default function DashboardContent() {
         </div>
       </motion.div>
     </div>
-  </div>
-  
-
   );
 }

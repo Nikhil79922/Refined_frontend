@@ -3,6 +3,7 @@ import FilterControls from "./FilterControls";
 import ActionButtons from "./ActionButtons";
 import AveriasTable from "./AveriasTable";
 import Modal from "./Modal";
+import Bottom_window from "../Bottom_window";
 
 const Averias = () => {
   const [data, setData] = useState([
@@ -65,7 +66,7 @@ const Averias = () => {
   };
 
   return (
-    <div className="bg-gray-4 min-h-screen px-4 sm:px-4">
+    <div className="bg-gray-4 mb-7 px-4 sm:px-4">
       {/* Filter Controls */}
       <FilterControls />
       <div className="bg-white p-4 sm:p-6 rounded-lg shadow-md">
@@ -95,6 +96,11 @@ const Averias = () => {
         {/* Modals */}
         <Modal isOpen={isModalOpen} closeModal={closeModal} modalType={modalType} handleSave={handleSave} selectedRow={selectedRow} />
       </div>
+
+
+           <div className="fixed bottom-[25px]">
+              <Bottom_window/>
+            </div>
     </div>
   );
 };

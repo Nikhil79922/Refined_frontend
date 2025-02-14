@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import SelectBox from "../layout/SelectBox";
+import Bottom_window from "./Bottom_window";
 const machines = [
   { value: "Máquina1", label: "Máquina 1" },
   { value: "Máquina2", label: "Máquina 2" },
@@ -49,7 +50,7 @@ export default function Orden() {
   };
 
   return (
-    <div className="px-4  bg-gray-4 min-h-screen">
+    <div className="px-4 mb-7 bg-gray-4 ">
       {/* Top Form */}
       <div className="flex flex-wrap items-center gap-4 mb-6 bg-gray-4 rounded">
         {/* Machine Dropdown */}
@@ -172,6 +173,11 @@ export default function Orden() {
           </table>
         </div>
       </div>
+
+     <div className="fixed bottom-[25px]">
+        <Bottom_window/>
+      </div>
+
     </div>
   );
 }

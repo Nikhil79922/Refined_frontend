@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import SelectBox from "../layout/SelectBox";
-
+import Bottom_window from "./Bottom_window";
 
 const machineOptions = [
   { value: "Máquina1", label: "Máquina 1" },
@@ -44,7 +44,7 @@ const Scrap = () => {
   };
 
   return (
-    <div className="bg-gray-4 min-h-screen flex items-start justify-center">
+    <div className="bg-gray-4 mb-7 flex items-start justify-center">
       <form className="bg-gray-4 px-4 rounded-lg w-full">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
           {/* Máquina Dropdown */}
@@ -147,6 +147,10 @@ const Scrap = () => {
           </button>
         </div>
       </form>
+
+      <div className="fixed bottom-[25px]">
+        <Bottom_window/>
+      </div>
     </div>
   );
 };

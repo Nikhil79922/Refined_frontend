@@ -2,6 +2,7 @@
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import SelectBox from "../layout/SelectBox"; // Importing the reusable SelectBox component
+import Bottom_window from "./Bottom_window";
 
 const printerOptions = [
   { value: "Impresora1", label: "Impresora 1" },
@@ -91,6 +92,11 @@ function C_Etiquetas() {
           Imprimir etiquetas
         </button>
       </div>
+
+      <div className="fixed bottom-[25px]">
+        <Bottom_window/>
+      </div>
+
     </div>
   );
 }

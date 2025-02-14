@@ -2,6 +2,7 @@
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import SelectBox from "../layout/SelectBox";
+import Bottom_window from "./Bottom_window";
 
 const machineOptions = [
   { value: "Máquina1", label: "Máquina 1" },
@@ -122,6 +123,11 @@ function C_Consumos() {
           Introducir consumo
         </button>
       </div>
+
+      <div className="fixed bottom-[25px]">
+        <Bottom_window/>
+      </div>
+
     </div>
   );
 }
