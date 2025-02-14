@@ -74,8 +74,8 @@ function C_Consumos() {
         />
 
 
-        {/* Unidad Input */}
-        <div className="flex flex-col w-full">
+{/ Unidad Input /}
+        <div className="relative mb-1 ">
           <label className="block text-[11px] sm:text-[13px] md:text-[14px] lg:text-[15px] font-[600] text-[#141415] font-inter mb-[6px]">Unidad</label>
           <input
             type="text"
@@ -83,11 +83,11 @@ function C_Consumos() {
             {...register("unidad", { required: "Unidad es requerida" })}
             className="w-full h-[36px] px-[8px] bg-white text-xs outline-none font-normal text-[#98A2B2] border border-[#E7E7E7] rounded-[6px]"
           />
-          {errors.unidad && <p className="text-red-500 text-xs mt-1">{errors.unidad.message}</p>}
+          {errors.unidad && <p className="absolute left-0 text-red-500 text-xs mt-1">{errors.unidad.message}</p>}
         </div>
 
-        {/* Referencia Input */}
-        <div className="flex flex-col w-full">
+        {/ Referencia Input /}
+        <div className="relative mb-1">
           <label className="block text-[11px] sm:text-[13px] md:text-[14px] lg:text-[15px] font-[600] text-[#141415] font-inter mb-[6px]">Referencia</label>
           <input
             type="text"
@@ -95,11 +95,11 @@ function C_Consumos() {
             {...register("referencia", { required: "Referencia es requerida" })}
             className="w-full h-[36px] px-[8px] bg-white text-xs outline-none font-normal text-[#98A2B2] border border-[#E7E7E7] rounded-[6px]"
           />
-          {errors.referencia && <p className="text-red-500 text-xs mt-1">{errors.referencia.message}</p>}
+          {errors.referencia && <p className="absolute left-0 text-red-500 text-xs mt-1">{errors.referencia.message}</p>}
         </div>
 
-        {/* Cantidad Input */}
-        <div>
+        {/ Cantidad Input /}
+        <div className="relative mb-1" >
           <label className="block text-[11px] sm:text-[13px] md:text-[14px] lg:text-[15px] font-[600] text-[#141415] font-inter mb-[6px]">Cantidad</label>
           <input
             type="number"
@@ -110,7 +110,7 @@ function C_Consumos() {
             })}
             className="w-full h-[36px] px-[8px] bg-white text-xs outline-none font-normal text-[#98A2B2] border border-[#E7E7E7] rounded-[6px]"
           />
-          {errors.quantity && <p className="text-red-500 text-xs">{errors.quantity.message}</p>}
+          {errors.quantity && <p className="absolute left-0 mt-1 text-red-500 text-xs">{errors.quantity.message}</p>}
         </div>
       </div>
 

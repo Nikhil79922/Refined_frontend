@@ -57,7 +57,7 @@ export default function Header() {
     }
   };
   return (
-    <header style={{ zIndex: 49 }} className="flex fixed top-0 left-0 lg:left-[15.5vw] items-center justify-between h-[73px] border-b-[0.9px] border-gray-200 bg-gray-4 w-[100vw] lg:w-[84.5vw]">
+    <header  className="flex lg:ml-[40px] lg:left-[15.5vw] items-center justify-between h-[73px] border-b-[0.9px] border-gray-200 bg-gray-4   ">
       <div className="flex ml-[40px] lg:ml-[0px] h-[73px] items-center ">
         <span className="material-symbols-outlined cursor-pointer text-gray-3 bg-white flex items-center justify-center w-[8vw] sm:w-[6vw] md:w-[4vw]   lg:w-[2.8vw] text-[23px] rounded-tl-[8px] rounded-bl-[8px] ml-[10px] sm:ml-[20px]   h-[42px]">
           search

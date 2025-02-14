@@ -68,7 +68,8 @@ function C_Etiquetas() {
         />
 
         {/* Cantidad Input */}
-        <div>
+        {/ Cantidad Input /}
+        <div className="relative mb-1">
             <label className="block text-[11px] sm:text-[13px] md:text-[14px] lg:text-[15px] font-[600] text-[#141415] font-inter mb-[6px]">Cantidad</label>
             <input
               type="number"
@@ -79,7 +80,7 @@ function C_Etiquetas() {
               })}
               className="w-full h-[36px] px-[8px] bg-white text-xs outline-none font-normal text-[#98A2B2] border border-[#E7E7E7] rounded-[6px]"
             />
-            {errors.quantity && <p className="text-red-500 text-xs">{errors.quantity.message}</p>}
+            {errors.quantity && <p className="absolute left-0 mt-1 text-red-500 text-xs">{errors.quantity.message}</p>}
           </div>
       </div>
 

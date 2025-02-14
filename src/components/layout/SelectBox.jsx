@@ -2,7 +2,7 @@ import React from "react";
 
 const SelectBox = ({ label, name, options, placeholder, register, errors }) => {
   return (
-    <div>
+    <div className="relative mb-[4px]">
       {label && (
         <label className="block text-[11px] sm:text-[13px] md:text-[14px] lg:text-[15px] font-[600] text-[#141415] font-inter mb-[6px]">
           {label}
@@ -19,9 +19,9 @@ const SelectBox = ({ label, name, options, placeholder, register, errors }) => {
           </option>
         ))}
       </select>
-      <div className="min-h-[20px] p-[2px]" >
-      {errors?.[name] && <p className="text-red-500 text-xs">{errors[name].message}</p>}
-      </div>
+    
+      {errors?.[name] && <p className="absolute left-0 text-red-500 text-xs mt-[2px] ">{errors[name].message}</p>}
+      
     </div>
   );
 };

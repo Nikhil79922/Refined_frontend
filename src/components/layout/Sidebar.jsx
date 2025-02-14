@@ -1,6 +1,6 @@
 import { Link, useLocation } from "react-router-dom";
-import { useState } from "react";
-import { motion } from "framer-motion"; // Import motion from framer-motion
+import { useState, useEffect } from "react";
+import { motion } from "framer-motion";
 import logo from "../../assets/svg/logo.svg";
 import cross from "../../assets/svg/cross.svg";
 import humburger from "../../assets/svg/humburger.svg";
@@ -16,34 +16,62 @@ import active_setting from "../../assets/svg/active_setting.svg";
 export default function Sidebar() {
   const location = useLocation();
   const [openSection, setOpenSection] = useState(null);
-  const [isSlideOpen, setSlideOpen] = useState(false);
+  const [isSlideOpen, setSlideOpen] = useState(true);
 
   const toggleSection = (section) => {
     setOpenSection((prev) => (prev === section ? null : section)); // Toggle the section open/close
   };
 
+  const handleSlide = () => {
+    setSlideOpen(!isSlideOpen); // Toggle the sidebar visibility
+  };
+
+  // useEffect to log the updated state of isSlideOpen
+  useEffect(() => {
+    console.log("Sidebar open:", isSlideOpen); // Log updated state
+  }, [isSlideOpen]);
+
   return (
     <>
+      {/* Hamburger button (only visible on small screens) */}
       <button
-        className={`lg:hidden fixed top-4 left-4 z-50 text-gray-700 bg-white p-2 rounded-md shadow-md ${
-          isSlideOpen ? "hidden" : "block"
-        }`}
-        onClick={() => setSlideOpen((prev) => !prev)}
+        className={` fixed top-4 left-4 z-50 text-gray-700 bg-white p-2 rounded-md shadow-md ${isSlideOpen ? "hidden" : "block"}`}
+        onClick={handleSlide} // Open the sidebar
       >
-        ☰
+        <img src={humburger} className="h-6 w-6" alt="Hamburger Icon" />
       </button>
 
+      {/* Sidebar */}
       <aside
-      style={{ zIndex: 60 }}
-  className={`lg:min-w-[200px] lg:w-[15.5vw]  overflow-y-auto bg-white text-blue-1 h-full shadow-lg fixed left-0 top-0 scrollbar-hide transition-transform duration-500 ${
-    isSlideOpen ? "translate-x-0" : "-translate-x-full lg:translate-x-0"
-  }`}
->
+        style={{ zIndex: 60 }}
+        className={`overflow-y-auto bg-white text-blue-1 h-full shadow-lg fixed  lg:static scrollbar-hide transition-all duration-500
+          ${isSlideOpen ? "translate-x-0" : "-translate-x-full"}  /* Small screen */
+          ${isSlideOpen ? " lg:w-[15vw]" : "lg:w-0"}  /* Small screens toggle width */
+          lg:translate-x-0`}  /* Large screens no translate effect */
+      >
         <div className="flex items-center justify-between px-4 h-[73px] border-b border-gray-200 bg-white">
-          <img src={logo} className="h-[50px] ml-[9.2px] w-[100px] object-contain" alt="Logo" />
-          <img src={humburger} className="hidden lg:block h-[12px] cursor-pointer" alt="" />
+          {/*FCore logo */}
+        <div className=" ml-[9.1px] w-[100px]">
+          <h1 className="text-[#4C85C7] text-[30px] leading-[54px] sm:text-24px md:text-[30px] font-bold  font-inter">
+            FCore</h1>
+        </div>
+
+          {/* Hamburger button for large screens */}
+          <img
+            src={humburger}
+            className="hidden lg:block h-[12px] cursor-pointer"
+            alt="Hamburger"
+            onClick={handleSlide} // Toggle the sidebar
+          />
+
+          {/* Close button (only visible when sidebar is open on small screens) */}
           {isSlideOpen && (
-            <img src={cross} className="lg:hidden h-[14px] cursor-pointer relative top-[3px] left-[5px]" onClick={() => setSlideOpen(false)} alt="Close" />
+            <img
+              src={cross}
+              className="lg:hidden h-[14px] cursor-pointer relative top-[3px] left-[5px]"
+              onClick={() => setSlideOpen(false)} // Close the sidebar
+              alt="Close"
+            />
           )}
         </div>
 
@@ -58,9 +86,7 @@ export default function Sidebar() {
               <p>PRODUCCIÓN</p>
               <img
                 src={keydown}
-                className={`w-[14px] h-[8px] cursor-pointer transition-transform ${
-                  openSection === "produccion" ? "rotate-180" : ""
-                }`}
+                className={`w-[14px] h-[8px] cursor-pointer transition-transform ${openSection === "produccion" ? "rotate-180" : ""}`}
                 onClick={() => toggleSection("produccion")}
                 alt="Toggle"
               />
@@ -71,11 +97,11 @@ export default function Sidebar() {
                 opacity: openSection === "produccion" ? 1 : 0,
                 height: openSection === "produccion" ? "auto" : 0,
               }}
-              transition={{ duration: 0.6 }} // Same transition for all sections
+              transition={{ duration: 0.6 }} // Smooth transition
             >
               {openSection === "produccion" && (
                 <div className="pl-7">
-                  {[
+                  {[ 
                     { to: "/Dashboard/monitorizacion", src: screen, text: "Monitorización" },
                     { to: "/Dashboard/historico", src: history, text: "Histórico" },
                     { to: "/Dashboard/control/orden", src: setting, activeSrc: active_setting, text: "Control" },
@@ -95,6 +121,7 @@ export default function Sidebar() {
                 </div>
               )}
             </motion.div>
+
             <li className="mt-5 w-full border-b border-gray-300"></li>
 
             {/* CALIDAD Section */}
@@ -102,9 +129,7 @@ export default function Sidebar() {
               <p>CALIDAD</p>
               <img
                 src={keydown}
-                className={`w-[14px] h-[8px] cursor-pointer transition-transform ${
-                  openSection === "calidad" ? "rotate-180" : ""
-                }`}
+                className={`w-[14px] h-[8px] cursor-pointer transition-transform ${openSection === "calidad" ? "rotate-180" : ""}`}
                 onClick={() => toggleSection("calidad")}
                 alt="Toggle"
               />
@@ -115,11 +140,11 @@ export default function Sidebar() {
                 opacity: openSection === "calidad" ? 1 : 0,
                 height: openSection === "calidad" ? "auto" : 0,
               }}
-              transition={{ duration: 0.6 }} // Same transition for all sections
+              transition={{ duration: 0.6 }} // Smooth transition
             >
               {openSection === "calidad" && (
                 <div className="pl-7">
-                  {[
+                  {[ 
                     { to: "/Dashboard/calidad/submenu1", src: app, text: "Submenu1" },
                     { to: "/Dashboard/calidad/submenu2", src: app, text: "Submenu2" },
                   ].map(({ to, src, text }) => (
@@ -136,6 +161,7 @@ export default function Sidebar() {
                 </div>
               )}
             </motion.div>
+
             <li className="mt-5 w-full border-b border-gray-300"></li>
 
             {/* MANTENIMIENTO Section */}
@@ -143,9 +169,7 @@ export default function Sidebar() {
               <p>MANTENIMIENTO</p>
               <img
                 src={keydown}
-                className={`w-[14px] h-[8px] cursor-pointer transition-transform ${
-                  openSection === "mantenimiento" ? "rotate-180" : ""
-                }`}
+                className={`w-[14px] h-[8px] cursor-pointer transition-transform ${openSection === "mantenimiento" ? "rotate-180" : ""}`}
                 onClick={() => toggleSection("mantenimiento")}
                 alt="Toggle"
               />
@@ -156,11 +180,11 @@ export default function Sidebar() {
                 opacity: openSection === "mantenimiento" ? 1 : 0,
                 height: openSection === "mantenimiento" ? "auto" : 0,
               }}
-              transition={{ duration: 0.6 }} // Same transition for all sections
+              transition={{ duration: 0.6 }} // Smooth transition
             >
               {openSection === "mantenimiento" && (
                 <div className="pl-7">
-                  {[
+                  {[ 
                     { to: "/Dashboard/mantenimiento/submenu1", src: app, text: "Submenu1" },
                     { to: "/Dashboard/mantenimiento/submenu2", src: app, text: "Submenu2" },
                   ].map(({ to, src, text }) => (

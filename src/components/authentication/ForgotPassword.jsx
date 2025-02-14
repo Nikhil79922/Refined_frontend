@@ -28,6 +28,10 @@ export default function ForgotPassword() {
         {/* Side Image */}
         <div className="relative hidden md:flex w-full md:w-[60vw] lg:w-[50vw] items-center justify-center p-5">
           <img src={sideImage} alt="Side Image" className="w-full h-[97vh] object-cover rounded-lg" />
+          <div className="absolute flex items-start justify-start ml mb-[190px]">
+          <h1 className="text-[#4C85C7] text-[40px] leading-[42px] sm:text-30px md:text-[40px] font-bold  font-inter">
+            FCore</h1>
+        </div>
         </div>
 
         {/* Forgot Password Form Section */}
