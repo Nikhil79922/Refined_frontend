@@ -5,10 +5,16 @@ import mic from '../../assets/svg/mic.svg'
 import folder from '../../assets/svg/folder.svg'
 import notification from '../../assets/svg/notification.svg'
 import avatar from '../../assets/svg/avatar.svg'
-import pencil from '../../assets/svg/pencil.svg'
+
+import { useSelector, useDispatch } from 'react-redux';  // Import Redux hooks
+
 
 
 export default function Header() {
+
+  const isSlideOpen = useSelector((state) => state.sidebar.isSlideOpen);  // Access the sidebar open state
+  console.log(isSlideOpen)
+
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [isFormOpen, setIsFormOpen] = useState(false);
   const [isRegistered, setIsRegistered] = useState(false);
@@ -57,7 +63,7 @@ export default function Header() {
     }
   };
   return (
-    <header  className="flex lg:ml-[40px] lg:left-[15.5vw] items-center justify-between h-[73px] border-b-[0.9px] border-gray-200 bg-gray-4   ">
+    <header  className={`flex  lg:left-[15.5vw] items-center justify-between h-[73px] border-b-[0.9px] border-gray-200 bg-gray-4 w-[98vw]   ${isSlideOpen ? `lg:w-[84.5vw]`:`lg:w-[97.5vw] lg:ml-[40px]`}`}>
       <div className="flex ml-[40px] lg:ml-[0px] h-[73px] items-center ">
         <span className="material-symbols-outlined cursor-pointer text-gray-3 bg-white flex items-center justify-center w-[8vw] sm:w-[6vw] md:w-[4vw]   lg:w-[2.8vw] text-[23px] rounded-tl-[8px] rounded-bl-[8px] ml-[10px] sm:ml-[20px]   h-[42px]">
           search

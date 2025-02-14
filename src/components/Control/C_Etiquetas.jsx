@@ -68,7 +68,7 @@ function C_Etiquetas() {
         />
 
         {/* Cantidad Input */}
-        {/ Cantidad Input /}
+
         <div className="relative mb-1">
             <label className="block text-[11px] sm:text-[13px] md:text-[14px] lg:text-[15px] font-[600] text-[#141415] font-inter mb-[6px]">Cantidad</label>
             <input
@@ -87,7 +87,7 @@ function C_Etiquetas() {
       {/* Button Section */}
       <div className="flex justify-start lg:justify-start ml-[12px]">
         <button
-          className="w-[176px] h-[45px] bg-blue-2 text-white text-sm font-[700] rounded font-inter  hover:bg-blue-500"
+          className="w-[170px] h-[35px] bg-[#179FDB] text-white text-sm font-semibold rounded-[6px] hover:bg-[#2A6AB2]"
           onClick={handleSubmit(handlePrintLabels)}
         >
           Imprimir etiquetas

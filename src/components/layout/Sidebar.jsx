@@ -1,67 +1,72 @@
-import { Link, useLocation } from "react-router-dom";
-import { useState, useEffect } from "react";
+
 import { motion } from "framer-motion";
-import logo from "../../assets/svg/logo.svg";
-import cross from "../../assets/svg/cross.svg";
-import humburger from "../../assets/svg/humburger.svg";
-import keydown from "../../assets/svg/keydown.svg";
-import screen from "../../assets/svg/screen.svg";
-import setting from "../../assets/svg/setting.svg";
-import calender from "../../assets/svg/calender.svg";
-import automate from "../../assets/svg/automate.svg";
-import history from "../../assets/svg/history.svg";
-import app from "../../assets/svg/app.svg";
-import active_setting from "../../assets/svg/active_setting.svg";
+import { useSelector, useDispatch } from 'react-redux';  // Import Redux hooks
+import { toggleSidebar, setSidebarState } from '../../features/sidebar/sidebarSlice';  // Import actions
+
+import { Link, useLocation } from 'react-router-dom';
+import { useState, useEffect } from 'react';
+import humburger from '../../assets/svg/humburger.svg';
+import cross from '../../assets/svg/cross.svg';
+import keydown from '../../assets/svg/keydown.svg';
+import screen from '../../assets/svg/screen.svg';
+import setting from '../../assets/svg/setting.svg';
+import calender from '../../assets/svg/calender.svg';
+import automate from '../../assets/svg/automate.svg';
+import history from '../../assets/svg/history.svg';
+import app from '../../assets/svg/app.svg';
+import active_setting from '../../assets/svg/active_setting.svg';
 
 export default function Sidebar() {
   const location = useLocation();
-  const [openSection, setOpenSection] = useState(null);
-  const [isSlideOpen, setSlideOpen] = useState(true);
+  const dispatch = useDispatch();  // Hook to dispatch actions
+
+  // Access Redux state
+  const isSlideOpen = useSelector((state) => state.sidebar.isSlideOpen);  // Access the sidebar open state
+
+  const [openSection, setOpenSection] = useState(null);  // State to manage open sections
 
   const toggleSection = (section) => {
-    setOpenSection((prev) => (prev === section ? null : section)); // Toggle the section open/close
+    setOpenSection((prev) => (prev === section ? null : section));  // Toggle sections
   };
 
   const handleSlide = () => {
-    setSlideOpen(!isSlideOpen); // Toggle the sidebar visibility
+    dispatch(toggleSidebar());  // Dispatch action to toggle sidebar open/closed
   };
 
-  // useEffect to log the updated state of isSlideOpen
   useEffect(() => {
-    console.log("Sidebar open:", isSlideOpen); // Log updated state
+    console.log("Sidebar open:", isSlideOpen);  // Log state change (optional)
   }, [isSlideOpen]);
 
   return (
     <>
       {/* Hamburger button (only visible on small screens) */}
       <button
-        className={` fixed top-4 left-4 z-50 text-gray-700 bg-white p-2 rounded-md shadow-md ${isSlideOpen ? "hidden" : "block"}`}
-        onClick={handleSlide} // Open the sidebar
+        className={`fixed top-4 left-4 z-50 text-gray-700 bg-white p-2 rounded-md shadow-md ${isSlideOpen ? "hidden" : "block"}`}
+        onClick={handleSlide}  // Toggle sidebar when clicked
       >
         <img src={humburger} className="h-6 w-6" alt="Hamburger Icon" />
       </button>
 
       {/* Sidebar */}
       <aside
-        style={{ zIndex: 60 }}
-        className={`overflow-y-auto bg-white text-blue-1 h-full shadow-lg fixed  lg:static scrollbar-hide transition-all duration-500
+        className={`overflow-y-auto bg-white text-blue-1 h-full shadow-lg fixed lg:static scrollbar-hide transition-all duration-500
           ${isSlideOpen ? "translate-x-0" : "-translate-x-full"}  /* Small screen */
           ${isSlideOpen ? " lg:w-[15vw]" : "lg:w-0"}  /* Small screens toggle width */
           lg:translate-x-0`}  /* Large screens no translate effect */
       >
         <div className="flex items-center justify-between px-4 h-[73px] border-b border-gray-200 bg-white">
-          {/*FCore logo */}
-        <div className=" ml-[9.1px] w-[100px]">
-          <h1 className="text-[#4C85C7] text-[30px] leading-[54px] sm:text-24px md:text-[30px] font-bold  font-inter">
-            FCore</h1>
-        </div>
+          {/* Logo */}
+          <div className="ml-[9.1px] w-[100px]">
+            <h1 className="text-[#4C85C7] text-[30px] leading-[54px] sm:text-24px md:text-[30px] font-bold font-inter">
+              FCore</h1>
+          </div>
 
           {/* Hamburger button for large screens */}
           <img
             src={humburger}
             className="hidden lg:block h-[12px] cursor-pointer"
             alt="Hamburger"
-            onClick={handleSlide} // Toggle the sidebar
+            onClick={handleSlide}  // Toggle sidebar when clicked
           />
 
           {/* Close button (only visible when sidebar is open on small screens) */}
@@ -69,7 +74,7 @@ export default function Sidebar() {
             <img
               src={cross}
               className="lg:hidden h-[14px] cursor-pointer relative top-[3px] left-[5px]"
-              onClick={() => setSlideOpen(false)} // Close the sidebar
+              onClick={() => dispatch(setSidebarState(false))}  // Close sidebar when clicked
               alt="Close"
             />
           )}
@@ -207,3 +212,4 @@ export default function Sidebar() {
     </>
   );
 }
+

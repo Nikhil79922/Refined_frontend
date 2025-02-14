@@ -3,9 +3,13 @@ import { motion } from "framer-motion";
 import { toast } from "react-toastify";
 import unfold from './../assets/svg/unfold.svg';
 import pencil from './../assets/svg/pencil.svg';
+import { useSelector, useDispatch } from 'react-redux';  // Import Redux hooks
 
 
 export default function DashboardContent() {
+  const isSlideOpen = useSelector((state) => state.sidebar.isSlideOpen);  // Access the sidebar open state
+  console.log(isSlideOpen)
+
   const [isdbo, setdbo] = useState(false);
   const [alerts, setAlerts] = useState([
     { timestamp: '2024-10-30 06:21:45', tipo: 'Tipo1', descripcion: 'Descripción de alerta 1' },
@@ -51,7 +55,7 @@ export default function DashboardContent() {
   };
 
   return (
-    <div className="ml-[5px] sm:ml-[10px] lg:ml-[20px] mt-[73px] flex flex-col  mb-[50px]  bg-gray-4">
+    <div className="ml-[5px] sm:ml-[10px] lg:ml-[20px] w-full flex flex-col  mb-[160px]  bg-gray-4">
     <div className="flex gap-[12px] items-center mt-4 mb-6">
       <h2 className="text-[30px] font-inter md:text-2xl font-bold">Dashboard</h2>
       <img src={pencil} className="bg-gray-4 h-[18px] ml-[15px] cursor-pointer"/>
@@ -75,7 +79,7 @@ export default function DashboardContent() {
         transition={{ duration: 0.5, ease: "easeInOut" }} // ⬅️ Smoother and slower transition
         className="overflow-hidden"
       >
-        <div className="grid lg:w-[80.5vw] mt-4 border border-gray-200 rounded-lg">
+        <div className={`grid ${isSlideOpen ? `lg:w-[80vw]`:`lg:w-[95vw]`} w-full  mt-4 border border-gray-200 rounded-lg`}>
           {/* Header Row */}
           <div className="grid grid-cols-3 h-[55px] items-center bg-blue-1 text-white font-semibold text-[13px] sm:text-sm md:text-[16px] rounded-tl-[10px] rounded-tr-[10px]">
             <div

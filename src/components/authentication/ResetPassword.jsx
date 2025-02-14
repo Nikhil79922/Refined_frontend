@@ -88,7 +88,7 @@ export default function ResetPassword() {
             {/* Submit Button */}
             <button
               type="submit"
-              className="w-full bg-blue-2 text-white py-2 rounded-md hover:bg-blue-500 transition duration-200"
+              className="w-full bg-blue-2 text-white py-2 rounded-md hover:bg-[#2A6AB2] transition duration-200"
             >
               Reset Password
             </button>

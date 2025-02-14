@@ -17,7 +17,7 @@ function Control_header() {
   };
 
   return (
-    <div className="ml-[20px] flex justify-between w-[96vw] mt-[68px]  lg:w-[81.6vw]">
+    <div className="ml-[20px] flex justify-between w-[96vw]   lg:w-[81.6vw]">
       <div className="flex gap-[3px] sm:gap-[6px] md:gap-[9px] lg:gap-[12px] items-center mt-4 mb-6">
         <h2 className="text-[13px] sm:text-[17px] font-inter md:text-[20px] lg:text-2xl font-bold text-gray-1">{`Control > ${value}`}</h2>
         <img src={pencil} className="bg-gray-4 h-[16px] ml-[13px] relative bottom-[1px] cursor-pointer"/>

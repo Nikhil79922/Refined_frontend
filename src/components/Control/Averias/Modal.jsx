@@ -127,6 +127,8 @@ export default function Modal({ isOpen, closeModal, modalType, selectedRow, hand
           <textarea
             className="w-full h-[36px] p-2  bg-white text-xs outline-none font-normal  text-gray-700 border border-gray-300 rounded"
             placeholder="Type here..."
+            rows={3} 
+            style={{ maxHeight: "120px" }}
           />
         </div>
 
