@@ -49,65 +49,65 @@ export default function Bottom_window() {
   };
 
   return (
-    <div className="bg-white rounded-lg shadow p-4 md:p-3 w-[97.8vw] lg:w-[82.5vw] overflow-x-auto">
-      <div className="flex gap-[16px] items-center p-1 pb-4 border-b">
-        <p className="text-[18px] md:text-lg font-[600] text-gray-1">dbo.Alertas</p>
-        <span
-          className={`material-symbols-outlined text-lg md:text-xl font-bold cursor-pointer ${isdbo ? 'rotate-180' : ''} transition-transform duration-300`}
-          onClick={() => setdbo(!isdbo)}
-        >
-          keyboard_arrow_down
-        </span>
-      </div>
-
-      <motion.div
-        initial={{ height: 0, opacity: 0 }}
-        animate={{ height: isdbo ? 0 : "auto", opacity: isdbo ? 0 : 1 }}
-        exit={{ height: 0, opacity: 0 }}
-        transition={{ duration: 0.5, ease: "easeInOut" }} // ⬅️ Smoother and slower transition
-        className="overflow-hidden"
-      >
-        <div className="grid lg:w-[80.5vw] mt-4 border border-gray-200 rounded-lg">
-          {/* Header Row */}
-          <div className="grid grid-cols-3 h-[55px] items-center bg-blue-1 text-white font-semibold text-[13px] sm:text-sm md:text-[16px] rounded-tl-[10px] rounded-tr-[10px]">
-            <div
-              className="pl-2 sm:pl-4 cursor-pointer flex items-center rounded-tl-[10px]"
-              onClick={() => sortData('timestamp')}
-            >
-              Timestamp
-              <img src={unfold} className={`h-[18px] ml-[11px] ${getArrowClass('timestamp')}`} />
-            </div>
-            <div className="pl-4 sm:pl-16 cursor-pointer flex items-center" onClick={() => sortData('tipo')}>
-              Tipo Alerta
-              <img src={unfold} className={`h-[18px] ml-[11px] ${getArrowClass('tipo')}`} />
-            </div>
-            <div
-              className="pl-6 sm:pl-11 cursor-pointer flex items-center rounded-tr-[10px]"
-              onClick={() => sortData('descripcion')}
-            >
-              Descripción
-              <img src={unfold} className={`h-[18px] ml-[11px] ${getArrowClass('descripcion')}`} />
-            </div>
-          </div>
-
-          {/* Data Rows */}
-          {alerts.map((alert, index) => (
-            <motion.div
-              key={index}
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.4, delay: index * 0.05 }} // ⬅️ Staggered row animation
-              className={`grid grid-cols-3 h-[48px] text-gray-1 font-[400] text-[14px] items-center border-t sm:text-sm ${
-                index % 2 === 0 ? 'bg-[#E9EBF0]' : 'bg-white'
-              }`}
-            >
-              <div className="pl-2 sm:pl-4">{alert.timestamp}</div>
-              <div className="pl-4 sm:pl-16">{alert.tipo}</div>
-              <div className="pl-6 sm:pl-11">{alert.descripcion}</div>
-            </motion.div>
-          ))}
+   <div className="bg-white rounded-lg shadow p-4 md:p-3 w-[97.8vw] lg:w-[82.5vw] overflow-x-auto">
+        <div className="flex gap-[16px] items-center p-1 pb-4 border-b">
+          <p className="text-[18px] md:text-lg font-[600] text-gray-1">dbo.Alertas</p>
+          <span
+            className={`material-symbols-outlined text-lg md:text-xl font-bold cursor-pointer ${isdbo ? 'rotate-180' : ''} transition-transform duration-300`}
+            onClick={() => setdbo(!isdbo)}
+          >
+            keyboard_arrow_down
+          </span>
         </div>
-      </motion.div>
-    </div>
+  
+        <motion.div
+          initial={{ height: 0, opacity: 0 }}
+          animate={{ height: isdbo ? 0 : "auto", opacity: isdbo ? 0 : 1 }}
+          exit={{ height: 0, opacity: 0 }}
+          transition={{ duration: 0.5, ease: "easeInOut" }} // ⬅️ Smoother and slower transition
+          className="overflow-hidden"
+        >
+          <div className="grid lg:w-[80.5vw] mt-4 border border-gray-200 rounded-lg">
+            {/* Header Row */}
+            <div className="grid grid-cols-3 h-[55px] items-center bg-blue-1 text-white font-semibold text-[13px] sm:text-sm md:text-[16px] rounded-tl-[10px] rounded-tr-[10px]">
+              <div
+                className="pl-2 sm:pl-4 cursor-pointer flex items-center rounded-tl-[10px]"
+                onClick={() => sortData('timestamp')}
+              >
+                Timestamp
+                <img src={unfold} className={`h-[14px] sm:h-[18px] ml-[5px] sm:ml-[11px] ${getArrowClass('timestamp')}`} />
+              </div>
+              <div className="pl-4 sm:pl-16 cursor-pointer flex items-center" onClick={() => sortData('tipo')}>
+                Tipo Alerta
+                <img src={unfold} className={`h-[14px] sm:h-[18px] ml-[5px] sm:ml-[11px] ${getArrowClass('tipo')}`} />
+              </div>
+              <div
+                className="pl-6 sm:pl-11 cursor-pointer flex items-center rounded-tr-[10px]"
+                onClick={() => sortData('descripcion')}
+              >
+                Descripción
+                <img src={unfold} className={`h-[14px] sm:h-[18px] ml-[5px] sm:ml-[11px] ${getArrowClass('descripcion')}`} />
+              </div>
+            </div>
+  
+            {/* Data Rows */}
+            {alerts.map((alert, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.4, delay: index * 0.05 }} // ⬅️ Staggered row animation
+                className={`grid grid-cols-3 h-[48px] text-gray-1 font-[400] text-[14px] items-center border-t sm:text-sm ${
+                  index % 2 === 0 ? 'bg-[#E9EBF0]' : 'bg-white'
+                }`}
+              >
+                <div className="pl-2 sm:pl-4">{alert.timestamp}</div>
+                <div className="pl-4 sm:pl-16">{alert.tipo}</div>
+                <div className="pl-6 sm:pl-11">{alert.descripcion}</div>
+              </motion.div>
+            ))}
+          </div>
+        </motion.div>
+      </div>
   );
 }
