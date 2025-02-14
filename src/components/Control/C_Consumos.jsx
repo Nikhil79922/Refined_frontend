@@ -117,7 +117,7 @@ function C_Consumos() {
       {/* Button Section */}
       <div className="ml-3 mt-4 text-left">
         <button
-          className="w-[176px] h-[45px] bg-blue-2 text-white text-sm font-[700] rounded font-inter  hover:bg-blue-500"
+          className="w-[176px] h-[45px] bg-blue-2 text-white text-sm font-[700] rounded font-inter  hover:bg-blue-1"
           onClick={handleSubmit(handleEnterConsumption)}
         >
           Introducir consumo

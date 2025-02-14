@@ -86,7 +86,7 @@ function C_Etiquetas() {
       {/* Button Section */}
       <div className="flex justify-start lg:justify-start ml-[12px]">
         <button
-          className="w-[176px] h-[45px] bg-blue-2 text-white text-sm font-[700] rounded font-inter  hover:bg-blue-500"
+          className="w-[176px] h-[45px] bg-blue-2 text-white text-sm font-[700] rounded font-inter  hover:bg-blue-1"
           onClick={handleSubmit(handlePrintLabels)}
         >
           Imprimir etiquetas
