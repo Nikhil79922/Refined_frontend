@@ -40,36 +40,35 @@ function C_Etiquetas() {
   };
 
   return (
-    <div className="grid grid-cols-1 gap-2 mb-[30vw] w-[100vw]  lg:w-[83vw] mt-[-10px] h-f ml-[5px] lg:ml-[10px]">
-      {/* Grid Container */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 w-full p-3 rounded">
-        {/* Impresora Dropdown */}
-        <SelectBox
-          label="Impresora"
-          name="printer"
-          options={printerOptions}
-          value={selectedPrinter}
-          onChange={(e) => setSelectedPrinter(e.target.value)}
-          placeholder="Impresora"
-          register={register}
-          errors={errors}
-        />
+    <div className="bg-gray-4 mb-[29.5vw] flex items-start justify-center">
+      <form className="bg-gray-4 px-4 rounded-lg w-full">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+          {/* Impresora Dropdown */}
+          <SelectBox
+            label="Impresora"
+            name="printer"
+            options={printerOptions}
+            value={selectedPrinter}
+            onChange={(e) => setSelectedPrinter(e.target.value)}
+            placeholder="Impresora"
+            register={register}
+            errors={errors}
+          />
 
-        {/* Etiqueta Dropdown */}
-        <SelectBox
-          label="Etiqueta"
-          name="label"
-          options={labelOptions}
-          value={selectedLabel}
-          onChange={(e) => setSelectedLabel(e.target.value)}
-          placeholder="Etiqueta"
-          register={register}
-          errors={errors}
-        />
+          {/* Etiqueta Dropdown */}
+          <SelectBox
+            label="Etiqueta"
+            name="label"
+            options={labelOptions}
+            value={selectedLabel}
+            onChange={(e) => setSelectedLabel(e.target.value)}
+            placeholder="Etiqueta"
+            register={register}
+            errors={errors}
+          />
 
-        {/* Cantidad Input */}
-
-        <div className="relative mb-1">
+          {/* Cantidad Input */}
+          <div className="relative mb-1">
             <label className="block text-[11px] sm:text-[13px] md:text-[14px] lg:text-[15px] font-[600] text-[#141415] font-inter mb-[6px]">Cantidad</label>
             <input
               type="number"
@@ -82,22 +81,24 @@ function C_Etiquetas() {
             />
             {errors.quantity && <p className="absolute left-0 mt-1 text-red-500 text-xs">{errors.quantity.message}</p>}
           </div>
-      </div>
+        </div>
 
-      {/* Button Section */}
-      <div className="flex justify-start lg:justify-start ml-[12px]">
-        <button
-          className="w-[170px] h-[35px] bg-[#179FDB] text-white text-sm font-semibold rounded-[6px] hover:bg-[#2A6AB2]"
-          onClick={handleSubmit(handlePrintLabels)}
-        >
-          Imprimir etiquetas
-        </button>
-      </div>
-<div className="fixed bottom-[25px]">
+        {/* Button Section */}
+        <div className="mt-6 text-left">
+          <button
+            className="w-[170px] h-[35px] bg-[#179FDB] text-white text-sm font-semibold rounded-[6px] hover:bg-[#2A6AB2]"
+            onClick={handleSubmit(handlePrintLabels)}
+          >
+            Imprimir etiquetas
+          </button>
+        </div>
+      </form>
+
+      <div className="fixed bottom-[25px]">
         <Bottom_window/>
       </div>
-
     </div>
+
   );
 }
 

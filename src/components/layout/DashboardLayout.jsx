@@ -7,7 +7,7 @@ export default function DashboardLayout() {
 
   
   return (
-    <div className="flex  bg-gray-4 overflow-hidden">
+    <div className="flex  bg-gray-4 h-[100vh] overflow-hidden">
       {/* Sidebar */}
       <div className=" ">
         <Sidebar />

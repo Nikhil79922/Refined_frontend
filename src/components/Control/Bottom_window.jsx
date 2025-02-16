@@ -54,7 +54,7 @@ export default function Bottom_window() {
   };
 
   return (
-   <div className={`bg-white rounded-lg shadow p-4 md:p-3 ${isSlideOpen ? `lg:w-[82.5vw]`:`lg:w-[97.8vw] `} sm:w-[96vw] w-[92vw]  overflow-x-auto`}>
+   <div className={`bg-white rounded-lg shadow p-4 md:p-3 ${isSlideOpen ? `lg:w-[82.5vw]`:`lg:w-[97.8vw] `} sm:w-[96vw] w-[94vw]  overflow-x-auto`}>
         <div className="flex gap-[16px] items-center p-1 pb-4 border-b">
           <p className="text-[18px] md:text-lg font-[600] text-gray-1">dbo.Alertas</p>
           <span

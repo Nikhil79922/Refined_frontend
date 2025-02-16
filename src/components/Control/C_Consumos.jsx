@@ -40,9 +40,9 @@ function C_Consumos() {
 
 
   return (
-    <div className="grid grid-cols-1 font-inter mb-[22.5vw] w-[100vw] lg:w-[83vw] mt-[-10px] ml-[5px] lg:ml-[10px]">
-      {/* Grid Container */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 w-full p-3 rounded">
+    <div className="bg-gray-4 mb-[23vw] flex items-start justify-center">
+    <form className="bg-gray-4 px-4 rounded-lg w-full">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
         {/* Máquina Dropdown */}
         <SelectBox
           label="Máquina"
@@ -67,9 +67,11 @@ function C_Consumos() {
           errors={errors}
         />
 
-
-        <div className="relative mb-1 ">
-          <label className="block text-[11px] sm:text-[13px] md:text-[14px] lg:text-[15px] font-[600] text-[#141415] font-inter mb-[6px]">Unidad</label>
+        {/* Unidad Input */}
+        <div className="relative mb-1">
+          <label className="block text-[11px] sm:text-[13px] md:text-[14px] lg:text-[15px] font-[600] text-[#141415] font-inter mb-[6px]">
+            Unidad
+          </label>
           <input
             type="text"
             placeholder="Unidad"
@@ -79,8 +81,11 @@ function C_Consumos() {
           {errors.unidad && <p className="absolute left-0 text-red-500 text-xs mt-1">{errors.unidad.message}</p>}
         </div>
 
+        {/* Referencia Input */}
         <div className="relative mb-1">
-          <label className="block text-[11px] sm:text-[13px] md:text-[14px] lg:text-[15px] font-[600] text-[#141415] font-inter mb-[6px]">Referencia</label>
+          <label className="block text-[11px] sm:text-[13px] md:text-[14px] lg:text-[15px] font-[600] text-[#141415] font-inter mb-[6px]">
+            Referencia
+          </label>
           <input
             type="text"
             placeholder="Referencia"
@@ -90,9 +95,11 @@ function C_Consumos() {
           {errors.referencia && <p className="absolute left-0 text-red-500 text-xs mt-1">{errors.referencia.message}</p>}
         </div>
 
-     
-        <div className="relative mb-1" >
-          <label className="block text-[11px] sm:text-[13px] md:text-[14px] lg:text-[15px] font-[600] text-[#141415] font-inter mb-[6px]">Cantidad</label>
+        {/* Cantidad Input */}
+        <div className="relative mb-1">
+          <label className="block text-[11px] sm:text-[13px] md:text-[14px] lg:text-[15px] font-[600] text-[#141415] font-inter mb-[6px]">
+            Cantidad
+          </label>
           <input
             type="number"
             placeholder="Cantidad"
@@ -106,20 +113,22 @@ function C_Consumos() {
         </div>
       </div>
 
-      {/* Button Section */}
-      <div className="ml-3 mt-4 text-left">
+      {/* Submit Button */}
+      <div className="mt-6 text-left">
         <button
+          type="submit"
           className="w-[170px] h-[35px] bg-[#179FDB] text-white text-sm font-semibold rounded-[6px] hover:bg-[#2A6AB2]"
           onClick={handleSubmit(handleEnterConsumption)}
         >
           Introducir consumo
         </button>
       </div>
-<div className="fixed bottom-[25px]">
-        <Bottom_window/>
-      </div>
+    </form>
 
+    <div className="fixed bottom-[25px]">
+      <Bottom_window />
     </div>
+  </div>
   );
 }
 
