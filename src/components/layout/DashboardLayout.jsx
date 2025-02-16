@@ -14,7 +14,7 @@ export default function DashboardLayout() {
       </div>
 
       {/* Main Content Area */}
-      <div className=" flex flex-col overflow-x-hidden overflow-y-scroll">
+      <div className=" flex flex-col overflow-x-hidden scrollbar-hide overflow-y-scroll">
         <Header />
         <div className="flex-grow">
           <Outlet /> {/* Renders child routes */}
