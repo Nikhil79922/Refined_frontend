@@ -41,15 +41,16 @@ export default function Sidebar() {
     <>
       {/* Hamburger button (only visible on small screens) */}
       <button
-        className={`fixed top-4 left-4 z-50 text-gray-700 bg-white p-2 rounded-md shadow-md ${isSlideOpen ? "hidden" : "block"}`}
+        className={`fixed top-5 left-4 z-50 text-gray-700 bg-white p-2 rounded-md shadow-md ${isSlideOpen ? "hidden" : "block"}`}
         onClick={handleSlide}  // Toggle sidebar when clicked
       >
-        <img src={humburger} className="h-6 w-6" alt="Hamburger Icon" />
+        <img src={humburger} className="h-4 w-4" alt="Hamburger Icon" />
       </button>
 
       {/* Sidebar */}
       <aside
-        className={`overflow-y-auto bg-white text-blue-1 h-full shadow-lg fixed lg:static scrollbar-hide transition-all duration-500
+     style={{ zIndex: 100 }}
+        className={`overflow-y-hidden bg-white text-blue-1 h-full shadow-lg fixed lg:static scrollbar-hide transition-all duration-500
           ${isSlideOpen ? "translate-x-0" : "-translate-x-full"}  /* Small screen */
           ${isSlideOpen ? " lg:w-[15vw]" : "lg:w-0"}  /* Small screens toggle width */
           lg:translate-x-0`}  /* Large screens no translate effect */

@@ -1,7 +1,7 @@
 /* eslint-disable no-unused-vars */
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
-import SelectBox from "../layout/SelectBox"; // Importing the reusable SelectBox component
+import SelectBox from "../layout/SelectBox"; 
 import Bottom_window from "./Bottom_window";
 
 const printerOptions = [
@@ -40,7 +40,7 @@ function C_Etiquetas() {
   };
 
   return (
-    <div className="grid grid-cols-1 gap-2 mb-6 w-[100vw] lg:w-[83vw] mt-[-10px] ml-[5px] lg:ml-[10px]">
+    <div className="grid grid-cols-1 gap-2 mb-[30vw] w-[100vw]  lg:w-[83vw] mt-[-10px] h-f ml-[5px] lg:ml-[10px]">
       {/* Grid Container */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 w-full p-3 rounded">
         {/* Impresora Dropdown */}

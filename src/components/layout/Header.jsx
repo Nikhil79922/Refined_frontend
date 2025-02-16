@@ -6,14 +6,13 @@ import folder from '../../assets/svg/folder.svg'
 import notification from '../../assets/svg/notification.svg'
 import avatar from '../../assets/svg/avatar.svg'
 
-import { useSelector, useDispatch } from 'react-redux';  // Import Redux hooks
+import { useSelector } from 'react-redux';  // Import Redux hooks
 
 
 
 export default function Header() {
 
-  const isSlideOpen = useSelector((state) => state.sidebar.isSlideOpen);  // Access the sidebar open state
-  console.log(isSlideOpen)
+  const isSlideOpen = useSelector((state) => state.sidebar.isSlideOpen);  
 
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [isFormOpen, setIsFormOpen] = useState(false);

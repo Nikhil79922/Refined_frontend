@@ -44,7 +44,7 @@ const Scrap = () => {
   };
 
   return (
-    <div className="bg-gray-4  mb-24 flex items-start justify-center">
+    <div className="bg-gray-4  mb-[16.5vw] flex items-start justify-center">
       <form className="bg-gray-4 px-4 rounded-lg w-full">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
           {/* Máquina Dropdown */}

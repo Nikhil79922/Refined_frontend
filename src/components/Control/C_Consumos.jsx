@@ -25,13 +25,7 @@ const orderOptions = [
 function C_Consumos() {
   const [selectedMachine, setSelectedMachine] = useState("");
   const [selectedOrder, setSelectedOrder] = useState("");
-  const [unit, setUnit] = useState("");
-  const [reference, setReference] = useState("");
-  const [quantity, setQuantity] = useState("");
 
-  const handleStartOrder = () => {
-    alert(`Iniciar Orden for ${selectedMachine} and ${selectedOrder}`);
-  };
 
   const {
     register,
@@ -46,7 +40,7 @@ function C_Consumos() {
 
 
   return (
-    <div className="grid grid-cols-1 font-inter mb-6 w-[100vw] lg:w-[83vw] mt-[-10px] ml-[5px] lg:ml-[10px]">
+    <div className="grid grid-cols-1 font-inter mb-[22.5vw] w-[100vw] lg:w-[83vw] mt-[-10px] ml-[5px] lg:ml-[10px]">
       {/* Grid Container */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 w-full p-3 rounded">
         {/* Máquina Dropdown */}

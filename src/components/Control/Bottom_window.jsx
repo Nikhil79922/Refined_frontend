@@ -1,9 +1,14 @@
+/* eslint-disable no-unused-vars */
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { toast } from "react-toastify";
 import unfold from '../../assets/svg/unfold.svg';
 
+import { useSelector } from 'react-redux';  // Import Redux hooks
+
+
 export default function Bottom_window() {
+  const isSlideOpen = useSelector((state) => state.sidebar.isSlideOpen);  
   const [isdbo, setdbo] = useState(true);
   const [alerts, setAlerts] = useState([
     { timestamp: '2024-10-30 06:21:45', tipo: 'Tipo1', descripcion: 'Descripción de alerta 1' },
@@ -49,7 +54,7 @@ export default function Bottom_window() {
   };
 
   return (
-   <div className="bg-white rounded-lg shadow p-4 md:p-3 w-[97.8vw] lg:w-[82.5vw] overflow-x-auto">
+   <div className={`bg-white rounded-lg shadow p-4 md:p-3 ${isSlideOpen ? `lg:w-[82.5vw]`:`lg:w-[97.8vw] `} sm:w-[96vw] w-[92vw]  overflow-x-auto`}>
         <div className="flex gap-[16px] items-center p-1 pb-4 border-b">
           <p className="text-[18px] md:text-lg font-[600] text-gray-1">dbo.Alertas</p>
           <span
@@ -67,7 +72,7 @@ export default function Bottom_window() {
           transition={{ duration: 0.5, ease: "easeInOut" }} // ⬅️ Smoother and slower transition
           className="overflow-hidden"
         >
-          <div className="grid lg:w-[80.5vw] mt-4 border border-gray-200 rounded-lg">
+          <div className={`grid ${isSlideOpen ? `lg:w-[80vw]`:`lg:w-[95vw]`} w-full  mt-4 border border-gray-200 rounded-lg`}>
             {/* Header Row */}
             <div className="grid grid-cols-3 h-[55px] items-center bg-blue-1 text-white font-semibold text-[13px] sm:text-sm md:text-[16px] rounded-tl-[10px] rounded-tr-[10px]">
               <div
