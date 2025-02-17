@@ -120,107 +120,107 @@ export default function Header() {
       </div>
       {isFormOpen && (
         <div
-        style={{ zIndex: 200 }}
-        className="absolute top-16 right-5 bg-gray-100 p-5 rounded-2xl border border-gray-300 shadow-lg w-[60vw] sm:w-[300px] lg:w-[350px]"
-      >
-        {/* Header */}
-        <div className="flex justify-between items-center ">
-          <h2 className="text-lg sm:text-xl font-bold">Register New User</h2>
-          <button
-            className="text-gray-500 hover:text-gray-700 p-2"
-            onClick={handleCloseForm}
-          >
-            <span className="material-symbols-outlined">close</span>
-          </button>
-        </div>
-  
-        {/* Form */}
-        <form onSubmit={handleSubmit(onSubmit)} className="mt-4 ">
-          {/* Name */}
-         <div className="mb-[18px]">
-         <InputBox
-            label="Name"
-            name="name"
-            type="text"
-            placeholder="Enter name"
-            register={register}
-            errors={errors}
-            validation={{ required: "Name is required" }}
-          />
-         </div>
-  
-          {/* Email */}
-          <div className="mb-[18px]">
+          style={{ zIndex: 200 }}
+          className="absolute top-16 right-5 bg-gray-100 p-5 rounded-2xl border border-gray-300 shadow-lg w-[60vw] sm:w-[300px] lg:w-[350px]"
+        >
+          {/* Header */}
+          <div className="flex justify-between items-center ">
+            <h2 className="text-lg sm:text-xl font-bold">Register New User</h2>
+            <button
+              className="text-gray-500 hover:text-gray-700 p-2"
+              onClick={handleCloseForm}
+            >
+              <span className="material-symbols-outlined">close</span>
+            </button>
+          </div>
 
-          <InputBox
-            label="Email"
-            name="email"
-            type="email"
-            placeholder="Enter email"
-            register={register}
-            errors={errors}
-            validation={{ required: "Email is required" }}
-          />
-          </div>
-          
-  
-          {/* Password */}
-          <div className="mb-[18px]">
-          <InputBox
-            label="Password"
-            name="password"
-            type="password"
-            placeholder="Enter password"
-            register={register}
-            errors={errors}
-            validation={{
-              required: "Password is required",
-              minLength: { value: 8, message: "Must be at least 8 characters" },
-              pattern: {
-                value: /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*])/,
-                message:
-                  "Must contain uppercase, lowercase, number, and special character",
-              },
-            }}
-          />
-          </div>
-  
-          {/* Confirm Password */}
-         <div className="mb-[18px]">
-         <InputBox
-            label="Confirm Password"
-            name="confirmPassword"
-            type="password"
-            placeholder="Confirm password"
-            register={register}
-            errors={errors}
-            validation={{
-              validate: (value) => value === watch("password") || "Passwords do not match",
-            }}
-          />
-  
-         </div>
-          {/* Role */}
-          <SelectBox
-            label="Role"
-            name="role"
-            options={[
-              { value: "ROLE_USER", label: "User" },
-              { value: "ROLE_ADMIN", label: "Admin" }
-            ]}
-            register={register}
-            errors={errors}
-          />
-  
-          {/* Submit Button */}
-          <button
-            type="submit"
-            className="w-full h-[35px] bg-[#179FDB] text-white text-sm font-semibold rounded-[6px] hover:bg-[#2A6AB2]  p-[6px]  mt-4  sm:text-base "
-          >
-            Register User
-          </button>
-        </form>
-      </div>
+          {/* Form */}
+          <form onSubmit={handleSubmit(onSubmit)} className="mt-4 ">
+            {/* Name */}
+            <div className="mb-[18px]">
+              <InputBox
+                label="Name"
+                name="name"
+                type="text"
+                placeholder="Enter name"
+                register={register}
+                errors={errors}
+                validation={{ required: "Name is required" }}
+              />
+            </div>
+
+            {/* Email */}
+            <div className="mb-[18px]">
+
+              <InputBox
+                label="Email"
+                name="email"
+                type="email"
+                placeholder="Enter email"
+                register={register}
+                errors={errors}
+                validation={{ required: "Email is required" }}
+              />
+            </div>
+
+
+            {/* Password */}
+            <div className="mb-[18px]">
+              <InputBox
+                label="Password"
+                name="password"
+                type="password"
+                placeholder="Enter password"
+                register={register}
+                errors={errors}
+                validation={{
+                  required: "Password is required",
+                  minLength: { value: 8, message: "Must be at least 8 characters" },
+                  pattern: {
+                    value: /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*])/,
+                    message:
+                      "Must contain uppercase, lowercase, number, and special character",
+                  },
+                }}
+              />
+            </div>
+
+            {/* Confirm Password */}
+            <div className="mb-[18px]">
+              <InputBox
+                label="Confirm Password"
+                name="confirmPassword"
+                type="password"
+                placeholder="Confirm password"
+                register={register}
+                errors={errors}
+                validation={{
+                  validate: (value) => value === watch("password") || "Passwords do not match",
+                }}
+              />
+
+            </div>
+            {/* Role */}
+            <SelectBox
+              label="Role"
+              name="role"
+              options={[
+                { value: "ROLE_USER", label: "User" },
+                { value: "ROLE_ADMIN", label: "Admin" }
+              ]}
+              register={register}
+              errors={errors}
+            />
+
+            {/* Submit Button */}
+            <button
+              type="submit"
+              className="w-full h-[35px] bg-[#179FDB] text-white text-sm font-semibold rounded-[6px] hover:bg-[#2A6AB2]  p-[6px]  mt-4  sm:text-base "
+            >
+              Register User
+            </button>
+          </form>
+        </div>
 
       )}
       {isRegistered && (
