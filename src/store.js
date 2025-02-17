@@ -1,5 +1,4 @@
 // src/store.js
-
 import { configureStore } from '@reduxjs/toolkit';
 import sidebarReducer from './features/sidebar/sidebarSlice';  // Import the sidebar reducer
 

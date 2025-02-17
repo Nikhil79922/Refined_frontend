@@ -12,7 +12,7 @@ export default function ForgotPassword() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post("https://vercel-trails.vercel.app/auth/forget-password", { email });
+      const response = await axios.post("", { email });
       setMessage(response.data.message);
     } catch (error) {
       console.log(error);
