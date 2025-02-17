@@ -2,7 +2,7 @@ import { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import sideImage from "../../assets/images/sideImage.png";
-
+import logo from '../../assets/svg/logo.svg';
 
 export default function ForgotPassword() {
   const [email, setEmail] = useState("");
@@ -37,11 +37,12 @@ export default function ForgotPassword() {
         {/* Forgot Password Form Section */}
         <div className="w-full md:w-[40vw] lg:w-[30vw] flex flex-col justify-center px-6 sm:px-8 py-10 h-full relative">
           {/* Logo */}
-          <div className="w-[100px]">
+          {/* <div className="w-[100px]">
             <h1 className="text-[#4C85C7] text-[30px] leading-[54px] sm:text-24px md:text-[30px] font-bold font-inter">
               FCore</h1>
-          </div>
-
+          </div> */}
+ {/* Logo */}
+ <img src={logo} alt="Company Logo" className="w-[112px] h-[60px] mb-4" />
 
           {/* Forgot Password Text */}
           <h1 className="text-[30px] font-semibold text-gray-1 mb-4">Forgot Password?</h1>
