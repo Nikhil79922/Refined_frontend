@@ -54,6 +54,7 @@ export default function ResetPassword() {
   };
 
   return (
+<<<<<<< HEAD
     <AuthLayout title="Reset Password" subtitle="Enter a new password for your account.">
       {/* Form */}
       <form onSubmit={handleSubmit} className="space-y-4">
@@ -70,6 +71,20 @@ export default function ResetPassword() {
           {passwordError && (
             <p className=" text-red-500 text-xs mt-1">{passwordError}</p>
           )}
+=======
+    <div className="min-h-screen flex items-center justify-start bg-gray-100 font-inter overflow-hidden">
+      <div className="ToastContainer" /> 
+
+      <div className="flex flex-col md:flex-row lg:gap-[4vw] w-[100vw] h-[100vh] md:w-auto">
+        {/* Side Image */}
+        <div className="relative hidden md:flex w-full md:w-[60vw] lg:w-[50vw] items-center justify-center p-5">
+          <img src={sideImage} alt="Side Image" className="w-full h-[97vh] object-cover rounded-lg" />
+
+          <div className="absolute flex items-start justify-start ml mb-[190px]">
+          <h1 className="text-[#4C85C7] text-[40px] leading-[42px] sm:text-30px md:text-[40px] font-bold  font-inter">
+            FCore</h1>
+        </div>
+>>>>>>> c7bd8d4f5f0800956b6fc14ff9ef5e2d6120f1bd
         </div>
 
         {/* Confirm Password Input */}
