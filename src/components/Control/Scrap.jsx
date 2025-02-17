@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import SelectBox from "../layout/SelectBox";
+import InputBox from "../layout/InputBox";
 import Bottom_window from "./Bottom_window";
 
 const machineOptions = [
@@ -45,113 +46,30 @@ const Scrap = () => {
 
   return (
     <div className="bg-gray-4  mb-[16.5vw] flex items-start justify-center">
-      <form className="bg-gray-4 px-4 rounded-lg w-full">
+      <form onSubmit={handleSubmit(handleEnterScrap)} className="bg-gray-4 px-4 rounded-lg w-full">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-          {/* Máquina Dropdown */}
-          <SelectBox
-            label="Máquina"
-            name="machine"
-            options={machineOptions}
-            value={selectedMachine}
-            onChange={(e) => setSelectedMachine(e.target.value)}
-            placeholder="Máquina"
-            register={register}
-            errors={errors}
-          />
+          <SelectBox label="Máquina" name="machine" options={machineOptions} register={register} errors={errors} placeholder="Máquina" />
+          <SelectBox label="Orden" name="order" options={orderOptions} register={register} errors={errors} placeholder="Orden" />
 
-          {/* Orden Dropdown */}
-          <SelectBox
-            label="Orden"
-            name="order"
-            options={orderOptions}
-            value={selectedOrder}
-            onChange={(e) => setSelectedOrder(e.target.value)}
-            placeholder="Orden"
-            register={register}
-            errors={errors}
-          />
-
-
-          {/* Producto Input */}
-          <div className="">
-            <label className="block text-[11px] sm:text-[13px] md:text-[14px] lg:text-[15px] font-[600] text-[#141415] font-inter mb-[6px]">Producto</label>
-            <input
-              type="text"
-              placeholder="Producto"
-              value={product}
-              onChange={(e) => setProduct(e.target.value)}
-              className="w-full h-[36px] px-[8px] bg-white text-xs outline-none font-normal text-[#98A2B2] border border-[#E7E7E7] rounded-[6px]"
-            />
+          <InputBox label="Producto" name="product" type="text" placeholder="Producto" register={register} errors={!errors} />
+          <div className="col-span-1 sm:col-span-2 lg:col-span-3"> 
+          <InputBox     label="Descripción" name="description" type="text" placeholder="Descripción" register={register} errors={!errors} />
           </div>
-
-          {/* Descripción Input */}
-          <div className="col-span-1 sm:col-span-2 lg:col-span-3">
-            <label className="block text-[11px] sm:text-[13px] md:text-[14px] lg:text-[15px] font-[600] text-[#141415] font-inter mb-[6px]">Descripción</label>
-            <input
-              type="text"
-              placeholder="Descripción"
-              value={description}
-              onChange={(e) => setDescription(e.target.value)}
-              className="w-full h-[36px] px-[8px] bg-white text-xs outline-none font-normal text-[#98A2B2] border border-[#E7E7E7] rounded-[6px]"
-            />
-          </div>
-
-          {/* Unidad Dropdown */}
-          <SelectBox
-            label="Unidad"
-            name="unit"
-            options={unitOptions}
-            value={selectedUnit}
-            register={register}
-            errors={errors}
-            onChange={(e) => setSelectedUnit(e.target.value)}
-            placeholder="Unidad"
-          />
-
-          {/* Tipo de Defecto Dropdown */}
-          <SelectBox
-            label="Tipo de defecto"
-            name="type of defect"
-            options={defectOptions}
-            value={selectedDefect}
-            onChange={(e) => setSelectedDefect(e.target.value)}
-            register={register}
-            errors={errors}
-            placeholder="Tipo de defecto"
-          />
-
-          {/* Cantidad Input */}
-          <div className="relative mb-1">
-            <label className="block text-[11px] sm:text-[13px] md:text-[14px] lg:text-[15px] font-[600] text-[#141415] font-inter mb-[6px]">Cantidad</label>
-            <input
-              type="number"
-              placeholder="Cantidad"
-              {...register("quantity", {
-                required: "Cantidad es requerida", 
-                min: { value: 1, message: "Debe ser al menos 1" }, 
-              })}
-              className="w-full h-[36px] px-[8px] bg-white text-xs outline-none font-normal text-[#98A2B2] border border-[#E7E7E7] rounded-[6px]"
-            />
-            {errors.quantity && <p className= " absolute left-0 mt-[2px] text-red-500 text-xs">{errors.quantity.message}</p>}
-          </div>
-
-
+          
+          <SelectBox label="Unidad" name="unit" options={unitOptions} register={register} errors={errors} placeholder="Unidad" />
+          <SelectBox label="Tipo de defecto" name="typeOfDefect" options={defectOptions} register={register} errors={errors} placeholder="Tipo de defecto" />
+          <InputBox label="Cantidad" name="quantity" type="number" placeholder="Cantidad" register={register} errors={errors} />
         </div>
 
-        {/* Submit Button */}
         <div className="mt-6 text-left">
-          <button
-            type="submit"
-            className="w-[170px] h-[35px] bg-[#179FDB] text-white text-sm font-semibold rounded-[6px] hover:bg-[#2A6AB2]"
-            onClick={handleSubmit(handleEnterScrap)}
-          >
+          <button type="submit" className="w-[170px] h-[35px] bg-[#179FDB] text-white text-sm font-semibold rounded-[6px] hover:bg-[#2A6AB2]">
             Introducir Scrap
           </button>
         </div>
       </form>
 
       <div className="fixed bottom-[25px]">
-        <Bottom_window/>
+        <Bottom_window />
       </div>
     </div>
   );
