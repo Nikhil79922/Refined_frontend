@@ -1,8 +1,7 @@
 
 import { motion } from "framer-motion";
-import { useSelector, useDispatch } from 'react-redux';  // Import Redux hooks
-import { toggleSidebar, setSidebarState } from '../../features/sidebar/sidebarSlice';  // Import actions
-
+import { useSelector, useDispatch } from 'react-redux'; 
+import { toggleSidebar, setSidebarState } from '../../features/sidebar/sidebarSlice';  
 import { Link, useLocation } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import humburger from '../../assets/svg/humburger.svg';
@@ -18,23 +17,20 @@ import active_setting from '../../assets/svg/active_setting.svg';
 
 export default function Sidebar() {
   const location = useLocation();
-  const dispatch = useDispatch();  // Hook to dispatch actions
+  const dispatch = useDispatch();  
 
-  // Access Redux state
-  const isSlideOpen = useSelector((state) => state.sidebar.isSlideOpen);  // Access the sidebar open state
-
-  const [openSection, setOpenSection] = useState(null);  // State to manage open sections
-
+  const isSlideOpen = useSelector((state) => state.sidebar.isSlideOpen); 
+  const [openSection, setOpenSection] = useState(null);  
   const toggleSection = (section) => {
-    setOpenSection((prev) => (prev === section ? null : section));  // Toggle sections
+    setOpenSection((prev) => (prev === section ? null : section));  
   };
 
   const handleSlide = () => {
-    dispatch(toggleSidebar());  // Dispatch action to toggle sidebar open/closed
+    dispatch(toggleSidebar()); 
   };
 
   useEffect(() => {
-    console.log("Sidebar open:", isSlideOpen);  // Log state change (optional)
+    console.log("Sidebar open:", isSlideOpen);  
   }, [isSlideOpen]);
 
   return (
@@ -42,7 +38,7 @@ export default function Sidebar() {
       {/* Hamburger button (only visible on small screens) */}
       <button
         className={`fixed top-5 left-4 z-50 text-gray-700 bg-white p-2 rounded-md shadow-md ${isSlideOpen ? "hidden" : "block"}`}
-        onClick={handleSlide}  // Toggle sidebar when clicked
+        onClick={handleSlide}  
       >
         <img src={humburger} className="h-4 w-4" alt="Hamburger Icon" />
       </button>
@@ -53,7 +49,7 @@ export default function Sidebar() {
         className={`overflow-y-hidden bg-white text-blue-1 h-full shadow-lg fixed lg:static scrollbar-hide transition-all duration-500
           ${isSlideOpen ? "translate-x-0" : "-translate-x-full"}  /* Small screen */
           ${isSlideOpen ? " lg:w-[15vw]" : "lg:w-0"}  /* Small screens toggle width */
-          lg:translate-x-0`}  /* Large screens no translate effect */
+          lg:translate-x-0`}  
       >
         <div className="flex items-center justify-between px-4 h-[73px] border-b border-gray-200 bg-white">
           {/* Logo */}
@@ -62,20 +58,18 @@ export default function Sidebar() {
               FCore</h1>
           </div>
 
-          {/* Hamburger button for large screens */}
           <img
             src={humburger}
             className="hidden lg:block h-[12px] cursor-pointer"
             alt="Hamburger"
-            onClick={handleSlide}  // Toggle sidebar when clicked
+            onClick={handleSlide}  
           />
 
-          {/* Close button (only visible when sidebar is open on small screens) */}
           {isSlideOpen && (
             <img
               src={cross}
               className="lg:hidden h-[14px] cursor-pointer relative top-[3px] left-[5px]"
-              onClick={() => dispatch(setSidebarState(false))}  // Close sidebar when clicked
+              onClick={() => dispatch(setSidebarState(false))} 
               alt="Close"
             />
           )}
@@ -103,7 +97,7 @@ export default function Sidebar() {
                 opacity: openSection === "produccion" ? 1 : 0,
                 height: openSection === "produccion" ? "auto" : 0,
               }}
-              transition={{ duration: 0.6 }} // Smooth transition
+              transition={{ duration: 0.6 }} 
             >
               {openSection === "produccion" && (
                 <div className="pl-7">
@@ -146,7 +140,7 @@ export default function Sidebar() {
                 opacity: openSection === "calidad" ? 1 : 0,
                 height: openSection === "calidad" ? "auto" : 0,
               }}
-              transition={{ duration: 0.6 }} // Smooth transition
+              transition={{ duration: 0.6 }}
             >
               {openSection === "calidad" && (
                 <div className="pl-7">
@@ -186,7 +180,7 @@ export default function Sidebar() {
                 opacity: openSection === "mantenimiento" ? 1 : 0,
                 height: openSection === "mantenimiento" ? "auto" : 0,
               }}
-              transition={{ duration: 0.6 }} // Smooth transition
+              transition={{ duration: 0.6 }} 
             >
               {openSection === "mantenimiento" && (
                 <div className="pl-7">

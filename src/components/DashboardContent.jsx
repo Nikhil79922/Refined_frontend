@@ -3,14 +3,12 @@ import { motion } from "framer-motion";
 import { toast } from "react-toastify";
 import unfold from './../assets/svg/unfold.svg';
 import pencil from './../assets/svg/pencil.svg';
-import { useSelector, useDispatch } from 'react-redux';  // Import Redux hooks
+import { useSelector, useDispatch } from 'react-redux';  
 
 
 
 export default function DashboardContent() {
-  const isSlideOpen = useSelector((state) => state.sidebar.isSlideOpen);  // Access the sidebar open state
-  console.log(isSlideOpen)
-
+  const isSlideOpen = useSelector((state) => state.sidebar.isSlideOpen); 
   const [isdbo, setdbo] = useState(false);
   const [alerts, setAlerts] = useState([
     { timestamp: '2024-10-30 06:21:45', tipo: 'Tipo1', descripcion: 'Descripción de alerta 1' },
@@ -77,7 +75,7 @@ export default function DashboardContent() {
           initial={{ height: 0, opacity: 0 }}
           animate={{ height: isdbo ? 0 : "auto", opacity: isdbo ? 0 : 1 }}
           exit={{ height: 0, opacity: 0 }}
-          transition={{ duration: 0.5, ease: "easeInOut" }} // ⬅️ Smoother and slower transition
+          transition={{ duration: 0.5, ease: "easeInOut" }} 
           className="overflow-hidden"
         >
           <div className={`grid ${isSlideOpen ? `lg:w-[81vw]`:`lg:w-[96vw]`} w-full  mt-4 border border-gray-200 rounded-lg`}>
@@ -109,7 +107,7 @@ export default function DashboardContent() {
                 key={index}
                 initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.4, delay: index * 0.05 }} // ⬅️ Staggered row animation
+                transition={{ duration: 0.4, delay: index * 0.05 }}
                 className={`grid grid-cols-3 h-[48px] text-gray-1 font-[400] text-[14px] items-center border-t sm:text-sm ${
                   index % 2 === 0 ? 'bg-[#E9EBF0]' : 'bg-white'
                 }`}
