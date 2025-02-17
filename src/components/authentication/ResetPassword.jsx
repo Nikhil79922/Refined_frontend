@@ -33,7 +33,7 @@ export default function ResetPassword() {
 
   return (
     <div className="min-h-screen flex items-center justify-start bg-gray-100 font-inter overflow-hidden">
-      <div className="ToastContainer" /> {/* Make sure this is included */}
+      <div className="ToastContainer" /> 
 
       <div className="flex flex-col md:flex-row lg:gap-[4vw] w-[100vw] h-[100vh] md:w-auto">
         {/* Side Image */}
