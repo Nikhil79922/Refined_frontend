@@ -87,7 +87,7 @@ export default function Header() {
         
         <img src={notification} className="cursor-pointer  h-[26px] bg-gray-4 flex items-center justify-center"/>
     
-        <div className="relative">
+        <div      className="relative">
           <div
             className="h-[37px] w-[37px] ml-[8px] cursor-pointer rounded-full border-[1px] border-white relative bottom-[6.4px] "
             onClick={toggleDropdown}
@@ -100,7 +100,9 @@ export default function Header() {
 
           {/* Dropdown Menu */}
           {isDropdownOpen && (
-            <div className="absolute right-0 mt-2 w-48 bg-white border border-gray-300 rounded-md shadow-lg">
+            <div
+         
+            className="absolute right-0 mt-2 w-48 bg-white border border-gray-300 rounded-md shadow-lg">
               <ul className="py-2">
                 {/* Add New User option */}
                 <li
@@ -115,7 +117,9 @@ export default function Header() {
         </div>
       </div>
       {isFormOpen && (
-        <div className="absolute top-16 right-5 bg-white p-5 rounded-md border border-gray-300 shadow-lg w-[90vw] sm:w-[400px] lg:w-[450px]">
+        <div 
+        style={{ zIndex: 200 }}
+        className="absolute top-16 right-5 bg-white p-5 rounded-md border border-gray-300 shadow-lg w-[90vw] sm:w-[400px] lg:w-[450px]">
           {/* Header */}
           <div className="flex justify-between items-center">
             <h2 className="text-lg sm:text-xl font-bold">Register New User</h2>
