@@ -1,110 +1,97 @@
-import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useEffect } from "react";
+import { useNavigate, useLocation } from "react-router-dom";
+import { useForm } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup";
+import * as yup from "yup";
 import axios from "axios";
 import AuthLayout from "../layout/AuthLayout";
 
-export default function ResetPassword() {
-  const [password, setPassword] = useState("");
-  const [confirmPassword, setConfirmPassword] = useState("");
-  const [message, setMessage] = useState("");
-  const [passwordError, setPasswordError] = useState("");
-  const navigate = useNavigate();
+const schema = yup.object().shape({
+  password: yup
+    .string()
+    .min(8, "Password must be at least 8 characters long")
+    .matches(
+      /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*])/,
+      "Password must include A-Z, a-z, 0-9 and !@#$%^&*."
+    )
+    .required("Password is required"),
+  confirmPassword: yup
+    .string()
+    .oneOf([yup.ref("password"), null], "Passwords do not match!")
+    .required("Confirm Password is required"),
+});
 
+export default function ResetPassword() {
+  const navigate = useNavigate();
+  const location = useLocation();
+
+  // Extract token from URL
   const queryParams = new URLSearchParams(location.search);
   const token = queryParams.get("token");
 
-  const validatePassword = () => {
-    const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*])/;
-    if (!password.match(passwordRegex)) {
-      setPasswordError(
-        "Password must contain at least 1 uppercase, 1 lowercase, 1 number, and 1 special character (!@#$%^&*)"
-      );
-      return false;
-    } else if (password.length < 8) {
-      setPasswordError("Password must be at least 8 characters long");
-      return false;
-    }
-    setPasswordError(""); // clear error
-    return true;
-  };
+  // React Hook Form setup
+  const {
+    register,
+    handleSubmit,
+    setFocus,
+    formState: { errors, isSubmitting },
+  } = useForm({
+    resolver: yupResolver(schema),
+  });
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
+  useEffect(() => {
+    setFocus("password"); // Focus on password field on mount
+  }, [setFocus]);
 
-    // Validate password
-    if (!validatePassword()) {
-      return;
-    }
-
-    if (password !== confirmPassword) {
-      setMessage("Passwords do not match!");
-      return;
-    }
-
+  const onSubmit = async (data) => {
     try {
-      await axios.post(``, { password });
-      setMessage("Password reset successfully!");
+      await axios.post(``, { password: data.password, token });
+      alert("Password reset successfully!");
       setTimeout(() => {
         navigate("/");
       }, 2000);
     } catch (error) {
-      console.log(error);
-      setMessage("Failed to reset password. Try again.");
+      console.error(error);
+      alert("Failed to reset password. Try again.");
     }
   };
 
   return (
     <AuthLayout title="Reset Password" subtitle="Enter a new password for your account.">
-      {/* Form */}
-      <form onSubmit={handleSubmit} className="space-y-4">
-        {/* New Password Input */}
-        <div className="">
+      <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
+        {/* New Password */}
+        <div>
           <label className="block text-gray-1 font-[600] font-inter mb-1">New Password</label>
           <input
             type="password"
             placeholder="New Password"
-            className="w-full border border-gray-300 placeholder:text-[14px] placeholder:text-gray-5 placeholder:font-[400] placeholder:font-inter rounded-md px-4 py-2 focus:ring-2 focus:ring-blue-400 outline-none"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
+            className="w-full border border-gray-300 rounded-md px-4 py-2 focus:ring-2 focus:ring-blue-400 outline-none"
+            {...register("password")}
           />
-          {passwordError && (
-            <p className=" text-red-500 text-xs mt-1">{passwordError}</p>
-          )}
+          {errors.password && <p className="text-red-500 text-xs mt-1">{errors.password.message}</p>}
         </div>
 
-        {/* Confirm Password Input */}
+        {/* Confirm Password */}
         <div>
           <label className="block text-gray-1 font-[600] font-inter mb-1">Confirm New Password</label>
           <input
             type="password"
             placeholder="Confirm New Password"
-            className="w-full border border-gray-300 placeholder:text-[14px] placeholder:text-gray-5 placeholder:font-[400] placeholder:font-inter rounded-md px-4 py-2 focus:ring-2 focus:ring-blue-400 outline-none"
-            value={confirmPassword}
-            onChange={(e) => setConfirmPassword(e.target.value)}
-            required
+            className="w-full border border-gray-300 rounded-md px-4 py-2 focus:ring-2 focus:ring-blue-400 outline-none"
+            {...register("confirmPassword")}
           />
+          {errors.confirmPassword && <p className="text-red-500 text-xs mt-1">{errors.confirmPassword.message}</p>}
         </div>
 
         {/* Submit Button */}
         <button
           type="submit"
           className="w-full bg-blue-2 text-white py-2 rounded-md hover:bg-[#2A6AB2] transition duration-200"
+          disabled={isSubmitting}
         >
-          Reset Password
+          {isSubmitting ? "Resetting..." : "Reset Password"}
         </button>
       </form>
-
-      {message && (
-        <p
-          className={
-            message === "Password reset successfully!"
-              ? "text-green-500 text-xs mt-[4px]"
-              : "text-red-500 text-xs mt-[4px]"
-          }
-        >
-          {message}
-        </p>
-      )}
     </AuthLayout>
   );
 }
