@@ -1,12 +1,29 @@
 import React, { useEffect, useRef, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link ,useLocation } from "react-router-dom";
 import pencil from '../../assets/svg/pencil.svg'
 import { useSelector } from 'react-redux';  
 
 function Control_header() {
   const isSlideOpen = useSelector((state) => state.sidebar.isSlideOpen); 
   const firstLinkRef = useRef(null);
-  const [value, setValue] = useState("Orden"); 
+
+  const location = useLocation(); // Extract current path
+
+  
+  // Map paths to display names
+  const pathToLabel = {
+    "/dashboard/control/orden": "Orden",
+    "/dashboard/control/scrap": "Scrap",
+    "/dashboard/control/averias": "Averias",
+    "/dashboard/control/consumos": "Consumos",
+    "/dashboard/control/etiquetas": "Etiquetas"
+  };
+
+  // Determine current active tab based on path
+  const activeTab = pathToLabel[location.pathname] || "Orden"; 
+  const [value, setValue] = useState(`${activeTab}`); 
+
+
 
   useEffect(() => {
     if (firstLinkRef.current) {
@@ -28,7 +45,7 @@ function Control_header() {
       {/* Navigation Links */}
       <div className="flex gap-2 sm:gap-3 md:gap-4 lg:gap-6 items-center mt-4 mb-6">
         <Link
-          ref={firstLinkRef} 
+
           className="text-[10px] md:text-[15.5px] lg:text-[16.5px] focus:text-blue-1 text-gray-2 font-inter font-[600]  focus:border-b-[2px] focus:border-blue-580"
           to="/dashboard/control/orden"
           onClick={() => handleValueChange("Orden")}
