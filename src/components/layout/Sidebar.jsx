@@ -43,7 +43,7 @@ export default function Sidebar() {
     <>
       {/* Hamburger button (only visible on small screens) */}
       <button
-        className={`fixed top-5 left-4 z-50 text-gray-700 bg-white p-2 rounded-md shadow-md ${isSlideOpen ? "hidden" : "block"}`}
+        className={`fixed top-5 left-4 z-50 text-gray-1 bg-white p-2 rounded-md shadow-md ${isSlideOpen ? "hidden" : "block"}`}
         onClick={handleSlide}  
       >
         <img src={humburger} className="h-4 w-4" alt="Hamburger Icon" />
@@ -88,7 +88,7 @@ export default function Sidebar() {
         <nav className="mt-[20px]">
           <ul>
             {/* PRODUCCIÓN Section */}
-            <li className="uppercase font-bold text-gray-700 flex justify-between items-center px-[23px] text-[13px]">
+            <li className="uppercase font-bold text-gray-1 flex justify-between items-center px-[23px] text-[13px]">
               <p>PRODUCCIÓN</p>
               <img
                 src={keydown}
@@ -127,7 +127,7 @@ export default function Sidebar() {
                  <li
                    key={Array.isArray(to) ? to[0] : to} // Use the first path as the key
                    className={`mt-[22px] flex items-center gap-4 text-[13px] font-medium cursor-pointer ${
-                     isActive ? "text-gray-700" : "text-gray-500"
+                     isActive ? "text-gray-1" : "text-gray-500"
                    }`}
                  >
                    <img src={isActive ? activeSrc || src : src} className="h-[17px] w-[17px]" alt={text} />
@@ -143,7 +143,7 @@ export default function Sidebar() {
             <li className="mt-5 w-full border-b border-gray-300"></li>
 
             {/* CALIDAD Section */}
-            <li className="uppercase font-bold text-gray-700 flex justify-between items-center px-[23px] text-[13px] mt-5">
+            <li className="uppercase font-bold text-gray-1 flex justify-between items-center px-[23px] text-[13px] mt-5">
               <p>CALIDAD</p>
               <img
                 src={keydown}
@@ -169,7 +169,7 @@ export default function Sidebar() {
                     <li
                       key={to}
                       className={`mt-[22px] flex items-center gap-4 text-[13px] font-medium cursor-pointer ${
-                        location.pathname === to ? "text-gray-700" : "text-gray-500"
+                        location.pathname === to ? "text-gray-1" : "text-gray-500"
                       }`}
                     >
                       <img src={src} className="h-[18px] w-[18px]" alt={text} />
@@ -183,7 +183,7 @@ export default function Sidebar() {
             <li className="mt-5 w-full border-b border-gray-300"></li>
 
             {/* MANTENIMIENTO Section */}
-            <li className="uppercase font-bold text-gray-700 flex justify-between items-center px-[23px] text-[13px] mt-5">
+            <li className="uppercase font-bold text-gray-1 flex justify-between items-center px-[23px] text-[13px] mt-5">
               <p>MANTENIMIENTO</p>
               <img
                 src={keydown}
@@ -209,7 +209,7 @@ export default function Sidebar() {
                     <li
                       key={to}
                       className={`mt-[22px] flex items-center gap-4 text-[13px] font-medium cursor-pointer ${
-                        location.pathname === to ? "text-gray-700" : "text-gray-500"
+                        location.pathname === to ? "text-gray-1" : "text-gray-500"
                       }`}
                     >
                       <img src={src} className="h-[18px] w-[18px]" alt={text} />

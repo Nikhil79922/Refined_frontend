@@ -25,12 +25,6 @@ function Control_header() {
 
 
 
-  useEffect(() => {
-    if (firstLinkRef.current) {
-      firstLinkRef.current.focus();
-    }
-  }, []);
-
   const handleValueChange = (newValue) => {
     setValue(newValue);
   };
