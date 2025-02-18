@@ -2,6 +2,7 @@
 import { motion } from "framer-motion";
 import { useSelector, useDispatch } from 'react-redux'; 
 import { toggleSidebar, setSidebarState } from '../../features/sidebar/sidebarSlice';  
+
 import { Link, useLocation } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import humburger from '../../assets/svg/humburger.svg';
@@ -20,6 +21,8 @@ export default function Sidebar() {
   const dispatch = useDispatch();  
 
   const isSlideOpen = useSelector((state) => state.sidebar.isSlideOpen); 
+
+
   const [openSection, setOpenSection] = useState(null);  
   const toggleSection = (section) => {
     setOpenSection((prev) => (prev === section ? null : section));  
@@ -29,9 +32,12 @@ export default function Sidebar() {
     dispatch(toggleSidebar()); 
   };
 
+
   useEffect(() => {
     console.log("Sidebar open:", isSlideOpen);  
   }, [isSlideOpen]);
+
+
 
   return (
     <>
@@ -75,7 +81,7 @@ export default function Sidebar() {
           )}
         </div>
 
-        <div className="uppercase font-bold font-inter flex items-center h-[64px] w-full border-b border-gray-200 text-[13px] px-[23px]">
+        <div  className={`${location.pathname == "/Dashboard"? 'text-blue-1': 'text-gray-1'} uppercase font-bold font-inter flex items-center h-[64px] w-full border-b border-gray-200 text-[13px] px-[23px]`}>
           <Link to="/Dashboard">Dashboard</Link>
         </div>
 
@@ -100,25 +106,37 @@ export default function Sidebar() {
               transition={{ duration: 0.6 }} 
             >
               {openSection === "produccion" && (
-                <div className="pl-7">
-                  {[ 
-                    { to: "/Dashboard/monitorizacion", src: screen, text: "Monitorización" },
-                    { to: "/Dashboard/historico", src: history, text: "Histórico" },
-                    { to: "/Dashboard/control/orden", src: setting, activeSrc: active_setting, text: "Control" },
-                    { to: "/Dashboard/planificar", src: calender, text: "Planificar" },
-                    { to: "/Dashboard/automatizar", src: automate, text: "Automatizar" },
-                  ].map(({ to, src, activeSrc, text }) => (
-                    <li
-                      key={to}
-                      className={`mt-[22px] flex items-center gap-4 text-[13px] font-medium cursor-pointer ${
-                        location.pathname === to ? "text-gray-700" : "text-gray-500"
-                      }`}
-                    >
-                      <img src={location.pathname === to ? activeSrc || src : src} className="h-[17px] w-[17px]" alt={text} />
-                      <Link to={to}>{text}</Link>
-                    </li>
-                  ))}
-                </div>
+             <div className="pl-7">
+             {[
+               { to: "/Dashboard/monitorizacion", src: screen, text: "Monitorización" },
+               { to: "/Dashboard/historico", src: history, text: "Histórico" },
+               { 
+                 to: ["/dashboard/control/orden", "/dashboard/control/scrap", "/dashboard/control/averias", "/dashboard/control/consumos", "/dashboard/control/etiquetas"], 
+                 src: setting, 
+                 activeSrc: active_setting, 
+                 text: "Control" 
+               },
+               { to: "/Dashboard/planificar", src: calender, text: "Planificar" },
+               { to: "/Dashboard/automatizar", src: automate, text: "Automatizar" },
+             ].map(({ to, src, activeSrc, text }) => {
+               
+               // Check if the current location matches any path in `to`
+               const isActive = Array.isArray(to) ? to.includes(location.pathname) : location.pathname === to;
+               
+               return (
+                 <li
+                   key={Array.isArray(to) ? to[0] : to} // Use the first path as the key
+                   className={`mt-[22px] flex items-center gap-4 text-[13px] font-medium cursor-pointer ${
+                     isActive ? "text-gray-700" : "text-gray-500"
+                   }`}
+                 >
+                   <img src={isActive ? activeSrc || src : src} className="h-[17px] w-[17px]" alt={text} />
+                   <Link to={Array.isArray(to) ? to[0] : to}>{text}</Link> {/* Always link to the first path */}
+                 </li>
+               );
+             })}
+           </div>
+           
               )}
             </motion.div>
 

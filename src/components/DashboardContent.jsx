@@ -6,9 +6,16 @@ import pencil from './../assets/svg/pencil.svg';
 import { useSelector, useDispatch } from 'react-redux';  
 
 
-
 export default function DashboardContent() {
+  const dispatch = useDispatch();  
+
+
+  
+
+
   const isSlideOpen = useSelector((state) => state.sidebar.isSlideOpen); 
+
+
   const [isdbo, setdbo] = useState(false);
   const [alerts, setAlerts] = useState([
     { timestamp: '2024-10-30 06:21:45', tipo: 'Tipo1', descripcion: 'Descripción de alerta 1' },
