@@ -17,7 +17,7 @@ export default function InputBox({ label, name, type, placeholder, register, err
         type={type}
         placeholder={placeholder}
         {...register(name, validation)}
-        className="w-full h-[36px] px-[8px] bg-white text-xs outline-none font-normal text-[#98A2B2] border border-[#E7E7E7] rounded-[6px]"
+        className="w-full h-[36px] px-[8px] bg-white text-xs outline-none  font-normal text-black placeholder:text-[#98A2B2] border border-[#E7E7E7] rounded-[6px]"
       />
 
       {errors[name] && <p className="absolute mt-[2px] left-0 text-red-500 text-xs">{errors[name].message}</p>}

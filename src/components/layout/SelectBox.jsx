@@ -10,9 +10,9 @@ const SelectBox = ({ label, name, options, placeholder, register, errors }) => {
       )}
       <select
         {...register(name, { required: `${label} is requerida` })}
-        className="w-full h-[36px] px-[8px] bg-white text-xs outline-none font-normal text-[#98A2B2] border border-[#E7E7E7] rounded-[6px]"
+        className="w-full h-[36px] px-[8px] bg-white text-xs outline-none font-normal text-[#494949] border border-[#E7E7E7] rounded-[6px]"
       >
-        {placeholder && <option value="">{placeholder}</option>}
+        {placeholder && <option className="text-[#98A2B2]" value="">{placeholder}</option>}
         {options.map((option, index) => (
           <option key={index} value={option.value}>
             {option.label}
