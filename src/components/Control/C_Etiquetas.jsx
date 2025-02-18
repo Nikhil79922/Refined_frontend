@@ -1,8 +1,9 @@
 /* eslint-disable no-unused-vars */
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
-import SelectBox from "../layout/SelectBox"; 
+import SelectBox from "../layout/SelectBox";
 import Bottom_window from "./Bottom_window";
+import InputBox from "../layout/InputBox";
 
 const printerOptions = [
   { value: "Impresora1", label: "Impresora 1" },
@@ -36,7 +37,7 @@ function C_Etiquetas() {
 
   const handlePrintLabels = (data) => {
     alert(JSON.stringify(data, null, 2));
-    
+
   };
 
   return (
@@ -68,18 +69,23 @@ function C_Etiquetas() {
           />
 
           {/* Cantidad Input */}
+
+
           <div className="relative mb-1">
-            <label className="block text-[11px] sm:text-[13px] md:text-[14px] lg:text-[15px] font-[600] text-[#141415] font-inter mb-[6px]">Cantidad</label>
-            <input
+            <InputBox
+              className="relative mb-1"
+              label="Cantidad"
+              name="quantity"
               type="number"
               placeholder="Cantidad"
-              {...register("quantity", {
-                required: "Cantidad es requerida", 
-                min: { value: 1, message: "Debe ser al menos 1" }, 
-              })}
-              className="w-full h-[36px] px-[8px] bg-white text-xs outline-none font-normal text-[#98A2B2] border border-[#E7E7E7] rounded-[6px]"
+              register={register}
+              errors={errors}
+              validation={{
+                required: "Cantidad es requerida",
+                min: { value: 1, message: "Debe ser al menos 1" },
+              }}
             />
-            {errors.quantity && <p className="absolute left-0 mt-1 text-red-500 text-xs">{errors.quantity.message}</p>}
+
           </div>
         </div>
 
@@ -95,7 +101,7 @@ function C_Etiquetas() {
       </form>
 
       <div className="fixed bottom-[25px]">
-        <Bottom_window/>
+        <Bottom_window />
       </div>
     </div>
 
