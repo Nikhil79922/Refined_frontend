@@ -36,7 +36,7 @@ function Control_header() {
           <Link
             key={path}
             to={path}
-            className={`text-[10px] md:text-[15.5px] lg:text-[16.5px] font-inter font-[600] px-2 py-1 rounded-sm transition-all box-border ${location.pathname === to ? "text-blue-1 border-b-2 border-blue-1 " : "text-gray-2"}`}
+            className={`text-[10px] md:text-[15.5px] lg:text-[16.5px] font-inter font-[600] px-2 py-1 rounded-sm transition-all box-border ${location.pathname === path ? "text-blue-1 border-b-2 border-blue-1 " : "text-gray-2"}`}
           >
             {label}
           </Link>
