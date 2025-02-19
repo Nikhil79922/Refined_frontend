@@ -120,7 +120,7 @@ export default function Header() {
       </div>
       {isFormOpen && (
         <div
-          style={{ zIndex: 200 }}
+          style={{ zIndex: 210 }}
           className="absolute top-16 right-5 bg-gray-100 p-5 rounded-2xl border border-gray-300 shadow-lg w-[60vw] sm:w-[300px] lg:w-[350px]"
         >
           {/* Header */}

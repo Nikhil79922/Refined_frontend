@@ -56,9 +56,9 @@ export default function DashboardContent() {
 
   return (
     <div className="ml-[5px] sm:ml-[10px] lg:ml-[20px] w-full flex flex-col  mb-[160px]  bg-gray-4">
-    <div className="flex gap-[1px]  sm:gap-[7px] md:gap-[12px] items-center mt-4 mb-6">
+    <div className="flex gap-[1px]  static sm:gap-[7px] md:gap-[12px] items-center mt-4 mb-6">
       <h2 className="text-[22px] ml-[1vw] sm:ml-[0px] sm:text-[30px] font-inter md:text-2xl font-bold">Dashboard</h2>
-      <img src={pencil} className="bg-gray-4 h-[15px] sm:h-[18px] ml-[15px] cursor-pointer"/>
+      <img src={pencil}  className="bg-gray-4 static h-[15px] sm:h-[18px] ml-[15px] cursor-pointer"/>
     </div>
   
     <div className={`bg-white rounded-lg shadow ml-[1vw] p-4 md:p-3 ${isSlideOpen ? `lg:w-[82.5vw]`:`lg:w-[97.8vw] `} sm:w-[96vw] w-[94vw]  overflow-x-auto`}>
