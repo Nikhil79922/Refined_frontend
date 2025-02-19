@@ -126,6 +126,7 @@ export default function Sidebar() {
                return (
                  <li
                    key={Array.isArray(to) ? to[0] : to} // Use the first path as the key
+                   onClick={handleSlide} 
                    className={`mt-[22px] flex items-center gap-4 text-[13px] font-medium cursor-pointer ${
                      isActive ? "text-gray-1" : "text-gray-500"
                    }`}
