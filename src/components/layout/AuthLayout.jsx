@@ -4,7 +4,7 @@ import logo from "../../assets/svg/logo.svg";
 
 const AuthLayout = ({ children, title, subtitle }) => {
   return (
-    <div className="min-h-screen flex items-center justify-start  bg-gray-100 font-inter overflow-hidden">
+    <div className=" flex items-center justify-start  bg-gray-100 font-inter overflow-hidden">
       <div className="flex flex-col  md:flex-row lg:gap-[4vw] w-[100vw] h-[100vh] md:w-auto ">
         {/* Side Image */}
         <div className="absolute left-0  top-0 md:relative  md:flex w-full md:w-[60vw] lg:w-[50vw] items-center justify-center p-3 md:p-5">

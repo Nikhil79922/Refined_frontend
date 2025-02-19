@@ -43,7 +43,7 @@ export default function Orden() {
 
   const handleStartOrder = (data) => {
     alert(JSON.stringify(data, null, 2));
-    
+
   };
 
   const handleFinalize = (index) => {
@@ -86,8 +86,8 @@ export default function Orden() {
           />
         </div>
         {/* Button */}
-        <div className="flex flex-col w-full sm:w-auto self-start">
-          <label className="invisible mb-1">Button</label>
+        <div className="flex flex-col w-full sm:w-auto self-start ">
+
           <button
             className="w-full sm:w-[170px] h-[35px] bg-[#179FDB] text-white text-sm font-semibold rounded-[6px]  hover:bg-[#2A6AB2]"
             onClick={handleSubmit(handleStartOrder)}
@@ -149,7 +149,7 @@ export default function Orden() {
                     <>
                       <td className="px-4 h-[46px] py-2">{row.machine}</td>
                       <td colSpan={6} className="px-4 py-2   text-center">
-                        
+
 
                       </td>
                     </>
@@ -177,8 +177,8 @@ export default function Orden() {
           </table>
         </div>
       </div>
-<div className="fixed bottom-[25px]">
-        <Bottom_window/>
+      <div className="fixed bottom-[25px]">
+        <Bottom_window />
       </div>
 
     </div>

@@ -6,7 +6,7 @@ export default function InputBox({ label, name, type, placeholder, register, err
       {label && (
         <label
           htmlFor={name}
-          className="block text-[11px] sm:text-[13px] md:text-[14px] lg:text-[15px] font-[600] text-[#141415] font-inter mb-[6px]"
+          className="block text-xs sm:text-sm font-[600] text-[#141415] font-inter mb-[6px]"
         >
           {label}
         </label>
