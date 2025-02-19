@@ -9,7 +9,7 @@ import AuthLayout from "../layout/AuthLayout";
 const schema = yup.object().shape({
   password: yup
     .string()
-    .min(8, "Password must be of at least 8 characters.")
+    .min(8, "Password must be of at least 8 characters")
     .matches(
       /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*])/,
       "Password must include A-Z, a-z, 0-9 and !@#$%^&*."
@@ -58,39 +58,41 @@ export default function ResetPassword() {
 
   return (
     <AuthLayout title="Reset Password" subtitle="Enter a new password for your account.">
-      <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
+      <form onSubmit={handleSubmit(onSubmit)} className="space-y-5">
         {/* New Password */}
-        <div>
-          <label className="block text-left text-gray-1 font-[500] text-[16px] font-inter mb-1">New Password</label>
+        <div className="relative   p-[2px]">
+          <label className="block text-left text-gray-1 font-[500] md:font-[600] text-[16px] font-inter mb-1">New Password</label>
           <input
             type="password"
             placeholder="New Password"
             className="w-full border border-gray-300 rounded-md px-4 py-2 focus:ring-2 focus:ring-blue-400 outline-none"
             {...register("password")}
           />
-          {errors.password && <p className="text-red-500 text-xs mt-1">{errors.password.message}</p>}
+          {errors.password && <p className="absolute text-left  text-red-500 text-xs mt-[4px]">{errors.password.message}</p>}
         </div>
 
         {/* Confirm Password */}
-        <div>
-          <label className="block text-left text-gray-1 font-[500] text-[16px] font-inter mb-1">Confirm New Password</label>
+        <div className="relative p-[2px] ">
+          <label className="block text-left text-gray-1 font-[500] md:font-[600] text-[16px] font-inter mb-1">Confirm New Password</label>
           <input
             type="password"
             placeholder="Confirm New Password"
             className="w-full border border-gray-300 rounded-md px-4 py-2 focus:ring-2 focus:ring-blue-400 outline-none"
             {...register("confirmPassword")}
           />
-          {errors.confirmPassword && <p className="text-red-500 text-xs mt-1">{errors.confirmPassword.message}</p>}
+          {errors.confirmPassword && <p className="absolute text-left text-red-500 text-xs mt-[4px]">{errors.confirmPassword.message}</p>}
         </div>
 
         {/* Submit Button */}
+        <div className=" p-[2px]">
         <button
           type="submit"
-          className="w-full bg-blue-2 text-white py-2 rounded-md hover:bg-[#2A6AB2] transition duration-200"
+          className=" w-full bg-blue-2 text-white py-2 rounded-md hover:bg-[#2A6AB2] transition duration-200  "
           disabled={isSubmitting}
         >
           {isSubmitting ? "Resetting..." : "Reset Password"}
         </button>
+        </div>
       </form>
     </AuthLayout>
   );
