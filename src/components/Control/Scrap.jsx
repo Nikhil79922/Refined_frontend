@@ -45,7 +45,7 @@ const Scrap = () => {
   };
 
   return (
-    <div className="bg-gray-4  mb-[23vw] flex items-start justify-center">
+    <div className="bg-gray-4  pb-[23vw] flex items-start justify-center">
       <form onSubmit={handleSubmit(handleEnterScrap)} className="bg-gray-4 px-4 rounded-lg w-full">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
           <SelectBox label="Máquina" name="machine" options={machineOptions} register={register} errors={errors} placeholder="Máquina" />
