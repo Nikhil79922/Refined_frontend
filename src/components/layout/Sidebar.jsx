@@ -43,7 +43,7 @@ export default function Sidebar() {
     <>
       {/* Hamburger button (only visible on small screens) */}
       <button
-        className={`fixed top-[22px] sm:top-5 left-4 z-50 text-gray-1 bg-white p-2 rounded-md shadow-md ${isSlideOpen ? "hidden" : "block"}`}
+        className={`fixed top-[21.5px] sm:top-5 left-4 z-50 text-gray-1 bg-white p-2 rounded-md shadow-md ${isSlideOpen ? "hidden" : "block"}`}
         onClick={handleSlide}  
       >
         <img src={humburger} className="h-3 w-3 sm:h-4 sm:w-4" alt="Hamburger Icon" />

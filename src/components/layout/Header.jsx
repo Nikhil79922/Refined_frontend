@@ -84,7 +84,7 @@ export default function Header() {
         <img src={mic} className="cursor-pointer bg-gray-4 flex items-center justify-center w-[3vw] text-[24px] h-[15px] sm:h-[19px] ml-[8px]" />
 
       </div>
-      <div className="flex gap-1 sm:gap-2 md:gap-3 relative top-[6px] mr-[21px]">
+      <div className="flex gap-1 sm:gap-2 md:gap-3 relative top-[5px] mr-[21px]">
         <img src={folder} className="cursor-pointer h-[21px] sm:h-[26px] bg-gray-4 flex items-center justify-center" />
 
         <img src={notification} className="cursor-pointer  h-[21px] sm:h-[26px] bg-gray-4 flex items-center justify-center" />
