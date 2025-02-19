@@ -2,7 +2,6 @@
 import { motion } from "framer-motion";
 import { useSelector, useDispatch } from 'react-redux'; 
 import { toggleSidebar, setSidebarState } from '../../features/sidebar/sidebarSlice';  
-
 import { Link, useLocation } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import humburger from '../../assets/svg/humburger.svg';
@@ -52,7 +51,7 @@ export default function Sidebar() {
       {/* Sidebar */}
       <aside
      style={{ zIndex: 100 }}
-        className={`overflow-y-hidden bg-white text-blue-1 h-full shadow-lg fixed lg:static w-[55vw] sm:w-[30vw] md:w-[28vw] scrollbar-hide transition-all duration-500
+        className={`overflow-y-hidden bg-white text-blue-1 h-full shadow-lg fixed lg:static w-[55vw] sm:w-[30vw] md:w-[28vw] scrollbar-hide transition-all duration-700
           ${isSlideOpen ? "translate-x-0" : "-translate-x-full"}  /* Small screen */
           ${isSlideOpen ? " lg:w-[15vw] " : "lg:w-0"}  /* Small screens toggle width */
           lg:translate-x-0`}  
