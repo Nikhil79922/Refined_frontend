@@ -84,14 +84,14 @@ export default function Header() {
         <img src={mic} className="cursor-pointer bg-gray-4 flex items-center justify-center w-[3vw] text-[24px] h-[15px] sm:h-[19px] ml-[8px]" />
 
       </div>
-      <div className="flex gap-1 sm:gap-2 md:gap-3 relative top-[5px] mr-[21px]">
+      <div className="flex gap-1 sm:gap-2 md:gap-3 relative top-[5.5px] mr-[21px]">
         <img src={folder} className="cursor-pointer h-[21px] sm:h-[26px] bg-gray-4 flex items-center justify-center" />
 
         <img src={notification} className="cursor-pointer  h-[21px] sm:h-[26px] bg-gray-4 flex items-center justify-center" />
 
         <div className="relative">
           <div
-            className="h-[33px] w-[33px] sm:h-[37px] sm:w-[37px] ml-[8px] cursor-pointer rounded-full border-[1px] border-white relative bottom-[6.4px] "
+            className="h-[33px] w-[33px] sm:h-[37px] sm:w-[37px] ml-[8px] cursor-pointer rounded-full border-[1px] border-white relative bottom-[6.2px] "
             onClick={toggleDropdown}
           >
             <img
