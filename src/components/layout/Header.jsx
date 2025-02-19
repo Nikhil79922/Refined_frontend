@@ -66,7 +66,7 @@ export default function Header() {
   return (
     <header className={`flex  lg:left-[15.5vw] items-center justify-between h-[73px] border-b-[0.9px] border-gray-200 bg-gray-4 w-[98vw]   ${isSlideOpen ? `lg:w-[84.5vw]` : `lg:w-[97.5vw] lg:ml-[40px]`}`}>
       <div className="flex ml-[40px] lg:ml-[0px] h-[73px] items-center ">
-        <span className="material-symbols-outlined cursor-pointer text-gray-3 bg-white flex items-center justify-center w-[8vw] sm:w-[6vw] md:w-[4vw]   lg:w-[2.8vw] text-[23px] rounded-tl-[8px] rounded-bl-[8px] ml-[10px] sm:ml-[20px]   h-[42px]">
+        <span className="material-symbols-outlined cursor-pointer text-gray-3 bg-white flex items-center justify-center w-[7vw] sm:w-[6vw] md:w-[4vw]   lg:w-[2.8vw] text-[19px] sm:text-[23px] rounded-tl-[8px] rounded-bl-[8px] ml-[10px] sm:ml-[20px]  h-[35px]  sm:h-[42px]">
           search
         </span>
         <input
@@ -74,24 +74,24 @@ export default function Header() {
           name="search"
           {...register("search")}
           placeholder="Search Tasks"
-          className="h-[42px] font-bold outline-none w-[28vw]  placeholder-gray-5 sm:w-[25vw] md:w-[18vw] lg:w-[14vw] text-[12px]"
+          className="h-[35px] sm:h-[42px] font-bold outline-none  placeholder:text-[10px]  placeholder-gray-5 w-[24vw] sm:w-[25vw] md:w-[18vw] lg:w-[14vw] text-[12px]"
         />
 
 
-        <span className="material-symbols-outlined text-gray-350 bg-white flex items-center justify-center w-[8vw] sm:w-[6vw] md:w-[4vw]  lg:w-[2.8vw] text-[23px] cursor-pointer h-[42px] rounded-tr-[8px] rounded-br-[8px] ">
+        <span className="material-symbols-outlined text-gray-350 bg-white flex items-center justify-center w-[7vw] sm:w-[6vw] md:w-[4vw]  lg:w-[2.8vw] text-[19px] sm:text-[23px] cursor-pointer h-[35px]  sm:h-[42px] rounded-tr-[8px] rounded-br-[8px] ">
           login
         </span>
-        <img src={mic} className="cursor-pointer bg-gray-4 flex items-center justify-center w-[3vw] text-[24px] h-[19px] ml-[8px]" />
+        <img src={mic} className="cursor-pointer bg-gray-4 flex items-center justify-center w-[3vw] text-[24px] h-[15px] sm:h-[19px] ml-[8px]" />
 
       </div>
       <div className="flex gap-1 sm:gap-2 md:gap-3 relative top-[6px] mr-[21px]">
-        <img src={folder} className="cursor-pointer h-[26px] bg-gray-4 flex items-center justify-center" />
+        <img src={folder} className="cursor-pointer h-[21px] sm:h-[26px] bg-gray-4 flex items-center justify-center" />
 
-        <img src={notification} className="cursor-pointer  h-[26px] bg-gray-4 flex items-center justify-center" />
+        <img src={notification} className="cursor-pointer  h-[21px] sm:h-[26px] bg-gray-4 flex items-center justify-center" />
 
         <div className="relative">
           <div
-            className="h-[37px] w-[37px] ml-[8px] cursor-pointer rounded-full border-[1px] border-white relative bottom-[6.4px] "
+            className="h-[33px] w-[33px] sm:h-[37px] sm:w-[37px] ml-[8px] cursor-pointer rounded-full border-[1px] border-white relative bottom-[6.4px] "
             onClick={toggleDropdown}
           >
             <img

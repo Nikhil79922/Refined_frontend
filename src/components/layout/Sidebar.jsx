@@ -43,10 +43,10 @@ export default function Sidebar() {
     <>
       {/* Hamburger button (only visible on small screens) */}
       <button
-        className={`fixed top-5 left-4 z-50 text-gray-1 bg-white p-2 rounded-md shadow-md ${isSlideOpen ? "hidden" : "block"}`}
+        className={`fixed top-[22px] sm:top-5 left-4 z-50 text-gray-1 bg-white p-2 rounded-md shadow-md ${isSlideOpen ? "hidden" : "block"}`}
         onClick={handleSlide}  
       >
-        <img src={humburger} className="h-4 w-4" alt="Hamburger Icon" />
+        <img src={humburger} className="h-3 w-3 sm:h-4 sm:w-4" alt="Hamburger Icon" />
       </button>
 
       {/* Sidebar */}
@@ -54,7 +54,7 @@ export default function Sidebar() {
      style={{ zIndex: 100 }}
         className={`overflow-y-hidden bg-white text-blue-1 h-full shadow-lg fixed lg:static w-[55vw] sm:w-[30vw] md:w-[28vw] scrollbar-hide transition-all duration-500
           ${isSlideOpen ? "translate-x-0" : "-translate-x-full"}  /* Small screen */
-          ${isSlideOpen ? " lg:w-[15vw]" : "lg:w-0"}  /* Small screens toggle width */
+          ${isSlideOpen ? " lg:w-[15vw] " : "lg:w-0"}  /* Small screens toggle width */
           lg:translate-x-0`}  
       >
         <div className="flex items-center justify-between px-4 h-[73px] border-b border-gray-200 bg-white">
