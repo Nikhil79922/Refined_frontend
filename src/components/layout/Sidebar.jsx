@@ -92,8 +92,9 @@ export default function Sidebar() {
               <p>PRODUCCIÓN</p>
               <img
                 src={keydown}
-                className={`w-[14px] h-[8px] cursor-pointer transition-transform ${openSection === "produccion" ? "rotate-180" : ""}`}
+                className={`w-[14px] h-[8px] cursor-pointer transition-transform duration-500 ease ${openSection === "produccion" ? "rotate-180" : ""}`}
                 onClick={() => toggleSection("produccion")}
+            
                 alt="Toggle"
               />
             </li>
@@ -147,7 +148,7 @@ export default function Sidebar() {
               <p>CALIDAD</p>
               <img
                 src={keydown}
-                className={`w-[14px] h-[8px] cursor-pointer transition-transform ${openSection === "calidad" ? "rotate-180" : ""}`}
+                className={`w-[14px] h-[8px] cursor-pointer transition-transform duration-500 ease ${openSection === "calidad" ? "rotate-180" : ""}`}
                 onClick={() => toggleSection("calidad")}
                 alt="Toggle"
               />
@@ -187,7 +188,7 @@ export default function Sidebar() {
               <p>MANTENIMIENTO</p>
               <img
                 src={keydown}
-                className={`w-[14px] h-[8px] cursor-pointer transition-transform ${openSection === "mantenimiento" ? "rotate-180" : ""}`}
+                className={`w-[14px] h-[8px] cursor-pointer transition-transform duration-500 ease ${openSection === "mantenimiento" ? "rotate-180" : ""}`}
                 onClick={() => toggleSection("mantenimiento")}
                 alt="Toggle"
               />
