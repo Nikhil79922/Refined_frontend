@@ -69,7 +69,7 @@ export default function Bottom_window() {
           initial={{ height: 0, opacity: 0 }}
           animate={{ height: isdbo ? 0 : "auto", opacity: isdbo ? 0 : 1 }}
           exit={{ height: 0, opacity: 0 }}
-          transition={{ duration: 0.5, ease: "easeInOut" }} 
+          transition={{ duration: 0.9, ease: "easeInOut" }} 
           className="overflow-hidden"
         >
           <div className={`grid overflow-auto ${isSlideOpen ? `lg:w-[81vw]`:`lg:w-[96vw]`} w-full  mt-4 border border-gray-200 rounded-lg`}>
