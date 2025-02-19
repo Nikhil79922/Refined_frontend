@@ -52,7 +52,7 @@ export default function Sidebar() {
       {/* Sidebar */}
       <aside
      style={{ zIndex: 100 }}
-        className={`overflow-y-hidden bg-white text-blue-1 h-full shadow-lg fixed lg:static w-[50vw] sm:w-[30vw] md:w-[28vw] scrollbar-hide transition-all duration-500
+        className={`overflow-y-hidden bg-white text-blue-1 h-full shadow-lg fixed lg:static w-[60vw] sm:w-[30vw] md:w-[28vw] scrollbar-hide transition-all duration-500
           ${isSlideOpen ? "translate-x-0" : "-translate-x-full"}  /* Small screen */
           ${isSlideOpen ? " lg:w-[15vw]" : "lg:w-0"}  /* Small screens toggle width */
           lg:translate-x-0`}  
