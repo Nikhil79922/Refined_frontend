@@ -66,7 +66,7 @@ const Averias = () => {
   };
 
   return (
-    <div className="bg-gray-4 mb-20  px-4 sm:px-4">
+    <div className="bg-gray-4 mb-24  px-4 sm:px-4">
       {/* Filter Controls */}
       <FilterControls />
       <div className="bg-white p-4 sm:p-6 rounded-lg shadow-md">

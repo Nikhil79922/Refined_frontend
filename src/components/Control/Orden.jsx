@@ -53,7 +53,7 @@ export default function Orden() {
 
 
   return (
-    <div className="px-4  mb-20   bg-gray-4 ">
+    <div className="px-4  mb-24   bg-gray-4 ">
       {/* Top Form */}
       <div className="flex flex-wrap items-center gap-4 mb-6 bg-gray-4 rounded">
         {/* Machine Dropdown */}
