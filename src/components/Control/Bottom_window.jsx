@@ -54,7 +54,7 @@ export default function Bottom_window() {
   };
 
   return (
-   <div className={`bg-white rounded-lg shadow p-4 md:p-3 ${isSlideOpen ? `lg:w-[82.5vw]`:`lg:w-[97.8vw] `} sm:w-[96vw] w-[94vw]  overflow-x-auto`}>
+   <div className={`bg-white rounded-lg shadow p-4 md:p-3 ${isSlideOpen ? `lg:w-[82.5vw]`:`lg:w-[97.8vw] `} sm:w-[96vw] w-[91.5vw]  overflow-x-auto`}>
         <div className="flex gap-[16px] items-center p-1 pb-4 border-b">
           <p className="text-[18px] md:text-lg font-[600] text-gray-1">dbo.Alertas</p>
           <span
@@ -69,7 +69,7 @@ export default function Bottom_window() {
           initial={{ height: 0, opacity: 0 }}
           animate={{ height: isdbo ? 0 : "auto", opacity: isdbo ? 0 : 1 }}
           exit={{ height: 0, opacity: 0 }}
-          transition={{ duration: 0.9, ease: "easeInOut" }} 
+          transition={{ duration: 0.8, ease: "easeInOut" }} 
           className="overflow-hidden"
         >
           <div className={`grid overflow-auto ${isSlideOpen ? `lg:w-[81vw]`:`lg:w-[96vw]`} w-full  mt-4 border border-gray-200 rounded-lg`}>
