@@ -20,7 +20,7 @@ export default function ForgotPassword() {
   return (
     <AuthLayout title="Forgot Password?" subtitle="Enter your email to receive a password reset link.">
       <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
-        <div>
+        <div className="relative mb-2">
           <label className="block text-left text-gray-1 font-[500] text-[16px] font-inter mb-1">Email</label>
           <input
             type="email"
@@ -34,10 +34,10 @@ export default function ForgotPassword() {
               },
             })}
           />
-          {errors.email && <p className="text-red-500 text-xs mt-1">{errors.email.message}</p>}
+          {errors.email && <p className="absolute left-0 text-red-500 text-left text-xs mt-[2px]  p-[2px]">{errors.email.message}</p>}
         </div>
 
-        <button type="submit" className="w-full bg-blue-2 text-white py-2 rounded-md hover:bg-[#2A6AB2] transition duration-200">
+        <button type="submit" className="  w-full bg-blue-2 text-white py-2 rounded-md hover:bg-[#2A6AB2] transition duration-200 ">
           Send Reset Link
         </button>
       </form>
