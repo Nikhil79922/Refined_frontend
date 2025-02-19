@@ -10,14 +10,14 @@ export default function ActionButtons({ openModal, data })
           >
             Editar
           </button>
-          <button
+          <button 
             className="bg-[#94C11F]  h-[30px]  text-[14px] leading-[14px] font-normal text-[#FFFFFF] font-inter px-4 py-1 rounded-[6px] hover:bg-[#82AC1A]"
             onClick={() => openModal("agrupar", data[0])}
           >
             Agrupar
           </button>
           <button
-            className="bg-[#F2D112] h-[30px] text-[14px] leading-[14px] font-normal text-[#FFFFFF] px-4 font-inter py-1 rounded-[6px] hover:bg-[#D4B80F]"
+            className="bg-[#F2D112]  h-[30px] text-[14px] leading-[14px] font-normal text-[#FFFFFF] px-4 font-inter py-1 rounded-[6px] hover:bg-[#D4B80F]"
             onClick={() => openModal("dividir", data[0])}
           >
             Dividir
