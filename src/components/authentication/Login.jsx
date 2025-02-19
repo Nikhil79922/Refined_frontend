@@ -2,7 +2,7 @@ import { useForm } from "react-hook-form";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
-import { toast, ToastContainer } from "react-toastify";
+
 import AuthLayout from "../layout/AuthLayout";
 
 export default function LoginPage() {
@@ -32,7 +32,7 @@ export default function LoginPage() {
       title="Welcome Back 👋"
       subtitle="Today is a new day. It's your day. Sign in to start managing your projects."
     >
-      <ToastContainer />
+
       {/* Form */}
       <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
 
