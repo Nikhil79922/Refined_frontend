@@ -69,12 +69,12 @@ export default function Bottom_window() {
           initial={{ height: 0, opacity: 0 }}
           animate={{ height: isdbo ? 0 : "auto", opacity: isdbo ? 0 : 1 }}
           exit={{ height: 0, opacity: 0 }}
-          transition={{ duration: 0.5, ease: "easeInOut" }} // ⬅️ Smoother and slower transition
+          transition={{ duration: 0.5, ease: "easeInOut" }} 
           className="overflow-hidden"
         >
-          <div className={`grid ${isSlideOpen ? `lg:w-[81vw]`:`lg:w-[96vw]`} w-full  mt-4 border border-gray-200 rounded-lg`}>
+          <div className={`grid overflow-auto ${isSlideOpen ? `lg:w-[81vw]`:`lg:w-[96vw]`} w-full  mt-4 border border-gray-200 rounded-lg`}>
             {/* Header Row */}
-            <div className="grid grid-cols-3 h-[55px] items-center bg-blue-1 text-white font-semibold text-[13px] sm:text-sm md:text-[16px] rounded-tl-[10px] rounded-tr-[10px]">
+            <div className="grid grid-cols-3 w-[150vw] overflow-auto sm:w-full h-[55px] items-center bg-blue-1 text-white font-semibold text-[13px] sm:text-sm md:text-[16px] rounded-tl-[10px] rounded-tr-[10px]">
               <div
                 className="pl-2 sm:pl-4 cursor-pointer flex items-center rounded-tl-[10px]"
                 onClick={() => sortData('timestamp')}
@@ -101,7 +101,7 @@ export default function Bottom_window() {
                 key={index}
                 initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.4, delay: index * 0.05 }} // ⬅️ Staggered row animation
+                transition={{ duration: 0.4, delay: index * 0.05 }}
                 className={`grid grid-cols-3 h-[48px] text-gray-1 font-[400] text-[14px] items-center border-t sm:text-sm ${
                   index % 2 === 0 ? 'bg-[#E9EBF0]' : 'bg-white'
                 }`}
@@ -114,5 +114,6 @@ export default function Bottom_window() {
           </div>
         </motion.div>
       </div>
+
   );
 }

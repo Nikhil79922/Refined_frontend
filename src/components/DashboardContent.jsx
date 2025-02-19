@@ -5,14 +5,8 @@ import unfold from './../assets/svg/unfold.svg';
 import pencil from './../assets/svg/pencil.svg';
 import { useSelector, useDispatch } from 'react-redux';  
 
-
 export default function DashboardContent() {
   const dispatch = useDispatch();  
-
-
-  
-
-
   const isSlideOpen = useSelector((state) => state.sidebar.isSlideOpen); 
 
 
@@ -62,9 +56,9 @@ export default function DashboardContent() {
 
   return (
     <div className="ml-[5px] sm:ml-[10px] lg:ml-[20px] w-full flex flex-col  mb-[160px]  bg-gray-4">
-    <div className="flex gap-[12px] items-center mt-4 mb-6">
-      <h2 className="text-[30px] font-inter md:text-2xl font-bold">Dashboard</h2>
-      <img src={pencil} className="bg-gray-4 h-[18px] ml-[15px] cursor-pointer"/>
+    <div className="flex gap-[1px]  sm:gap-[7px] md:gap-[12px] items-center mt-4 mb-6">
+      <h2 className="text-[22px] ml-[1vw] sm:ml-[0px] sm:text-[30px] font-inter md:text-2xl font-bold">Dashboard</h2>
+      <img src={pencil} className="bg-gray-4 h-[15px] sm:h-[18px] ml-[15px] cursor-pointer"/>
     </div>
   
     <div className={`bg-white rounded-lg shadow p-4 md:p-3 ${isSlideOpen ? `lg:w-[82.5vw]`:`lg:w-[97.8vw] `} sm:w-[96vw] w-[94vw]  overflow-x-auto`}>
@@ -85,9 +79,9 @@ export default function DashboardContent() {
           transition={{ duration: 0.5, ease: "easeInOut" }} 
           className="overflow-hidden"
         >
-          <div className={`grid ${isSlideOpen ? `lg:w-[81vw]`:`lg:w-[96vw]`} w-full  mt-4 border border-gray-200 rounded-lg`}>
+          <div className={`grid overflow-auto ${isSlideOpen ? `lg:w-[81vw]`:`lg:w-[96vw]`} w-full  mt-4 border border-gray-200 rounded-lg`}>
             {/* Header Row */}
-            <div className="grid grid-cols-3 h-[55px] items-center bg-blue-1 text-white font-semibold text-[13px] sm:text-sm md:text-[16px] rounded-tl-[10px] rounded-tr-[10px]">
+            <div className="grid grid-cols-3 w-[150vw] overflow-auto sm:w-full h-[55px] items-center bg-blue-1 text-white font-semibold text-[13px] sm:text-sm md:text-[16px] rounded-tl-[10px] rounded-tr-[10px]">
               <div
                 className="pl-2 sm:pl-4 cursor-pointer flex items-center rounded-tl-[10px]"
                 onClick={() => sortData('timestamp')}
