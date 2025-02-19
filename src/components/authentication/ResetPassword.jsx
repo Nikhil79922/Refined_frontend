@@ -70,7 +70,6 @@ export default function ResetPassword() {
           />
           {errors.password && <p className="absolute text-left  text-red-500 text-xs mt-[4px]">{errors.password.message}</p>}
         </div>
-
         {/* Confirm Password */}
         <div className="relative p-[2px] ">
           <label className="block text-left text-gray-1 font-[500] md:font-[600] text-[16px] font-inter mb-1">Confirm New Password</label>
@@ -82,7 +81,6 @@ export default function ResetPassword() {
           />
           {errors.confirmPassword && <p className="absolute text-left text-red-500 text-xs mt-[4px]">{errors.confirmPassword.message}</p>}
         </div>
-
         {/* Submit Button */}
         <div className=" p-[2px]">
         <button

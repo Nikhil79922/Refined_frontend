@@ -87,11 +87,10 @@ export default function Orden() {
         </div>
         {/* Button */}
         <div className="flex flex-col w-full sm:w-auto self-start ">
-
+        <label className="invisible hidden sm:block mb-1">Button</label>
           <button
             className="w-full sm:w-[170px] h-[35px] bg-[#179FDB] text-white text-sm font-semibold rounded-[6px]  hover:bg-[#2A6AB2]"
             onClick={handleSubmit(handleStartOrder)}
-
           >
             Iniciar Orden
           </button>
