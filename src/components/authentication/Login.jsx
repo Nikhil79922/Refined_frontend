@@ -42,13 +42,15 @@ export default function LoginPage() {
             type="email"
             placeholder="example@email.com"
             className="relative mb-1 w-full border border-gray-300 placeholder:text-[14px] placeholder:text-gray-5 placeholder:font-[400] placeholder:font-inter rounded-md px-4 py-2 focus:ring-2 focus:ring-blue-400 outline-none"
-            {...register("email", {
-              required: "Email is required",
-              pattern: {
-                value: /^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,4}$/,
-                message: "Invalid email format",
-              },
-            })}
+            {...register("email",
+            //    {
+            //   required: "Email is required",
+            //   pattern: {
+            //     value: /^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,4}$/,
+            //     message: "Invalid email format",
+            //   },
+            // }
+          )}
           />
           {errors.email && <p className="absolute  text-red-500 text-xs mt-[1px] md:mt-[2px]">{errors.email.message}</p>}
         </div>
@@ -59,14 +61,16 @@ export default function LoginPage() {
             type="password"
             placeholder="At least 8 characters"
             className="relative mb-1 w-full border border-gray-300 placeholder:text-[14px] placeholder:text-gray-5 placeholder:font-[400] placeholder:font-inter rounded-md px-4 py-2 focus:ring-2 focus:ring-blue-400 outline-none"
-            {...register("password", {
-              required: "Password is required",
-              minLength: { value: 8, message: "Password must be at least 8 characters long" },
-              pattern: {
-                value: /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*])/,
-                message: "Password must include A-Z, a-z, 0-9 and !@#$%^&*.",
-              },
-            })}
+            {...register("password",
+            //    {
+            //   required: "Password is required",
+            //   minLength: { value: 8, message: "Password must be at least 8 characters long" },
+            //   pattern: {
+            //     value: /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*])/,
+            //     message: "Password must include A-Z, a-z, 0-9 and !@#$%^&*.",
+            //   },
+            // }
+          )}
           />
           {errors.password && <p className=" absolute  text-red-500 text-xs mt-[1px] md:mt-[2px]">{errors.password.message}</p>}
         </div>
