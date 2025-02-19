@@ -21,7 +21,7 @@ export default function ForgotPassword() {
     <AuthLayout title="Forgot Password?" subtitle="Enter your email to receive a password reset link.">
       <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
         <div>
-          <label className="block text-gray-1 font-[600] mb-1">Email</label>
+          <label className="block text-left text-gray-1 font-[500] text-[16px] font-inter mb-1">Email</label>
           <input
             type="email"
             placeholder="Enter your email"

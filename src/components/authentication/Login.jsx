@@ -1,6 +1,7 @@
 import { useForm } from "react-hook-form";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
 import { toast, ToastContainer } from "react-toastify";
 import AuthLayout from "../layout/AuthLayout";
 
@@ -11,6 +12,19 @@ export default function LoginPage() {
 
   const onSubmit = async (data) => {
     navigate("/Dashboard");
+    // axios 
+    // .post("http://localhost:8000/auth/login", data)
+    // .then((response) => {
+    //   console.log("login Successfull:", response.data);
+    //   alert("WelcomeBack");
+    //   navigate("/Dashboard");
+    // })
+    // .catch((error)=>{
+    //   const errMsg = error.response?.data?.error || "LogIn failed!";
+    //   alert(errMsg);
+    // });
+
+    
   };
 
   return (
@@ -22,8 +36,8 @@ export default function LoginPage() {
       {/* Form */}
       <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
 
-        <div>
-          <label className="block text-gray-1 font-[600] font-inter mb-1">Email</label>
+        <div className="mb-2 "> 
+          <label className="block text-left text-gray-1 font-[500] text-[16px] font-inter mb-1">Email</label>
           <input
             type="email"
             placeholder="example@email.com"
@@ -36,11 +50,11 @@ export default function LoginPage() {
               },
             })}
           />
-          {errors.email && <p className="absolute  text-red-500 text-xs mt-[2px]">{errors.email.message}</p>}
+          {errors.email && <p className="absolute  text-red-500 text-xs mt-[1px] md:mt-[2px]">{errors.email.message}</p>}
         </div>
 
-        <div>
-          <label className="block text-gray-1 font-[600] font-inter mb-1">Password</label>
+        <div >
+          <label className="block text-left text-gray-1 font-[500] text-[16px] font-inter mb-1">Password</label>
           <input
             type="password"
             placeholder="At least 8 characters"
@@ -54,7 +68,7 @@ export default function LoginPage() {
               },
             })}
           />
-          {errors.password && <p className=" absolute  text-red-500 text-xs mt-[2px]">{errors.password.message}</p>}
+          {errors.password && <p className=" absolute  text-red-500 text-xs mt-[1px] md:mt-[2px]">{errors.password.message}</p>}
         </div>
 
 
