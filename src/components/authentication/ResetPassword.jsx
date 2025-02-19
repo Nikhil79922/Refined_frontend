@@ -9,7 +9,7 @@ import AuthLayout from "../layout/AuthLayout";
 const schema = yup.object().shape({
   password: yup
     .string()
-    .min(8, "Password must be at least 8 characters long")
+    .min(8, "Password must be of at least 8 characters.")
     .matches(
       /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*])/,
       "Password must include A-Z, a-z, 0-9 and !@#$%^&*."

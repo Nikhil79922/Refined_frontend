@@ -64,7 +64,7 @@ export default function LoginPage() {
             {...register("password",
             //    {
             //   required: "Password is required",
-            //   minLength: { value: 8, message: "Password must be at least 8 characters long" },
+            //   minLength: { value: 8, message: "Password must be of at least 8 characters." },
             //   pattern: {
             //     value: /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*])/,
             //     message: "Password must include A-Z, a-z, 0-9 and !@#$%^&*.",
