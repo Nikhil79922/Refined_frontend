@@ -81,7 +81,7 @@ export default function Sidebar() {
         </div>
 
         <div  className={`${location.pathname == "/Dashboard"? 'text-blue-1': 'text-gray-1'} uppercase font-bold font-inter flex items-center h-[64px] w-full border-b border-gray-200 text-[13px] px-[23px]`}>
-          <Link to="/Dashboard">Dashboard</Link>
+          <Link  onClick={handleSlide}  to="/Dashboard">Dashboard</Link>
         </div>
 
         <nav className="mt-[20px]">
