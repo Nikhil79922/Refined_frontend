@@ -117,7 +117,7 @@ export default function Orden() {
 
         {/* Data Table */}
         <div className="overflow-x-auto rounded-[12px]  font-inter">
-          <table className="min-w-full   table-auto">
+          <table className="w-[250vw] md:w-[140vw] lg:w-full sm:w-[130vw]  table-auto">
             <thead>
               <tr className="bg-[#2A6AB2] ">
                 {[
