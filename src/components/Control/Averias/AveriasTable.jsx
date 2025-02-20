@@ -7,7 +7,7 @@ export default function AveriasTable({ data, selectedRows, toggleSelectRow, togg
   const { control, watch, setValue } = useForm();
   return (
     <div className="overflow-x-auto rounded-t-[14px] border border-[#E9EBF0]">
-      <table className="w-[250vw] md:w-[170vw] lg:w-full sm:w-[140vw]  table-auto">
+      <table className="w-[260vw] md:w-[170vw] lg:w-full sm:w-[140vw]  table-auto">
         <thead>
           <tr className="bg-[#2A6AB2] gap-[6px]">
             <th className="bg-[#2A6AB2] h-[20px] font-normal text-lg px-4 py-2 text-left">
