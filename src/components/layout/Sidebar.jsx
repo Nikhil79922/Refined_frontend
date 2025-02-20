@@ -2,6 +2,7 @@
 import { motion } from "framer-motion";
 import { useSelector, useDispatch } from 'react-redux'; 
 import { toggleSidebar, setSidebarState } from '../../features/sidebar/sidebarSlice';  
+import { togglemobileSidebar} from "../../features/mobile_slide/mobilesidebarSlice"
 import { Link, useLocation } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import humburger from '../../assets/svg/humburger.svg';
@@ -20,6 +21,8 @@ export default function Sidebar() {
   const dispatch = useDispatch();  
 
   const isSlideOpen = useSelector((state) => state.sidebar.isSlideOpen); 
+  const ismobileSlideOpen = useSelector((state) => state.mobilesidebar.ismobileSlideOpen); 
+  console.log(ismobileSlideOpen)
 
 
   const [openSection, setOpenSection] = useState(null);  
@@ -29,8 +32,16 @@ export default function Sidebar() {
 
   const handleSlide = () => {
     dispatch(toggleSidebar()); 
+    if (window.innerWidth >= 1024) return;
+    dispatch(togglemobileSidebar());
   };
 
+  const handleMobileSlide = () => {
+    if (window.innerWidth >= 1024) return; // lg breakpoint in Tailwind (1024px)
+    dispatch(togglemobileSidebar());
+    dispatch(toggleSidebar()); 
+  };
+  
 
   useEffect(() => {
     console.log("Sidebar open:", isSlideOpen);  
@@ -43,7 +54,7 @@ export default function Sidebar() {
       {/* Hamburger button (only visible on small screens) */}
       <button
         className={`fixed top-[21.5px] sm:top-5 left-4 z-50 text-gray-1 bg-white p-2 rounded-md shadow-md ${isSlideOpen ? "hidden" : "block"}`}
-        onClick={handleSlide}  
+        onClick={handleSlide} onclick={handleMobileSlide}
       >
         <img src={humburger} className="h-3 w-3 sm:h-4 sm:w-4" alt="Hamburger Icon" />
       </button>
@@ -52,7 +63,7 @@ export default function Sidebar() {
       <aside
      style={{ zIndex: 100 }}
         className={`overflow-y-hidden bg-white text-blue-1 h-full shadow-lg fixed lg:static w-[55vw] sm:w-[30vw] md:w-[28vw] scrollbar-hide transition-all duration-700
-          ${isSlideOpen ? "translate-x-0" : "-translate-x-full"}  /* Small screen */
+          ${isSlideOpen && ismobileSlideOpen ? "translate-x-0" : "-translate-x-full"}  /* Small screen */
           ${isSlideOpen ? " lg:w-[15vw] " : "lg:w-0"}  /* Small screens toggle width */
           lg:translate-x-0`}  
       >
@@ -81,7 +92,7 @@ export default function Sidebar() {
         </div>
 
         <div  className={`${location.pathname == "/Dashboard"? 'text-blue-1': 'text-gray-1'} uppercase font-bold font-inter flex items-center h-[64px] w-full border-b border-gray-200 text-[13px] px-[23px]`}>
-          <Link  onClick={handleSlide}  to="/Dashboard">Dashboard</Link>
+          <Link  onClick={handleMobileSlide}  to="/Dashboard">Dashboard</Link>
         </div>
 
         <nav className="mt-[20px]">
@@ -126,7 +137,7 @@ export default function Sidebar() {
                return (
                  <li
                    key={Array.isArray(to) ? to[0] : to} // Use the first path as the key
-                   onClick={handleSlide} 
+                   onClick={handleMobileSlide} 
                    className={`mt-[22px] flex items-center gap-4 text-[13px] font-medium cursor-pointer ${
                      isActive ? "text-gray-1" : "text-gray-500"
                    }`}
@@ -168,6 +179,7 @@ export default function Sidebar() {
                     { to: "/Dashboard/calidad/submenu2", src: app, text: "Submenu2" },
                   ].map(({ to, src, text }) => (
                     <li
+                    onClick={handleMobileSlide} 
                       key={to}
                       className={`mt-[22px] flex items-center gap-4 text-[13px] font-medium cursor-pointer ${
                         location.pathname === to ? "text-gray-1" : "text-gray-500"
@@ -208,6 +220,7 @@ export default function Sidebar() {
                     { to: "/Dashboard/mantenimiento/submenu2", src: app, text: "Submenu2" },
                   ].map(({ to, src, text }) => (
                     <li
+                    onClick={handleMobileSlide} 
                       key={to}
                       className={`mt-[22px] flex items-center gap-4 text-[13px] font-medium cursor-pointer ${
                         location.pathname === to ? "text-gray-1" : "text-gray-500"
