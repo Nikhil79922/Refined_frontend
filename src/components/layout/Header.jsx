@@ -7,6 +7,8 @@ import notification from '../../assets/svg/notification.svg'
 import avatar from '../../assets/svg/avatar.svg'
 import SelectBox from "./SelectBox";
 import InputBox from "./InputBox";
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 import { useSelector } from 'react-redux';  // Import Redux hooks
 
@@ -20,12 +22,37 @@ export default function Header() {
   const [isFormOpen, setIsFormOpen] = useState(false);
   const [isRegistered, setIsRegistered] = useState(false);
 
+  const handleLogout = async () => {
+    try {
+      console.log("Logging out...");
+  
+      
+      await axios.post("http://localhost:8000/auth/logout"); 
+  
+      // Remove token from localStorage
+      localStorage.removeItem("token");
+  
+      // Show success message
+      toast.success("Logged out successfully!", {
+        position: "top-right",
+        autoClose: 1500,
+        onClose: () => navigate("/"), // Redirect to login page
+      });
+  
+    } catch (error) {
+      console.error("Logout error:", error);
+      toast.error(error.response?.data?.message || "Logout failed. Please try again.");
+    }
+  };
+  
 
 
   const handleCloseForm = () => {
     setIsFormOpen(false);
     reset(); // Clear the form fields when closing
   };
+
+
 
   const {
     register,
@@ -70,12 +97,12 @@ export default function Header() {
           search
         </span>
         <input
-  type="text"
-  name="search"
-  {...register("search")}
-  placeholder="Search Tasks"
-  className="h-[35px] sm:h-[42px] font-bold outline-none rounded-none placeholder:text-[10px] placeholder-gray-5 w-[24vw] sm:w-[25vw] md:w-[18vw] lg:w-[14vw] text-[12px]"
-/>
+          type="text"
+          name="search"
+          {...register("search")}
+          placeholder="Search Tasks"
+          className="h-[35px] sm:h-[42px] font-bold outline-none rounded-none placeholder:text-[10px] placeholder-gray-5 w-[24vw] sm:w-[25vw] md:w-[18vw] lg:w-[14vw] text-[12px]"
+        />
 
 
         <span className="material-symbols-outlined text-gray-350 bg-white flex items-center justify-center w-[7vw] sm:w-[6vw] md:w-[4vw]  lg:w-[2.8vw] text-[19px] sm:text-[23px] cursor-pointer h-[35px]  sm:h-[42px] rounded-tr-[8px] rounded-br-[8px] ">
@@ -112,6 +139,12 @@ export default function Header() {
                   onClick={() => setIsFormOpen(true)}
                 >
                   Add New User
+                </li>
+                <li
+                  className="px-4 py-2 text-red-500 cursor-pointer hover:bg-gray-4"
+                  onClick={() => handleLogout()  }
+                >
+                  Logout
                 </li>
               </ul>
             </div>

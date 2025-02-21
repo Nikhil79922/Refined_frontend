@@ -2,6 +2,8 @@ import { useForm } from "react-hook-form";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 import AuthLayout from "../layout/AuthLayout";
 
@@ -11,19 +13,28 @@ export default function LoginPage() {
   const { register, handleSubmit, formState: { errors } } = useForm();
 
   const onSubmit = async (data) => {
-    navigate("/Dashboard");
-    // axios 
-    // .post("http://localhost:8000/auth/login", data)
-    // .then((response) => {
-    //   console.log("login Successfull:", response.data);
-    //   alert("WelcomeBack");
-    //   navigate("/Dashboard");
-    // })
-    // .catch((error)=>{
-    //   const errMsg = error.response?.data?.error || "LogIn failed!";
-    //   alert(errMsg);
-    // });
-
+    
+    try {
+      const response = await axios.post("http://localhost:8000/auth/login", data);
+    
+      if (response.status === 200 && response.data.Data.token) {
+        localStorage.setItem("token", response.data.Data.token);
+    
+        // Show success toast and navigate to dashboard
+        toast.success("Login successful!", {
+          position: "top-right",
+          autoClose: 1500,
+          onClose: () => navigate("/dashboard"),
+        });
+      } else {
+        toast.error("Invalid credentials. Please try again.");
+      }
+    } catch (error) {
+      toast.error(error.response?.data?.message || "Login failed. Please try again.");
+    } finally {
+      setLoading(false);
+    }
+    
     
   };
 
@@ -32,6 +43,7 @@ export default function LoginPage() {
       title="Welcome Back 👋"
       subtitle="Today is a new day. It's your day. Sign in to start managing your projects."
     >
+      <ToastContainer />
 
       {/* Form */}
       <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
