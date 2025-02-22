@@ -10,9 +10,7 @@ import InputBox from "./InputBox";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
-import { useSelector } from 'react-redux';  // Import Redux hooks
-
-
+import { useSelector } from 'react-redux'; 
 
 export default function Header() {
 
@@ -192,7 +190,10 @@ export default function Header() {
                 placeholder="Enter email"
                 register={register}
                 errors={errors}
-                validation={{ required: "Email is required" }}
+                validation={{ required: "Email is required",
+                  pattern: {
+                    value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
+                    message: "Invalid email format"} }}
               />
             </div>
 

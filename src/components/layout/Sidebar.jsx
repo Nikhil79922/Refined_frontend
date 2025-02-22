@@ -24,30 +24,23 @@ export default function Sidebar() {
   const ismobileSlideOpen = useSelector((state) => state.mobilesidebar.ismobileSlideOpen); 
   console.log(ismobileSlideOpen)
 
-
   const [openSection, setOpenSection] = useState(null);  
   const toggleSection = (section) => {
     setOpenSection((prev) => (prev === section ? null : section));  
   };
-
   const handleSlide = () => {
     dispatch(toggleSidebar()); 
     if (window.innerWidth >= 1024) return;
     dispatch(togglemobileSidebar());
   };
-
   const handleMobileSlide = () => {
     if (window.innerWidth >= 1024) return; // lg breakpoint in Tailwind (1024px)
     dispatch(togglemobileSidebar());
     dispatch(toggleSidebar()); 
   };
-  
-
   useEffect(() => {
     console.log("Sidebar open:", isSlideOpen);  
   }, [isSlideOpen]);
-
-
 
   return (
     <>
@@ -98,12 +91,14 @@ export default function Sidebar() {
         <nav className="mt-[20px]">
           <ul>
             {/* PRODUCCIÓN Section */}
-            <li className="uppercase font-bold text-gray-1 flex justify-between items-center px-[23px] text-[13px]">
+            <li className="uppercase font-bold text-gray-1 flex justify-between cursor-pointer items-center px-[23px] text-[13px]"
+                       onClick={() => toggleSection("produccion")}
+            >
               <p>PRODUCCIÓN</p>
               <img
                 src={keydown}
                 className={`w-[14px] h-[8px] cursor-pointer transition-transform duration-500 ease ${openSection === "produccion" ? "rotate-180" : ""}`}
-                onClick={() => toggleSection("produccion")}
+     
             
                 alt="Toggle"
               />
@@ -155,12 +150,12 @@ export default function Sidebar() {
             <li className="mt-5 w-full border-b border-gray-300"></li>
 
             {/* CALIDAD Section */}
-            <li className="uppercase font-bold text-gray-1 flex justify-between items-center px-[23px] text-[13px] mt-5">
+            <li  onClick={() => toggleSection("calidad")} className="uppercase font-bold text-gray-1 flex justify-between cursor-pointer items-center px-[23px] text-[13px] mt-5">
               <p>CALIDAD</p>
               <img
                 src={keydown}
                 className={`w-[14px] h-[8px] cursor-pointer transition-transform duration-500 ease ${openSection === "calidad" ? "rotate-180" : ""}`}
-                onClick={() => toggleSection("calidad")}
+               
                 alt="Toggle"
               />
             </li>
@@ -196,12 +191,12 @@ export default function Sidebar() {
             <li className="mt-5 w-full border-b border-gray-300"></li>
 
             {/* MANTENIMIENTO Section */}
-            <li className="uppercase font-bold text-gray-1 flex justify-between items-center px-[23px] text-[13px] mt-5">
+            <li    onClick={() => toggleSection("mantenimiento")} className="uppercase font-bold text-gray-1 flex justify-between cursor-pointer items-center px-[23px] text-[13px] mt-5">
               <p>MANTENIMIENTO</p>
               <img
                 src={keydown}
                 className={`w-[14px] h-[8px] cursor-pointer transition-transform duration-500 ease ${openSection === "mantenimiento" ? "rotate-180" : ""}`}
-                onClick={() => toggleSection("mantenimiento")}
+             
                 alt="Toggle"
               />
             </li>
@@ -239,4 +234,3 @@ export default function Sidebar() {
     </>
   );
 }
-

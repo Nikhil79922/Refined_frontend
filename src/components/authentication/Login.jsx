@@ -59,6 +59,7 @@ export default function LoginPage() {
         <div className="mb-2 ">
           <label className="block text-left text-gray-1 font-[500] text-[16px] font-inter mb-1">Email</label>
           <input
+<<<<<<< HEAD
             type="email"
             placeholder="example@email.com"
             className="relative mb-1 w-full border border-gray-300 placeholder:text-[14px] placeholder:text-gray-5 placeholder:font-[400] placeholder:font-inter rounded-md px-4 py-2 focus:ring-2 focus:ring-blue-400 outline-none"
@@ -72,6 +73,20 @@ export default function LoginPage() {
               }
             )}
           />
+=======
+  type="email"
+  placeholder="example@email.com"
+  className="relative mb-1 w-full border border-gray-300 placeholder:text-[14px] placeholder:text-gray-5 placeholder:font-[400] placeholder:font-inter rounded-md px-4 py-2 focus:ring-2 focus:ring-blue-400 outline-none"
+  {...register("email", {
+    required: "Email is required",
+    pattern: {
+      value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
+      message: "Invalid email format",
+    },
+  })}
+/>
+
+>>>>>>> 141ccbe686f5ec5ddca063610ae2352c30bffba0
           {errors.email && <p className="absolute  text-red-500 text-xs mt-[1px] md:mt-[2px]">{errors.email.message}</p>}
         </div>
 

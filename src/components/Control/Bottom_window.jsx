@@ -55,8 +55,8 @@ export default function Bottom_window() {
 
   return (
    <div className={`bg-white rounded-lg shadow p-4 md:p-3 ${isSlideOpen ? `lg:w-[82.5vw]`:`lg:w-[97.8vw] `} sm:w-[96vw] w-[91.5vw]  overflow-x-auto`}>
-        <div className="flex gap-[16px] items-center p-1 pb-4 border-b">
-          <p className="text-[18px] md:text-lg font-[600] text-gray-1">dbo.Alertas</p>
+        <div  className="flex gap-[16px]   items-center p-1 pb-4 border-b">
+          <p  onClick={() => setdbo(!isdbo)} className="text-[18px] cursor-pointer md:text-lg font-[600] text-gray-1">dbo.Alertas</p>
           <span
             className={`material-symbols-outlined text-lg md:text-xl font-bold cursor-pointer ${isdbo ? 'rotate-180' : ''} transition-transform duration-300`}
             onClick={() => setdbo(!isdbo)}
