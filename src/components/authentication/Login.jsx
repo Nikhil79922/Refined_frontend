@@ -17,7 +17,8 @@ export default function LoginPage() {
   const onSubmit = async (data) => {
 
     try {
-      const response = await axios.post("http://localhost:8000/auth/login", data, rememberMe);
+      navigate("/dashboard")
+      // const response = await axios.post("http://localhost:8000/auth/login", data, rememberMe);
 
       if (response.status === 200 && response.data.Data.token) {
         if(rememberMe)
