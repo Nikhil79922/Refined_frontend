@@ -8,9 +8,7 @@ import avatar from '../../assets/svg/avatar.svg'
 import SelectBox from "./SelectBox";
 import InputBox from "./InputBox";
 
-import { useSelector } from 'react-redux';  // Import Redux hooks
-
-
+import { useSelector } from 'react-redux'; 
 
 export default function Header() {
 
