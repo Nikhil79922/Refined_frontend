@@ -159,7 +159,10 @@ export default function Header() {
                 placeholder="Enter email"
                 register={register}
                 errors={errors}
-                validation={{ required: "Email is required" }}
+                validation={{ required: "Email is required",
+                  pattern: {
+                    value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
+                    message: "Invalid email format"} }}
               />
             </div>
 
