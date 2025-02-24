@@ -10,7 +10,7 @@ export default function DashboardContent() {
 
   const [isdbo, setdbo] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
-  const [currentPage, setCurrentPage] = useState(1);
+
 
   
   const [alerts, setAlerts] = useState([
@@ -20,30 +20,7 @@ export default function DashboardContent() {
     { "timestamp": "2024-10-30 07:15:25", "tipo": "Tipo4", "descripcion": "Descripción de alerta 4" },
     { "timestamp": "2024-10-30 07:18:36", "tipo": "Tipo5", "descripcion": "Descripción de alerta 5" },
     { "timestamp": "2024-10-30 07:21:49", "tipo": "Tipo6", "descripcion": "Descripción de alerta 6" },
-    { "timestamp": "2024-10-30 07:26:58", "tipo": "Tipo7", "descripcion": "Fallo en el sistema de red" },
-    { "timestamp": "2024-10-30 07:30:42", "tipo": "Tipo8", "descripcion": "Error en la base de datos" },
-    { "timestamp": "2024-10-30 07:34:19", "tipo": "Tipo9", "descripcion": "Sobrecalentamiento del servidor" },
-    { "timestamp": "2024-10-30 07:38:27", "tipo": "Tipo10", "descripcion": "Intento de acceso no autorizado" },
-    { "timestamp": "2024-10-30 07:42:35", "tipo": "Tipo11", "descripcion": "Pérdida de conexión con el cliente" },
-    { "timestamp": "2024-10-30 07:45:50", "tipo": "Tipo12", "descripcion": "Consumo inusual de memoria" },
-    { "timestamp": "2024-10-30 07:50:10", "tipo": "Tipo13", "descripcion": "Fallo en el disco duro" },
-    { "timestamp": "2024-10-30 07:55:29", "tipo": "Tipo14", "descripcion": "Ataque DDoS detectado" },
-    { "timestamp": "2024-10-30 08:00:15", "tipo": "Tipo15", "descripcion": "Interrupción en el suministro eléctrico" },
-    { "timestamp": "2024-10-30 08:05:22", "tipo": "Tipo16", "descripcion": "Fallo en autenticación de usuario" },
-    { "timestamp": "2024-10-30 08:10:37", "tipo": "Tipo17", "descripcion": "Bajo rendimiento del sistema" },
-    { "timestamp": "2024-10-30 08:15:43", "tipo": "Tipo18", "descripcion": "Configuración incorrecta detectada" },
-    { "timestamp": "2024-10-30 08:20:52", "tipo": "Tipo19", "descripcion": "Servidor alcanzó su límite de tráfico" },
-    { "timestamp": "2024-10-30 08:25:18", "tipo": "Tipo20", "descripcion": "Alerta de seguridad: acceso sospechoso" },
-    { "timestamp": "2024-10-30 08:30:30", "tipo": "Tipo21", "descripcion": "Error en sincronización de datos" },
-    { "timestamp": "2024-10-30 08:35:47", "tipo": "Tipo22", "descripcion": "Conexión intermitente con el servidor" },
-    { "timestamp": "2024-10-30 08:40:55", "tipo": "Tipo23", "descripcion": "Reinicio inesperado del sistema" },
-    { "timestamp": "2024-10-30 08:45:03", "tipo": "Tipo24", "descripcion": "Error crítico en la API" },
-    { "timestamp": "2024-10-30 08:50:14", "tipo": "Tipo25", "descripcion": "Anomalía en tráfico de red" },
-    { "timestamp": "2024-10-30 08:55:27", "tipo": "Tipo26", "descripcion": "Tiempo de respuesta excesivo" },
-    { "timestamp": "2024-10-30 09:00:39", "tipo": "Tipo27", "descripcion": "Detección de malware en el servidor" },
-    { "timestamp": "2024-10-30 09:05:51", "tipo": "Tipo28", "descripcion": "Pérdida de paquetes de datos" },
-    { "timestamp": "2024-10-30 09:10:12", "tipo": "Tipo29", "descripcion": "Uso elevado de CPU" },
-    { "timestamp": "2024-10-30 09:15:23", "tipo": "Tipo30", "descripcion": "Alerta de integridad de archivos" }
+
 ]
 );
 
@@ -86,9 +63,6 @@ export default function DashboardContent() {
     }
     return "transform";
   };
-
-  
-
 
   return (
     <div className="ml-[5px] sm:ml-[10px] lg:ml-[20px] w-full flex flex-col mb-[160px] bg-gray-4">
