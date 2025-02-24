@@ -11,7 +11,7 @@ export default function DashboardContent() {
   const [isdbo, setdbo] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
-  const itemsPerPage = 6;
+
   
   const [alerts, setAlerts] = useState([
     { "timestamp": "2024-10-30 06:21:45", "tipo": "Tipo1", "descripcion": "Descripción de alerta 1" },
@@ -86,12 +86,9 @@ export default function DashboardContent() {
     }
     return "transform";
   };
+
   
-  const indexOfLastItem = currentPage * itemsPerPage;
-  const indexOfFirstItem = indexOfLastItem - itemsPerPage;
-  const currentItems = filteredAlerts.slice(indexOfFirstItem, indexOfLastItem);
-  
-  const paginate = (pageNumber) => setCurrentPage(pageNumber);
+
 
   return (
     <div className="ml-[5px] sm:ml-[10px] lg:ml-[20px] w-full flex flex-col mb-[160px] bg-gray-4">
@@ -100,40 +97,66 @@ export default function DashboardContent() {
         <img src={pencil} className="h-[18px] ml-[15px] cursor-pointer" />
       </div>
 
-      <div className={`bg-white rounded-lg shadow ml-[1vw] p-4 md:p-3 ${isSlideOpen ? `lg:w-[82.5vw]` : `lg:w-[97.8vw]`} sm:w-[96vw] w-[94vw]`}>        
-        <div className="flex justify-between items-center border-b pb-4">
-          <div className="flex items-center gap-2">
-            <p onClick={() => setdbo(!isdbo)} className="text-[18px] cursor-pointer font-semibold">dbo.Alertas</p>
-            <span className={`material-symbols-outlined cursor-pointer ${isdbo ? 'rotate-180' : ''} transition-transform duration-300`} onClick={() => setdbo(!isdbo)}>
-              keyboard_arrow_down
-            </span>
-          </div>
-          <input
-            type="text"
-            placeholder="Search alerts..."
-            className="border p-2 rounded-md text-sm"
-            value={searchQuery}
-            onChange={(e) => setSearchQuery(e.target.value)}
-          />
-        </div>
-
-        <motion.div initial={{ height: 0, opacity: 0 }} animate={{ height: isdbo ? 0 : "auto", opacity: isdbo ? 0 : 1 }} transition={{ duration: 0.7 }} className="overflow-hidden mt-4">
-          <div className="grid w-full border border-gray-200 rounded-lg overflow-auto">
-            {currentItems.map((alert, index) => (
-              <motion.div key={index} initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.4, delay: index * 0.05 }} className={`grid grid-cols-3 h-[48px] text-gray-1 text-[14px] border-t items-center ${index % 2 === 0 ? 'bg-[#E9EBF0]' : 'bg-white'}`}>
-                <div className="pl-4">{alert.timestamp}</div>
-                <div className="pl-4">{alert.tipo}</div>
-                <div className="pl-4">{alert.descripcion}</div>
+       <div className={`bg-white rounded-lg shadow p-4 md:p-3 ${isSlideOpen ? `lg:w-[82.5vw]`:`lg:w-[97.8vw] `} sm:w-[96vw] w-[91.5vw]  overflow-x-auto`}>
+              <div  className="flex gap-[16px]   items-center p-1 pb-4 border-b">
+                <p  onClick={() => setdbo(!isdbo)} className="text-[18px] cursor-pointer md:text-lg font-[600] text-gray-1">dbo.Alertas</p>
+                <span
+                  className={`material-symbols-outlined text-lg md:text-xl font-bold cursor-pointer ${isdbo ? 'rotate-180' : ''} transition-transform duration-300`}
+                  onClick={() => setdbo(!isdbo)}
+                >
+                  keyboard_arrow_down
+                </span>
+              </div>
+        
+              <motion.div
+                initial={{ height: 0, opacity: 0 }}
+                animate={{ height: isdbo ? 0 : "auto", opacity: isdbo ? 0 : 1 }}
+                exit={{ height: 0, opacity: 0 }}
+                transition={{ duration: 0.8, ease: "easeInOut" }} 
+                className="overflow-hidden"
+              >
+                <div className={`grid overflow-auto ${isSlideOpen ? `lg:w-[81vw]`:`lg:w-[96vw]`} w-full  mt-4 border border-gray-200 rounded-lg`}>
+                  {/* Header Row */}
+                  <div className="grid grid-cols-3 w-[150vw] overflow-auto sm:w-full h-[55px] items-center bg-blue-1 text-white font-semibold text-[13px] sm:text-sm md:text-[16px] rounded-tl-[10px] rounded-tr-[10px]">
+                    <div
+                      className="pl-2 sm:pl-4 cursor-pointer flex items-center rounded-tl-[10px]"
+                      onClick={() => sortData('timestamp')}
+                    >
+                      Timestamp
+                      <img src={unfold} className={`h-[14px] sm:h-[18px] ml-[5px] sm:ml-[11px] ${getArrowClass('timestamp')}`} />
+                    </div>
+                    <div className="pl-4 sm:pl-16 cursor-pointer flex items-center" onClick={() => sortData('tipo')}>
+                      Tipo Alerta
+                      <img src={unfold} className={`h-[14px] sm:h-[18px] ml-[5px] sm:ml-[11px] ${getArrowClass('tipo')}`} />
+                    </div>
+                    <div
+                      className="pl-6 sm:pl-11 cursor-pointer flex items-center rounded-tr-[10px]"
+                      onClick={() => sortData('descripcion')}
+                    >
+                      Descripción
+                      <img src={unfold} className={`h-[14px] sm:h-[18px] ml-[5px] sm:ml-[11px] ${getArrowClass('descripcion')}`} />
+                    </div>
+                  </div>
+        
+                  {/* Data Rows */}
+                  {alerts.map((alert, index) => (
+                    <motion.div
+                      key={index}
+                      initial={{ opacity: 0, y: 10 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ duration: 0.4, delay: index * 0.05 }}
+                      className={`grid grid-cols-3 h-[48px] text-gray-1 font-[400] text-[14px] items-center border-t sm:text-sm ${
+                        index % 2 === 0 ? 'bg-[#E9EBF0]' : 'bg-white'
+                      }`}
+                    >
+                      <div className="pl-2 sm:pl-4">{alert.timestamp}</div>
+                      <div className="pl-4 sm:pl-16">{alert.tipo}</div>
+                      <div className="pl-6 sm:pl-11">{alert.descripcion}</div>
+                    </motion.div>
+                  ))}
+                </div>
               </motion.div>
-            ))}
-          </div>
-          <div className="flex justify-center mt-4">
-            {[...Array(Math.ceil(filteredAlerts.length / itemsPerPage)).keys()].map(number => (
-              <button key={number + 1} onClick={() => paginate(number + 1)} className="mx-1 px-3 py-1 border rounded-md text-sm bg-blue-500 text-white hover:bg-blue-600">{number + 1}</button>
-            ))}
-          </div>
-        </motion.div>
-      </div>
+            </div>
     </div>
   );
 }
