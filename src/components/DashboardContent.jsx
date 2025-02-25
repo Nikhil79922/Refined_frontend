@@ -4,6 +4,7 @@ import { toast } from "react-toastify";
 import unfold from "./../assets/svg/unfold.svg";
 import pencil from "./../assets/svg/pencil.svg";
 import { useSelector } from "react-redux";
+import SelectBox from "./layout/SelectBox";
 
 export default function DashboardContent() {
   const isSlideOpen = useSelector((state) => state.sidebar.isSlideOpen);
@@ -12,7 +13,7 @@ export default function DashboardContent() {
   const [searchQuery, setSearchQuery] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 6;
-  
+
   const [alerts, setAlerts] = useState([
     { "timestamp": "2024-10-30 06:21:45", "tipo": "Tipo1", "descripcion": "Descripción de alerta 1" },
     { "timestamp": "2024-10-30 06:48:35", "tipo": "Tipo2", "descripcion": "Descripción de alerta 2" },
@@ -44,8 +45,8 @@ export default function DashboardContent() {
     { "timestamp": "2024-10-30 09:05:51", "tipo": "Tipo28", "descripcion": "Pérdida de paquetes de datos" },
     { "timestamp": "2024-10-30 09:10:12", "tipo": "Tipo29", "descripcion": "Uso elevado de CPU" },
     { "timestamp": "2024-10-30 09:15:23", "tipo": "Tipo30", "descripcion": "Alerta de integridad de archivos" }
-]
-);
+  ]
+  );
 
   const [sortConfig, setSortConfig] = useState({ key: "", direction: "ascending" });
 
@@ -86,11 +87,11 @@ export default function DashboardContent() {
     }
     return "transform";
   };
-  
+
   const indexOfLastItem = currentPage * itemsPerPage;
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
   const currentItems = filteredAlerts.slice(indexOfFirstItem, indexOfLastItem);
-  
+
   const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
   return (
@@ -100,7 +101,7 @@ export default function DashboardContent() {
         <img src={pencil} className="h-[18px] ml-[15px] cursor-pointer" />
       </div>
 
-      <div className={`bg-white rounded-lg shadow ml-[1vw] p-4 md:p-3 ${isSlideOpen ? `lg:w-[82.5vw]` : `lg:w-[97.8vw]`} sm:w-[96vw] w-[94vw]`}>        
+      <div className={`bg-white rounded-lg shadow ml-[1vw] p-4 md:p-3 ${isSlideOpen ? `lg:w-[82.5vw]` : `lg:w-[97.8vw]`} sm:w-[96vw] w-[94vw]`}>
         <div className="flex justify-between items-center border-b pb-4">
           <div className="flex items-center gap-2">
             <p onClick={() => setdbo(!isdbo)} className="text-[18px] cursor-pointer font-semibold">dbo.Alertas</p>
@@ -108,6 +109,20 @@ export default function DashboardContent() {
               keyboard_arrow_down
             </span>
           </div>
+        </div>
+
+        <div className="flex justify-between items-center p-2">
+        {/* <select
+        value={limit}
+        onChange={(e) => setLimit(Number(e.target.value))}
+        className="border p-2 rounded ml-2"
+      >
+        <option value="5">5 per page</option>
+        <option value="10">10 per page</option>
+        <option value="20">20 per page</option>
+      </select> */}
+
+
           <input
             type="text"
             placeholder="Search alerts..."
@@ -115,6 +130,8 @@ export default function DashboardContent() {
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
           />
+
+
         </div>
 
         <motion.div initial={{ height: 0, opacity: 0 }} animate={{ height: isdbo ? 0 : "auto", opacity: isdbo ? 0 : 1 }} transition={{ duration: 0.7 }} className="overflow-hidden mt-4">

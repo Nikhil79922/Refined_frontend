@@ -6,7 +6,7 @@ import DashboardLayout from "../components/layout/DashboardLayout.jsx";
 export default function DashboardRoutes() {
   return (
     <Routes>
-      <Route path="/dashboard/*" element={<DashboardLayout />}>
+      <Route path="/" element={<DashboardLayout />}>
         {/* Main Dashboard Content */}
         <Route index element={<DashboardContent />} />
 

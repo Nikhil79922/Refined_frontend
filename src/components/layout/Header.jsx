@@ -8,6 +8,7 @@ import avatar from '../../assets/svg/avatar.svg'
 import SelectBox from "./SelectBox";
 import InputBox from "./InputBox";
 import { toast, ToastContainer } from "react-toastify";
+import { useNavigate } from "react-router-dom";
 import "react-toastify/dist/ReactToastify.css";
 
 import { useSelector } from 'react-redux'; 
@@ -15,20 +16,19 @@ import { useSelector } from 'react-redux';
 export default function Header() {
 
   const isSlideOpen = useSelector((state) => state.sidebar.isSlideOpen);
-
+  const navigate = useNavigate();
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [isFormOpen, setIsFormOpen] = useState(false);
   const [isRegistered, setIsRegistered] = useState(false);
 
   const handleLogout = async () => {
     try {
-      console.log("Logging out...");
-  
-      
-      await axios.post("http://localhost:8000/auth/logout"); 
-  
+      await axios.post("http://localhost:8000/auth/logout",{},{withCredentials:true}); 
+         
+         
       // Remove token from localStorage
       localStorage.removeItem("token");
+      sessionStorage.removeItem("token");
   
       // Show success message
       toast.success("Logged out successfully!", {
@@ -89,8 +89,10 @@ export default function Header() {
     }
   };
   return (
-    <header className={`flex  lg:left-[15.5vw] items-center justify-between h-[73px] border-b-[0.9px] border-gray-200 bg-gray-4 w-[98vw]   ${isSlideOpen ? `lg:w-[84.5vw]` : `lg:w-[97.5vw] lg:ml-[40px]`}`}>
+    <header className={` flex  lg:left-[15.5vw] items-center justify-between h-[73px] border-b-[0.9px] border-gray-200 bg-gray-4 w-[98vw]   ${isSlideOpen ? `lg:w-[84.5vw]` : `lg:w-[97.5vw] lg:ml-[40px]`}`}>
+      
       <div className="flex ml-[40px] lg:ml-[0px] h-[73px] items-center ">
+      <ToastContainer/>
         <span className="material-symbols-outlined cursor-pointer text-gray-3 bg-white flex items-center justify-center w-[7vw] sm:w-[6vw] md:w-[4vw]   lg:w-[2.8vw] text-[19px] sm:text-[23px] rounded-tl-[8px] rounded-bl-[8px] ml-[10px] sm:ml-[20px]  h-[35px]  sm:h-[42px]">
           search
         </span>

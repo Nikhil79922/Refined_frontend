@@ -1,5 +1,5 @@
 import { useForm } from "react-hook-form";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { toast, ToastContainer } from "react-toastify";
@@ -14,10 +14,26 @@ export default function LoginPage() {
   const [rememberMe, setRememberMe] = useState(false);
 
 
+  useEffect(() => {
+    // Check if the user is already authenticated (using cookies)
+    const checkAuth = async () => {
+      try {
+        await axios.get("http://localhost:8000/auth/profile", { withCredentials: true });
+        navigate("/dashboard"); //
+      } catch (error) {
+        
+      }
+    };
+
+    checkAuth();
+  }, []);
+
+
+
   const onSubmit = async (data) => {
 
     try {
-      const response = await axios.post("http://localhost:8000/auth/login", data, rememberMe);
+      const response = await axios.post("http://localhost:8000/auth/login", { ...data, rememberMe}, {withCredentials: true});
 
       if (response.status === 200 && response.data.Data.token) {
         if(rememberMe)
@@ -94,7 +110,7 @@ export default function LoginPage() {
           {errors.password && <p className=" absolute  text-red-500 text-xs mt-[1px] md:mt-[2px]">{errors.password.message}</p>}
         </div>
 
-        <div className="flex justify-between tems-center" >
+        <div className="flex justify-between items-center" >
           {/* Remember Me Checkbox */}
           <div className="flex items-center">
             <input
