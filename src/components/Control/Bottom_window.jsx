@@ -14,11 +14,10 @@ export default function Bottom_window() {
   const [totalPages, setTotalPages] = useState(1);
   const [totalRecords, setTotalRecords] = useState(0);
 
-  // Mapping for correct field names between frontend and backend
   const fieldMapping = {
     timestamp: "Timestamp",
     tipo: "Tipo",
-    descripcion: "Descripcion"
+    descripcion: "Descripcion",
   };
 
   const [sortConfig, setSortConfig] = useState({
@@ -31,6 +30,7 @@ export default function Bottom_window() {
   }, [pageNumber, entriesPerPage, sortConfig, searchQuery]);
 
   const fetchAlerts = async () => {
+    console.log(pageNumber)
     const requestData = {
       pageNumber,
       entries: entriesPerPage,
@@ -39,7 +39,7 @@ export default function Bottom_window() {
       searchQuery,
     };
 
-    console.log("Sending API request:", requestData); // Debug API call
+    console.log("Fetching alerts with:", requestData); // Debugging API request
 
     try {
       const response = await fetch("http://localhost:8000/alertas/first", {
@@ -51,7 +51,7 @@ export default function Bottom_window() {
       if (!response.ok) throw new Error("Failed to fetch alerts");
 
       const data = await response.json();
-      console.log("API Response:", data); // Debug API response
+      console.log("API Response:", data); // Debugging API response
 
       if (data.IsSuccess && data.Data) {
         setAlerts(data.Data.data || []);
@@ -63,12 +63,18 @@ export default function Bottom_window() {
     }
   };
 
+  useEffect(() => {
+    if (pageNumber > totalPages) {
+      setPageNumber(1);
+    }
+  }, [totalPages, pageNumber]);
+
   const sortData = (key) => {
     setSortConfig((prev) => ({
       key: fieldMapping[key] || key, // Ensure correct backend field name
       direction: prev.key === fieldMapping[key] && prev.direction === "asc" ? "desc" : "asc",
     }));
-    setPageNumber(1); // Reset to first page
+    // Do not reset page number, so sorting happens on the current page
   };
 
   const getArrowClass = (key) => {
@@ -79,24 +85,24 @@ export default function Bottom_window() {
     }
     return "transform";
   };
-  
+
   return (
     <div className={`bg-white rounded-lg shadow p-4 ${isSlideOpen ? `lg:w-[82.5vw]` : `lg:w-[97.8vw]`} overflow-x-auto`}>
       <div className="flex gap-4 items-center p-1 pb-4 border-b">
         <p onClick={() => setdbo(!isdbo)} className="text-lg cursor-pointer font-semibold text-gray-700">dbo.Alertas</p>
         <span
-          className={`material-symbols-outlined text-lg md:text-xl font-bold cursor-pointer ${isdbo ? 'rotate-180' : ''} transition-transform duration-300`}
+          className={`material-symbols-outlined text-lg md:text-xl font-bold cursor-pointer ${isdbo ? "rotate-180" : ""} transition-transform duration-300`}
           onClick={() => setdbo(!isdbo)}
         >
           keyboard_arrow_down
         </span>
       </div>
 
-      <motion.div initial={{ height: 0, opacity: 0 }} animate={{ height: isdbo ? 0 : "auto", opacity: isdbo ? 0 : 1 }} exit={{ height: 0, opacity: 0 }} transition={{ duration: 0.5 }}   className="overflow-hidden max-h-[80vh] scrollbar-hide overflow-y-auto">
+      <motion.div initial={{ height: 0, opacity: 0 }} animate={{ height: isdbo ? 0 : "auto", opacity: isdbo ? 0 : 1 }} exit={{ height: 0, opacity: 0 }} transition={{ duration: 0.5 }} className="overflow-hidden max-h-[80vh] scrollbar-hide overflow-y-auto">
         <div className="flex justify-between items-center mt-2 mb-2">
           <input type="text" placeholder="Search..." value={searchQuery} onChange={(e) => setSearchQuery(e.target.value)} className="p-2 border rounded-md" />
           <select value={entriesPerPage} onChange={(e) => { setEntriesPerPage(Number(e.target.value)); setPageNumber(1); }} className="p-2 border rounded-md">
-            {[5, 10, 20, 50, 100].map(num => <option key={num} value={num}>{num}</option>)}
+            {[5, 10, 20, 50, 100].map((num) => <option key={num} value={num}>{num}</option>)}
           </select>
         </div>
 
@@ -105,7 +111,7 @@ export default function Bottom_window() {
             {["timestamp", "tipo", "descripcion"].map((col) => (
               <div key={col} className="pl-4 cursor-pointer flex items-center" onClick={() => sortData(col)}>
                 {col.charAt(0).toUpperCase() + col.slice(1)}
-                <img src={unfold} className={`h-[14px] sm:h-[18px] ml-[5px] sm:ml-[11px] ${getArrowClass(col.charAt(0).toUpperCase() + col.slice(1))}`} />
+                <img src={unfold} className={`h-[14px] sm:h-[18px] ml-[5px] sm:ml-[11px] ${getArrowClass(fieldMapping[col])}`} />
               </div>
             ))}
           </div>
