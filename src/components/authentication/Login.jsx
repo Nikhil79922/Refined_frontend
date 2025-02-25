@@ -14,50 +14,52 @@ export default function LoginPage() {
   const [rememberMe, setRememberMe] = useState(false);
 
 
-  useEffect(() => {
-    // Check if the user is already authenticated (using cookies)
-    const checkAuth = async () => {
-      try {
-        await axios.get("http://localhost:8000/auth/profile", { withCredentials: true });
-        navigate("/dashboard"); //
-      } catch (error) {
+  // useEffect(() => {
+  //   // Check if the user is already authenticated (using cookies)
+  //   const checkAuth = async () => {
+  //     try {
+  //       await axios.get("http://localhost:8000/auth/profile", { withCredentials: true });
+  //       navigate("/dashboard"); //
+  //     } catch (error) {
         
-      }
-    };
+  //     }
+  //   };
 
-    checkAuth();
-  }, []);
+  //   checkAuth();
+  // }, []);
 
 
 
   const onSubmit = async (data) => {
 
-    try {
-      const response = await axios.post("http://localhost:8000/auth/login", { ...data, rememberMe}, {withCredentials: true});
+    navigate("/dashboard");
 
-      if (response.status === 200 && response.data.Data.token) {
-        if(rememberMe)
-        {
-          localStorage.setItem("token", response.data.Data.token);
-        }
-        else{
-          sessionStorage.setItem("token", response.data.Data.token);
-        }
+    // try {
+    //   const response = await axios.post("http://localhost:8000/auth/login", { ...data, rememberMe}, {withCredentials: true});
 
-        // Show success toast and navigate to dashboard
-        toast.success("Login successful!", {
-          position: "top-right",
-          autoClose: 1500,
-          onClose: () => navigate("/dashboard"),
-        });
-      } else {
-        toast.error("Invalid credentials. Please try again.");
-      }
-    } catch (error) {
-      toast.error(error.response?.data?.message || "Login failed. Please try again.");
-    } finally {
-      setLoading(false);
-    }
+    //   if (response.status === 200 && response.data.Data.token) {
+    //     if(rememberMe)
+    //     {
+    //       localStorage.setItem("token", response.data.Data.token);
+    //     }
+    //     else{
+    //       sessionStorage.setItem("token", response.data.Data.token);
+    //     }
+
+    //     // Show success toast and navigate to dashboard
+    //     toast.success("Login successful!", {
+    //       position: "top-right",
+    //       autoClose: 1500,
+    //       onClose: () => navigate("/dashboard"),
+    //     });
+    //   } else {
+    //     toast.error("Invalid credentials. Please try again.");
+    //   }
+    // } catch (error) {
+    //   toast.error(error.response?.data?.message || "Login failed. Please try again.");
+    // } finally {
+    //   setLoading(false);
+    // }
 
 
   };

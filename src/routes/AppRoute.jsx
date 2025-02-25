@@ -6,10 +6,10 @@ import ProtectedRoute from "./ProtectedRote.jsx";
 export default function AppRoutes() {
   return (
     <Routes>
-    <Route path="/*" element={<AuthRoutes />}/>
-    <Route element={<ProtectedRoute/>}>
-      <Route path="/dashboard/*" element={<DashboardRoutes />}/>
-    </Route>
+      <Route path="/*" element={<AuthRoutes />} />
+
+      <Route path="/dashboard/*" element={<DashboardRoutes />} />
+
     </Routes>
   );
 }
