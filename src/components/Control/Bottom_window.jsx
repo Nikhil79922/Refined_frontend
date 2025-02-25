@@ -18,7 +18,7 @@ export default function Bottom_window() {
   const fieldMapping = {
     timestamp: "Timestamp",
     tipo: "Tipo",
-    descripcion: "Descripcion",
+    descripcion: "Descripcion"
   };
 
   const [sortConfig, setSortConfig] = useState({
@@ -34,12 +34,12 @@ export default function Bottom_window() {
     const requestData = {
       pageNumber,
       entries: entriesPerPage,
-      orderByField: sortConfig.key,
+      orderByField: sortConfig.key, // Ensure mapped field name
       orderDirection: sortConfig.direction,
       searchQuery,
     };
 
-    console.log("Fetching alerts with:", requestData);
+    console.log("Sending API request:", requestData); // Debug API call
 
     try {
       const response = await fetch("http://localhost:8000/alertas/first", {
@@ -51,6 +51,7 @@ export default function Bottom_window() {
       if (!response.ok) throw new Error("Failed to fetch alerts");
 
       const data = await response.json();
+      console.log("API Response:", data); // Debug API response
 
       if (data.IsSuccess && data.Data) {
         setAlerts(data.Data.data || []);
@@ -62,22 +63,12 @@ export default function Bottom_window() {
     }
   };
 
-  useEffect(() => {
-    console.log("Updated pageNumber:", pageNumber);
-    console.log("Updated totalPages:", totalPages);
-
-    if (pageNumber > totalPages) {
-      console.log("Resetting pageNumber to 1 since it's greater than totalPages.");
-      setPageNumber(1);
-    }
-  }, [totalPages, pageNumber]);
-
   const sortData = (key) => {
     setSortConfig((prev) => ({
-      key: fieldMapping[key] || key,
+      key: fieldMapping[key] || key, // Ensure correct backend field name
       direction: prev.key === fieldMapping[key] && prev.direction === "asc" ? "desc" : "asc",
     }));
-    setPageNumber(1);
+    setPageNumber(1); // Reset to first page
   };
 
   const getArrowClass = (key) => {
@@ -88,24 +79,24 @@ export default function Bottom_window() {
     }
     return "transform";
   };
-
+  
   return (
     <div className={`bg-white rounded-lg shadow p-4 ${isSlideOpen ? `lg:w-[82.5vw]` : `lg:w-[97.8vw]`} overflow-x-auto`}>
       <div className="flex gap-4 items-center p-1 pb-4 border-b">
         <p onClick={() => setdbo(!isdbo)} className="text-lg cursor-pointer font-semibold text-gray-700">dbo.Alertas</p>
         <span
-          className={`material-symbols-outlined text-lg md:text-xl font-bold cursor-pointer ${isdbo ? "rotate-180" : ""} transition-transform duration-300`}
+          className={`material-symbols-outlined text-lg md:text-xl font-bold cursor-pointer ${isdbo ? 'rotate-180' : ''} transition-transform duration-300`}
           onClick={() => setdbo(!isdbo)}
         >
           keyboard_arrow_down
         </span>
       </div>
 
-      <motion.div initial={{ height: 0, opacity: 0 }} animate={{ height: isdbo ? 0 : "auto", opacity: isdbo ? 0 : 1 }} exit={{ height: 0, opacity: 0 }} transition={{ duration: 0.5 }} className="overflow-hidden max-h-[80vh] scrollbar-hide overflow-y-auto">
+      <motion.div initial={{ height: 0, opacity: 0 }} animate={{ height: isdbo ? 0 : "auto", opacity: isdbo ? 0 : 1 }} exit={{ height: 0, opacity: 0 }} transition={{ duration: 0.5 }}   className="overflow-hidden max-h-[80vh] scrollbar-hide overflow-y-auto">
         <div className="flex justify-between items-center mt-2 mb-2">
           <input type="text" placeholder="Search..." value={searchQuery} onChange={(e) => setSearchQuery(e.target.value)} className="p-2 border rounded-md" />
           <select value={entriesPerPage} onChange={(e) => { setEntriesPerPage(Number(e.target.value)); setPageNumber(1); }} className="p-2 border rounded-md">
-            {[5, 10, 20, 50, 100].map((num) => <option key={num} value={num}>{num}</option>)}
+            {[5, 10, 20, 50, 100].map(num => <option key={num} value={num}>{num}</option>)}
           </select>
         </div>
 
