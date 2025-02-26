@@ -36,7 +36,6 @@ export default function Sidebar() {
   const handleMobileSlide = () => {
     if (window.innerWidth >= 1024) return; // lg breakpoint in Tailwind (1024px)
     dispatch(togglemobileSidebar());
-    dispatch(toggleSidebar()); 
   };
   useEffect(() => {
     console.log("Sidebar open:", isSlideOpen);  
@@ -46,18 +45,22 @@ export default function Sidebar() {
     <>
       {/* Hamburger button (only visible on small screens) */}
       <button
-        className={`fixed top-[21.5px] sm:top-5 left-4 z-50 text-gray-1 bg-white p-2 rounded-md shadow-md ${isSlideOpen ? "hidden" : "block"}`}
-        onClick={handleSlide} onclick={handleMobileSlide}
-      >
+  className={`fixed top-[21.5px] sm:top-5 left-4 z-50 text-gray-1 bg-white p-2 rounded-md shadow-md ${
+    window.innerWidth >= 1024 ? (isSlideOpen ? "hidden" : "block") :(togglemobileSidebar ? "block" : "hidden")
+  }`}
+  onClick={() => {
+    handleSlide();
+    handleMobileSlide();
+  }}
+>
         <img src={humburger} className="h-3 w-3 sm:h-4 sm:w-4" alt="Hamburger Icon" />
       </button>
-
       {/* Sidebar */}
       <aside
      style={{ zIndex: 100 }}
         className={`overflow-y-hidden bg-white text-blue-1 h-full shadow-lg fixed lg:static w-[55vw] sm:w-[30vw] md:w-[28vw] scrollbar-hide transition-all duration-700
-          ${isSlideOpen && ismobileSlideOpen ? "translate-x-0" : "-translate-x-full"}  /* Small screen */
-          ${isSlideOpen ? " lg:w-[15vw] " : "lg:w-0"}  /* Small screens toggle width */
+          ${isSlideOpen && ismobileSlideOpen ? "translate-x-0" : "-translate-x-full"}  
+          ${isSlideOpen ? " lg:w-[15vw] " : "lg:w-0"} 
           lg:translate-x-0`}  
       >
         <div className="flex items-center justify-between px-4 h-[73px] border-b border-gray-200 bg-white">
@@ -85,7 +88,10 @@ export default function Sidebar() {
         </div>
 
         <div  className={`${location.pathname == "/Dashboard"? 'text-blue-1': 'text-gray-1'} uppercase font-bold font-inter flex items-center h-[64px] w-full border-b border-gray-200 text-[13px] px-[23px]`}>
-          <Link  onClick={handleMobileSlide}  to="/Dashboard">Dashboard</Link>
+          <Link      onClick={() => {
+                    handleSlide();
+                    handleMobileSlide();
+                  }}  to="/Dashboard">Dashboard</Link>
         </div>
 
         <nav className="mt-[20px]">
@@ -99,7 +105,6 @@ export default function Sidebar() {
                 src={keydown}
                 className={`w-[14px] h-[8px] cursor-pointer transition-transform duration-500 ease ${openSection === "produccion" ? "rotate-180" : ""}`}
      
-            
                 alt="Toggle"
               />
             </li>
@@ -132,7 +137,10 @@ export default function Sidebar() {
                return (
                  <li
                    key={Array.isArray(to) ? to[0] : to} // Use the first path as the key
-                   onClick={handleMobileSlide} 
+                   onClick={() => {
+                    handleSlide();
+                    handleMobileSlide();
+                  }}
                    className={`mt-[22px] flex items-center gap-4 text-[13px] font-medium cursor-pointer ${
                      isActive ? "text-gray-1" : "text-gray-500"
                    }`}
@@ -143,7 +151,7 @@ export default function Sidebar() {
                );
              })}
            </div>
-           
+
               )}
             </motion.div>
 
@@ -154,8 +162,7 @@ export default function Sidebar() {
               <p>CALIDAD</p>
               <img
                 src={keydown}
-                className={`w-[14px] h-[8px] cursor-pointer transition-transform duration-500 ease ${openSection === "calidad" ? "rotate-180" : ""}`}
-               
+                className={`w-[14px] h-[8px] cursor-pointer transition-transform duration-500 ease ${openSection === "calidad" ? "rotate-180" : ""}`} 
                 alt="Toggle"
               />
             </li>
@@ -174,7 +181,10 @@ export default function Sidebar() {
                     { to: "/Dashboard/calidad/submenu2", src: app, text: "Submenu2" },
                   ].map(({ to, src, text }) => (
                     <li
-                    onClick={handleMobileSlide} 
+                    onClick={() => {
+                      handleSlide();
+                      handleMobileSlide();
+                    }}
                       key={to}
                       className={`mt-[22px] flex items-center gap-4 text-[13px] font-medium cursor-pointer ${
                         location.pathname === to ? "text-gray-1" : "text-gray-500"
@@ -215,7 +225,10 @@ export default function Sidebar() {
                     { to: "/Dashboard/mantenimiento/submenu2", src: app, text: "Submenu2" },
                   ].map(({ to, src, text }) => (
                     <li
-                    onClick={handleMobileSlide} 
+                    onClick={() => {
+                      handleSlide();
+                      handleMobileSlide();
+                    }}
                       key={to}
                       className={`mt-[22px] flex items-center gap-4 text-[13px] font-medium cursor-pointer ${
                         location.pathname === to ? "text-gray-1" : "text-gray-500"

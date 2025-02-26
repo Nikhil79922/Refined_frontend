@@ -15,7 +15,7 @@ export default function DashboardContent() {
   }, []);
 
   const isSlideOpen = useSelector((state) => state.sidebar.isSlideOpen);
-  const [isdbo, setdbo] = useState(true);
+  const [isdbo, setdbo] = useState(false);
   const [alerts, setAlerts] = useState([]);
   const [searchQuery, setSearchQuery] = useState("");
   const [pageNumber, setPageNumber] = useState(1);
