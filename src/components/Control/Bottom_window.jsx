@@ -25,6 +25,8 @@ export default function Bottom_window() {
     direction: "asc",
   });
 
+
+
   useEffect(() => {
     fetchAlerts();
   }, [pageNumber, entriesPerPage, sortConfig, searchQuery]);

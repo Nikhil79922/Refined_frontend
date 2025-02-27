@@ -151,7 +151,6 @@ export default function Sidebar() {
                );
              })}
            </div>
-
               )}
             </motion.div>
             <li className="mt-5 w-full border-b border-gray-300"></li>
