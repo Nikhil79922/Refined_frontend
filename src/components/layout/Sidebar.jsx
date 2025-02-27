@@ -154,9 +154,7 @@ export default function Sidebar() {
 
               )}
             </motion.div>
-
             <li className="mt-5 w-full border-b border-gray-300"></li>
-
             {/* CALIDAD Section */}
             <li  onClick={() => toggleSection("calidad")} className="uppercase font-bold text-gray-1 flex justify-between cursor-pointer items-center px-[23px] text-[13px] mt-5">
               <p>CALIDAD</p>
@@ -199,7 +197,6 @@ export default function Sidebar() {
             </motion.div>
 
             <li className="mt-5 w-full border-b border-gray-300"></li>
-
             {/* MANTENIMIENTO Section */}
             <li    onClick={() => toggleSection("mantenimiento")} className="uppercase font-bold text-gray-1 flex justify-between cursor-pointer items-center px-[23px] text-[13px] mt-5">
               <p>MANTENIMIENTO</p>
